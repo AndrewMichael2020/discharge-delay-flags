@@ -151,6 +151,7 @@ Full run summary:
 
 - `docs/scenario_run_summary.csv`
 - `docs/model_metrics_summary.csv`
+- `docs/METRICS_AND_SIGNALS.md`
 
 
 ### Signal-volume guardrails
@@ -175,6 +176,10 @@ The public demo is intentionally sized like a single large hospital, not a provi
 - ALC case rates between `0.07%` and `0.43%`.
 
 That distinction matters: ALC is represented as a small, high-impact subset. Recoverable excess bed-hours are not case counts.
+
+## Metrics and signal definitions
+
+The dashboard metrics are operational diagnostic KPIs. They are documented in detail in [`docs/METRICS_AND_SIGNALS.md`](docs/METRICS_AND_SIGNALS.md), including formulas for OOB flags, priority score, recoverable excess bed-hours, management signal grouping, and every delay reason shown in the dashboard.
 
 ## Dashboard features
 
