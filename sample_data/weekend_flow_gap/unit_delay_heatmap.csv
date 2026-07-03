@@ -1,0 +1,7 @@
+facility_id,unit_id,flagged_cases,recoverable_bed_hours,median_priority_score
+FAC_000,acute_medicine,244,7321.7,52.675
+FAC_000,transitional_care,136,5044.58,56.05
+FAC_000,respiratory,162,4663.06,32.875
+FAC_000,surgical,152,4424.23,37.17
+FAC_000,cardiac,97,3227.62,39.26
+FAC_000,orthopedics,119,3087.1,32.29

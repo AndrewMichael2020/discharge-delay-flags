@@ -1,0 +1,14 @@
+requested_scenario_mode,scenario_label,signal_family,recoverable_bed_hours,flagged_cases,share_of_recoverable_hours
+weekend_flow_gap,weekend_flow_gap_detected,weekend_flow_gap,25385.53,466,0.9142
+weekend_flow_gap,weekend_flow_gap_detected,alc_community_capacity,982.6999999999999,129,0.0354
+weekend_flow_gap,weekend_flow_gap_detected,unattributed,365.7,121,0.0132
+weekend_flow_gap,weekend_flow_gap_detected,transport_discharge_logistics,311.56,61,0.0112
+weekend_flow_gap,weekend_flow_gap_detected,diagnostics_access,208.14000000000001,43,0.0075
+weekend_flow_gap,weekend_flow_gap_detected,nursing_discharge_readiness,191.72,19,0.0069
+weekend_flow_gap,weekend_flow_gap_detected,care_team_assessment,125.48,23,0.0045
+weekend_flow_gap,weekend_flow_gap_detected,social_support_readiness,82.38999999999999,12,0.003
+weekend_flow_gap,weekend_flow_gap_detected,vulnerable_patient_flow,70.21000000000001,15,0.0025
+weekend_flow_gap,weekend_flow_gap_detected,front_door_screening,22.07,9,0.0008
+weekend_flow_gap,weekend_flow_gap_detected,pharmacy_discharge_readiness,15.46,7,0.0006
+weekend_flow_gap,weekend_flow_gap_detected,unit_flow_capacity,7.15,1,0.0003
+weekend_flow_gap,weekend_flow_gap_detected,documentation_readiness,0.18,4,0.0

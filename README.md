@@ -274,10 +274,26 @@ python3 scripts/export_dashboard.py \
 │       ├── balanced-dashboard.png
 │       ├── diagnostics-dashboard.png
 │       └── weekend-dashboard.png
+├── sample_data/
+│   ├── balanced/
+│   ├── diagnostics_heavy/
+│   └── weekend_flow_gap/
 └── .github/workflows/ci.yml
 ```
 
 Generated `outputs/`, `exports/`, local data, virtual environments, timestamped screenshot exports, and local implementation notes are ignored. The repository keeps only curated screenshots and summary CSVs for the README.
+
+## Included sample synthetic data
+
+The repository includes a curated sample dataset under [`sample_data/`](sample_data/). It contains the three final one-large-hospital scenario runs used in the README:
+
+| Folder | Scenario | Scale |
+|---|---|---|
+| `sample_data/balanced/` | Mixed operational pressure | 1 hospital, 90 days, 9,900 encounters |
+| `sample_data/diagnostics_heavy/` | Diagnostics-access stress | 1 hospital, 90 days, 9,900 encounters |
+| `sample_data/weekend_flow_gap/` | Weekend-flow stress | 1 hospital, 90 days, 9,900 encounters |
+
+The larger local `outputs/` tree is intentionally ignored because it contains earlier exploratory and health-authority-scale runs.
 
 ## Main outputs
 

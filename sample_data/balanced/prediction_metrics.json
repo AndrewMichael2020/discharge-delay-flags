@@ -1,0 +1,42 @@
+{
+  "regression": {
+    "HistGradientBoostingRegressor": {
+      "mae_hours": 12.352,
+      "rmse_hours": 16.941,
+      "median_absolute_error_hours": 9.978,
+      "prediction_std_ratio": 0.781
+    },
+    "ExtraTreesRegressor": {
+      "mae_hours": 12.441,
+      "rmse_hours": 16.984,
+      "median_absolute_error_hours": 10.032,
+      "prediction_std_ratio": 0.784
+    },
+    "statistical_ensemble": {
+      "mae_hours": 12.316,
+      "rmse_hours": 16.853,
+      "median_absolute_error_hours": 10.021,
+      "prediction_std_ratio": 0.779
+    }
+  },
+  "classification": {
+    "HistGradientBoostingClassifier": {
+      "roc_auc": 0.566,
+      "pr_auc": 0.111,
+      "recall_at_top_5pct_risk": 0.103,
+      "score_std": 0.06561
+    },
+    "ExtraTreesClassifier": {
+      "roc_auc": 0.55,
+      "pr_auc": 0.104,
+      "recall_at_top_5pct_risk": 0.089,
+      "score_std": 0.11597
+    },
+    "statistical_ensemble": {
+      "roc_auc": 0.567,
+      "pr_auc": 0.112,
+      "recall_at_top_5pct_risk": 0.069,
+      "score_std": 0.07955
+    }
+  }
+}

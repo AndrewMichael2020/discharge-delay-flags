@@ -1,0 +1,98 @@
+signal_rank,primary_blocker,facility_id,unit_id,service_line,flagged_cases,recoverable_bed_hours,median_priority_score,mean_confidence,signal_family,actionability_score
+1,radiology MRI access delay,FAC_000,orthopedics,orthopedics,49,1459.84,51.6,0.84,diagnostics_access,832.96
+2,home care confirmation wait,FAC_000,acute_medicine,medicine,62,1179.8700000000001,35.485,0.86,alc_community_capacity,809.31
+3,transport delay,FAC_000,acute_medicine,medicine,58,1146.06,31.115,0.78,transport_discharge_logistics,770.94
+4,radiology CT turnaround delay,FAC_000,acute_medicine,medicine,52,956.51,34.85,0.8200000000000001,diagnostics_access,670.25
+5,unattributed operational delay,FAC_000,acute_medicine,medicine,48,1036.91,33.83,0.45,unattributed,667.48
+6,radiology MRI access delay,FAC_000,transitional_care,geriatrics,34,1214.03,59.75,0.84,diagnostics_access,658.97
+7,blood testing turnaround delay,FAC_000,acute_medicine,medicine,49,857.51,38.76,0.79,diagnostics_access,618.04
+8,radiology CT turnaround delay,FAC_000,respiratory,respiratory,34,1078.22,50.900000000000006,0.82,diagnostics_access,608.86
+9,unattributed operational delay,FAC_000,surgical,surgery,44,929.08,35.879999999999995,0.45,unattributed,606.25
+10,transport delay,FAC_000,respiratory,respiratory,40,755.93,36.045,0.78,transport_discharge_logistics,527.63
+11,unattributed operational delay,FAC_000,respiratory,respiratory,40,773.89,30.875,0.45,unattributed,526.68
+12,home care confirmation wait,FAC_000,surgical,surgery,37,770.1,36.36,0.86,alc_community_capacity,516.1
+13,home care confirmation wait,FAC_000,respiratory,respiratory,45,620.9300000000001,33.76,0.8600000000000001,alc_community_capacity,511.25
+14,blood testing turnaround delay,FAC_000,surgical,surgery,30,724.65,32.629999999999995,0.7900000000000001,diagnostics_access,456.0
+15,home care confirmation wait,FAC_000,transitional_care,geriatrics,39,553.2,34.56,0.86,alc_community_capacity,451.74
+16,unattributed operational delay,FAC_000,transitional_care,geriatrics,37,600.7900000000001,31.96,0.45000000000000007,unattributed,448.37
+17,radiology MRI access delay,FAC_000,respiratory,respiratory,18,834.89,74.74,0.84,diagnostics_access,434.02
+18,home care confirmation wait,FAC_000,cardiac,cardiology,30,542.73,26.95,0.86,alc_community_capacity,392.17
+19,transport delay,FAC_000,transitional_care,geriatrics,28,561.76,33.58,0.78,transport_discharge_logistics,387.05
+20,radiology CT turnaround delay,FAC_000,surgical,surgery,28,494.21999999999997,40.879999999999995,0.82,diagnostics_access,365.96
+21,radiology MRI access delay,FAC_000,acute_medicine,medicine,20,604.27,52.43000000000001,0.8400000000000001,diagnostics_access,359.72
+22,ECG availability delay,FAC_000,cardiac,cardiology,26,491.58,33.65,0.78,diagnostics_access,350.51
+23,diagnostic sign-off stall,FAC_000,acute_medicine,medicine,28,400.55,34.405,0.72,diagnostics_access,329.75
+24,diagnostic sign-off stall,FAC_000,respiratory,respiratory,23,464.84,36.99,0.72,diagnostics_access,322.9
+25,diagnostic sign-off stall,FAC_000,transitional_care,geriatrics,17,551.85,49.54,0.72,diagnostics_access,320.49
+26,home care confirmation wait,FAC_000,orthopedics,orthopedics,27,331.23,29.14,0.86,alc_community_capacity,300.7
+27,radiology MRI access delay,FAC_000,surgical,surgery,17,469.56,64.25,0.84,diagnostics_access,297.53
+28,transport delay,FAC_000,orthopedics,orthopedics,21,422.22,31.13,0.7799999999999999,transport_discharge_logistics,295.6
+29,transport delay,FAC_000,surgical,surgery,26,298.13,28.955,0.78,transport_discharge_logistics,281.62
+30,blood testing turnaround delay,FAC_000,respiratory,respiratory,23,300.49,38.23,0.79,diagnostics_access,266.95
+31,radiology CT turnaround delay,FAC_000,orthopedics,orthopedics,21,313.93,47.02,0.82,diagnostics_access,262.39
+32,radiology ultrasound turnaround delay,FAC_000,surgical,surgery,26,205.57,27.095,0.8,diagnostics_access,249.12
+33,diagnostic sign-off stall,FAC_000,surgical,surgery,17,350.53,43.86,0.72,diagnostics_access,248.61
+34,blood testing turnaround delay,FAC_000,orthopedics,orthopedics,20,293.85,29.759999999999998,0.79,diagnostics_access,244.51
+35,radiology CT turnaround delay,FAC_000,cardiac,cardiology,15,340.57,42.58,0.82,diagnostics_access,234.6
+36,radiology ultrasound turnaround delay,FAC_000,acute_medicine,medicine,15,325.17,36.57,0.8,diagnostics_access,227.35
+37,unattributed operational delay,FAC_000,orthopedics,orthopedics,22,205.29999999999998,30.009999999999998,0.45,unattributed,219.46
+38,transport delay,FAC_000,cardiac,cardiology,17,258.6,43.32,0.78,transport_discharge_logistics,217.38
+39,unattributed operational delay,FAC_000,cardiac,cardiology,15,310.5,28.29,0.45,unattributed,213.85
+40,radiology CT turnaround delay,FAC_000,transitional_care,geriatrics,16,254.01,43.36,0.82,diagnostics_access,210.5
+41,blood testing turnaround delay,FAC_000,transitional_care,geriatrics,16,263.31,30.310000000000002,0.79,diagnostics_access,209.96
+42,Friday/weekend discharge gap,FAC_000,acute_medicine,medicine,14,266.77,45.769999999999996,0.88,weekend_flow_gap,204.65
+43,ECG availability delay,FAC_000,acute_medicine,medicine,19,128.38,28.33,0.78,diagnostics_access,180.06
+44,diagnostic sign-off stall,FAC_000,cardiac,cardiology,10,252.35,57.025,0.72,diagnostics_access,175.54
+45,radiology ultrasound turnaround delay,FAC_000,cardiac,cardiology,9,250.21,60.88,0.8,diagnostics_access,171.19
+46,radiology MRI access delay,FAC_000,cardiac,cardiology,10,221.86,54.345,0.8400000000000001,diagnostics_access,166.36
+47,radiology ultrasound turnaround delay,FAC_000,orthopedics,orthopedics,10,203.97,49.565,0.8,diagnostics_access,158.18
+48,ECG availability delay,FAC_000,respiratory,respiratory,10,180.26,48.845,0.78,diagnostics_access,149.34
+49,Friday/weekend discharge gap,FAC_000,surgical,surgery,12,114.6,30.09,0.88,weekend_flow_gap,135.47
+50,blood testing turnaround delay,FAC_000,cardiac,cardiology,7,179.1,57.26,0.79,diagnostics_access,133.22
+51,diagnostic sign-off stall,FAC_000,orthopedics,orthopedics,5,209.94,55.49,0.72,diagnostics_access,130.31
+52,Friday/weekend discharge gap,FAC_000,transitional_care,geriatrics,10,119.46000000000001,30.235,0.8800000000000001,weekend_flow_gap,125.21
+53,radiology ultrasound turnaround delay,FAC_000,respiratory,respiratory,10,57.83,28.165,0.8,diagnostics_access,101.68
+54,ECG availability delay,FAC_000,surgical,surgery,8,86.1,30.265,0.78,diagnostics_access,99.74
+55,Friday/weekend discharge gap,FAC_000,respiratory,respiratory,7,82.26,34.26,0.88,weekend_flow_gap,95.2
+56,Friday/weekend discharge gap,FAC_000,orthopedics,orthopedics,9,28.709999999999997,24.39,0.88,weekend_flow_gap,85.99
+57,ECG availability delay,FAC_000,orthopedics,orthopedics,6,69.64,36.980000000000004,0.7799999999999999,diagnostics_access,83.66
+58,unit-level bed-flow bottleneck,FAC_000,respiratory,respiratory,2,91.93,93.625,0.62,unit_flow_capacity,78.74
+59,ECG availability delay,FAC_000,transitional_care,geriatrics,6,59.91,27.165,0.7799999999999999,diagnostics_access,77.8
+60,unit-level bed-flow bottleneck,FAC_000,cardiac,cardiology,2,74.12,68.925,0.62,unit_flow_capacity,66.33
+61,nurse discharge screening wait,FAC_000,transitional_care,geriatrics,3,59.68,37.35,0.8000000000000002,nursing_discharge_readiness,62.63
+62,therapy assessment stall,FAC_000,orthopedics,orthopedics,7,0.0,20.34,0.82,care_team_assessment,61.84
+63,Friday/weekend discharge gap,FAC_000,cardiac,cardiology,3,40.97,33.01,0.88,weekend_flow_gap,56.43
+64,radiology ultrasound turnaround delay,FAC_000,transitional_care,geriatrics,4,21.37,27.205,0.8,diagnostics_access,52.68
+65,nurse discharge screening wait,FAC_000,acute_medicine,medicine,2,35.27,41.875,0.8,nursing_discharge_readiness,49.21
+66,ALC placement wait,FAC_000,transitional_care,geriatrics,2,24.38,45.44,0.94,alc_community_capacity,48.81
+67,ALC placement wait,FAC_000,acute_medicine,medicine,3,22.16,19.9,0.94,alc_community_capacity,47.65
+68,therapy assessment stall,FAC_000,acute_medicine,medicine,3,27.0,21.31,0.82,care_team_assessment,47.54
+69,nurse discharge screening wait,FAC_000,cardiac,cardiology,3,23.3,24.83,0.8000000000000002,nursing_discharge_readiness,46.76
+70,nurse discharge screening wait,FAC_000,orthopedics,orthopedics,3,34.36,4.64,0.8000000000000002,nursing_discharge_readiness,45.59
+71,ALC placement wait,FAC_000,respiratory,respiratory,1,22.29,48.2,0.94,alc_community_capacity,42.77
+72,pharmacy discharge delay,FAC_000,acute_medicine,medicine,4,0.0,19.615000000000002,0.74,pharmacy_discharge_readiness,42.22
+73,unit-level bed-flow bottleneck,FAC_000,orthopedics,orthopedics,1,24.44,58.62,0.62,unit_flow_capacity,40.37
+74,social work assessment wait,FAC_000,transitional_care,geriatrics,1,22.04,47.41,0.79,social_support_readiness,39.79
+75,discharge documentation readiness wait,FAC_000,acute_medicine,medicine,2,11.01,32.44,0.75,documentation_readiness,37.46
+76,vulnerable patient porter wait,FAC_000,surgical,surgery,3,0.0,18.25,0.81,vulnerable_patient_flow,37.14
+77,unit-level bed-flow bottleneck,FAC_000,surgical,surgery,1,9.2,54.37,0.62,unit_flow_capacity,33.97
+78,vulnerable patient porter wait,FAC_000,acute_medicine,medicine,2,2.94,22.805,0.81,vulnerable_patient_flow,33.31
+79,therapy assessment stall,FAC_000,respiratory,respiratory,2,0.0,23.060000000000002,0.82,care_team_assessment,32.52
+80,vulnerable patient porter wait,FAC_000,orthopedics,orthopedics,2,0.0,20.415,0.81,vulnerable_patient_flow,31.68
+81,social work assessment wait,FAC_000,acute_medicine,medicine,2,1.07,18.975,0.79,social_support_readiness,31.34
+82,triage screening backlog,FAC_000,respiratory,respiratory,2,0.0,21.064999999999998,0.76,front_door_screening,30.95
+83,social work assessment wait,FAC_000,respiratory,respiratory,1,1.39,29.3,0.79,social_support_readiness,28.03
+84,ALC placement wait,FAC_000,surgical,surgery,1,0.0,18.69,0.94,alc_community_capacity,27.59
+85,therapy assessment stall,FAC_000,transitional_care,geriatrics,1,0.0,23.93,0.82,care_team_assessment,26.74
+86,nurse discharge screening wait,FAC_000,surgical,surgery,1,0.0,25.22,0.8,nursing_discharge_readiness,26.7
+87,therapy assessment stall,FAC_000,cardiac,cardiology,1,0.0,21.78,0.82,care_team_assessment,26.2
+88,pharmacy discharge delay,FAC_000,orthopedics,orthopedics,1,0.0,27.44,0.74,pharmacy_discharge_readiness,26.18
+89,therapy assessment stall,FAC_000,surgical,surgery,1,0.0,20.72,0.82,care_team_assessment,25.94
+90,triage screening backlog,FAC_000,surgical,surgery,1,0.0,23.83,0.76,front_door_screening,25.64
+91,interpreter availability wait,FAC_000,acute_medicine,medicine,1,0.0,24.8,0.74,social_support_readiness,25.52
+92,social work assessment wait,FAC_000,surgical,surgery,1,0.0,19.5,0.79,social_support_readiness,25.1
+93,nurse discharge screening wait,FAC_000,respiratory,respiratory,1,0.0,18.71,0.8,nursing_discharge_readiness,25.08
+94,discharge documentation readiness wait,FAC_000,transitional_care,geriatrics,1,0.0,20.18,0.75,documentation_readiness,24.54
+95,triage screening backlog,FAC_000,orthopedics,orthopedics,1,0.0,18.78,0.76,front_door_screening,24.38
+96,vulnerable patient porter wait,FAC_000,transitional_care,geriatrics,1,1.31,2.42,0.81,vulnerable_patient_flow,21.64
+97,vulnerable patient porter wait,FAC_000,respiratory,respiratory,1,1.11,2.05,0.81,vulnerable_patient_flow,21.48

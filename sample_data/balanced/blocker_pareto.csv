@@ -1,0 +1,21 @@
+primary_blocker,flagged_cases,recoverable_bed_hours,median_priority_score,case_rate,avg_recoverable_bed_hours_per_case
+Friday/weekend discharge gap,119,2397.62,45.84,0.012,20.15
+ALC placement wait,43,1060.25,44.8,0.0043,24.66
+home care confirmation wait,142,1004.88,19.225,0.0143,7.08
+unattributed operational delay,198,859.39,6.075,0.02,4.34
+transport delay,94,495.95,19.345,0.0095,5.28
+radiology MRI access delay,24,239.89,26.185000000000002,0.0024,10.0
+therapy assessment stall,28,183.23,23.735,0.0028,6.54
+nurse discharge screening wait,19,160.12,28.23,0.0019,8.43
+diagnostic sign-off stall,19,158.1,23.59,0.0019,8.32
+social work assessment wait,12,125.48,39.285,0.0012,10.46
+radiology CT turnaround delay,16,78.84,23.950000000000003,0.0016,4.93
+vulnerable patient porter wait,14,71.42,18.96,0.0014,5.1
+blood testing turnaround delay,22,48.43,3.955,0.0022,2.2
+discharge documentation readiness wait,8,34.57,19.16,0.0008,4.32
+unit-level bed-flow bottleneck,27,30.37,8.0,0.0027,1.12
+triage screening backlog,7,25.8,6.12,0.0007,3.69
+pharmacy discharge delay,9,17.05,18.36,0.0009,1.89
+ECG availability delay,6,10.21,10.73,0.0006,1.7
+radiology ultrasound turnaround delay,3,9.61,18.04,0.0003,3.2
+interpreter availability wait,1,2.33,4.34,0.0001,2.33

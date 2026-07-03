@@ -1,0 +1,2 @@
+max_signal_groups_per_shift,total_shift_windows,management_signal_groups,avg_signal_groups_per_shift,raw_oob_delay_signals,raw_to_management_compression_ratio,management_recoverable_bed_hours,alc_wait_cases,alc_wait_case_rate,alc_recoverable_bed_hours
+5,247,456,1.85,910,2.0,27767.63,15,0.0015,277.9

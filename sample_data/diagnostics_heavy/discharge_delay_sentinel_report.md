@@ -1,0 +1,191 @@
+# Operational Delay Sentinel Run Report
+
+## Executive summary
+
+This synthetic run evaluated **9,900** patient encounters and flagged **1,467** out-of-bounds operational delay signals.
+
+- OOB signal rate: **14.8%**
+- Post-medically-ready hard-cap signals: **1,396**
+- Estimated recoverable bed-hours: **27,609.9**
+- Estimated recoverable bed-days: **1,150.4**
+- Top delay reason: **radiology MRI access delay**
+
+Flags are operational delay signals for review, not punitive findings.
+
+## Model quality
+
+```json
+{
+  "regression": {
+    "HistGradientBoostingRegressor": {
+      "mae_hours": 20.248,
+      "rmse_hours": 29.17,
+      "median_absolute_error_hours": 15.344,
+      "prediction_std_ratio": 0.576
+    },
+    "ExtraTreesRegressor": {
+      "mae_hours": 20.555,
+      "rmse_hours": 29.537,
+      "median_absolute_error_hours": 15.711,
+      "prediction_std_ratio": 0.586
+    },
+    "statistical_ensemble": {
+      "mae_hours": 20.24,
+      "rmse_hours": 29.171,
+      "median_absolute_error_hours": 15.379,
+      "prediction_std_ratio": 0.573
+    }
+  },
+  "classification": {
+    "HistGradientBoostingClassifier": {
+      "roc_auc": 0.498,
+      "pr_auc": 0.151,
+      "recall_at_top_5pct_risk": 0.046,
+      "score_std": 0.07853
+    },
+    "ExtraTreesClassifier": {
+      "roc_auc": 0.519,
+      "pr_auc": 0.167,
+      "recall_at_top_5pct_risk": 0.06,
+      "score_std": 0.09778
+    },
+    "statistical_ensemble": {
+      "roc_auc": 0.513,
+      "pr_auc": 0.159,
+      "recall_at_top_5pct_risk": 0.057,
+      "score_std": 0.075
+    }
+  }
+}
+```
+
+## Delay reason impact breakdown
+
+```text
+                      primary_blocker  flagged_cases  recoverable_bed_hours  median_priority_score  case_rate  avg_recoverable_bed_hours_per_case
+           radiology MRI access delay            148                4804.45                 56.310     0.0149                               32.46
+          home care confirmation wait            240                3998.06                 32.880     0.0242                               16.66
+       unattributed operational delay            206                3856.47                 32.220     0.0208                               18.72
+                      transport delay            190                3442.70                 32.540     0.0192                               18.12
+        radiology CT turnaround delay            166                3437.46                 42.070     0.0168                               20.71
+       blood testing turnaround delay            145                2618.91                 35.590     0.0146                               18.06
+            diagnostic sign-off stall            100                2230.06                 45.015     0.0101                               22.30
+radiology ultrasound turnaround delay             74                1064.12                 33.680     0.0075                               14.38
+               ECG availability delay             75                1015.87                 31.720     0.0076                               13.54
+         Friday/weekend discharge gap             55                 652.77                 33.690     0.0056                               11.87
+```
+
+## Recommended action preview
+
+```text
+ executive_rank        action_id encounter_id facility_id        unit_id service_line priority                       primary_blocker                                                            evidence_summary             recommended_owner                                                                                       recommended_action  target_resolution_hours  estimated_recoverable_bed_hours status  reviewed_by  reviewed_timestamp  action_taken  reason_not_actioned           discharge_timestamp shift_date shift_name                 signal_family
+              1 3aa90277f1b130ae ENC_00000098     FAC_000       surgical      surgery     high                       transport delay                     Transport completion lag observed after discharge order patient_transport_coordinator                                        Review and address transport delay for this discharge dependency.                       24                            10.17    new          NaN                 NaN           NaN                  NaN 2026-01-08 18:11:40.611195096 2026-01-08    evening transport_discharge_logistics
+              2 66cffb49df66045b ENC_00000071     FAC_000 acute_medicine     medicine     high                       transport delay                     Transport completion lag observed after discharge order patient_transport_coordinator                                        Review and address transport delay for this discharge dependency.                       24                             5.88    new          NaN                 NaN           NaN                  NaN 2026-01-08 16:20:40.829977412 2026-01-08    evening transport_discharge_logistics
+              3 17d4f08480b4bd71 ENC_00000066     FAC_000       surgical      surgery     high         radiology CT turnaround delay              CT completion lag exceeded expected discharge-dependent window     radiology_operations_lead      Review CT queue priority, protocol readiness, and report finalization for discharge-dependent case.                       24                            11.68    new          NaN                 NaN           NaN                  NaN 2026-01-09 08:44:12.919986522 2026-01-09        day            diagnostics_access
+              4 359642ac58f4dfa4 ENC_00000116     FAC_000    respiratory  respiratory  routine           home care confirmation wait                   Home-care confirmation exceeded expected operating window             home_care_liaison                            Review and address home care confirmation wait for this discharge dependency.                       48                             0.46    new          NaN                 NaN           NaN                  NaN 2026-01-09 09:35:44.730645544 2026-01-09        day        alc_community_capacity
+              5 3a2a2bc7d0f28e31 ENC_00000101     FAC_000    respiratory  respiratory     high           home care confirmation wait                   Home-care confirmation exceeded expected operating window             home_care_liaison                            Review and address home care confirmation wait for this discharge dependency.                       24                            30.38    new          NaN                 NaN           NaN                  NaN 2026-01-09 18:53:46.004926072 2026-01-09    evening        alc_community_capacity
+              6 2d3dd60e87df1ae6 ENC_00000181     FAC_000 acute_medicine     medicine     high             diagnostic sign-off stall Diagnostic completion or sign-off timing exceeded expected operating window   diagnostics_operations_lead                              Review and address diagnostic sign-off stall for this discharge dependency.                       24                            13.35    new          NaN                 NaN           NaN                  NaN 2026-01-09 22:43:58.165090270 2026-01-09    evening            diagnostics_access
+              7 469ff32203730067 ENC_00000048     FAC_000    respiratory  respiratory     high radiology ultrasound turnaround delay      Ultrasound completion lag exceeded expected discharge-dependent window     radiology_operations_lead                Review ultrasound slot availability and report finalization for discharge-dependent case.                       24                             7.35    new          NaN                 NaN           NaN                  NaN 2026-01-09 18:29:16.816114398 2026-01-09    evening            diagnostics_access
+              8 84eab968b3f44ddb ENC_00000141     FAC_000        cardiac   cardiology   urgent            radiology MRI access delay             MRI completion lag exceeded expected discharge-dependent window     radiology_operations_lead Review MRI access constraints and consider alternate imaging or escalation for discharge-dependent case.                       12                            36.62    new          NaN                 NaN           NaN                  NaN 2026-01-10 10:29:09.685021051 2026-01-10        day            diagnostics_access
+              9 65dd5f85b0de099e ENC_00000045     FAC_000 acute_medicine     medicine     high        unattributed operational delay            Delay signal found but no single dependency explains the episode      patient_flow_coordinator                         Review and address unattributed operational delay for this discharge dependency.                       24                            28.03    new          NaN                 NaN           NaN                  NaN 2026-01-10 09:39:52.886625752 2026-01-10        day                  unattributed
+             10 c4805728290bb89b ENC_00000089     FAC_000       surgical      surgery   urgent        unattributed operational delay            Delay signal found but no single dependency explains the episode      patient_flow_coordinator                         Review and address unattributed operational delay for this discharge dependency.                       12                            54.27    new          NaN                 NaN           NaN                  NaN 2026-01-10 18:19:11.009685825 2026-01-10    evening                  unattributed
+```
+
+## Data quality summary
+
+```text
+                data_quality_note  rows
+                               ok  9522
+missing_medically_ready_timestamp   337
+          timestamp_inconsistency    41
+```
+
+## Top-N table previews
+
+```text
+
+=== patient_admission_events.parquet ===
+shape: (9900, 24)
+columns: ['patient_id_synthetic', 'encounter_id', 'facility_id', 'unit_id', 'admission_timestamp', 'discharge_timestamp', 'service_line', 'diagnosis_group', 'case_mix_group', 'triage_level', 'admission_source', 'age_band', 'frailty_band', 'complexity_score', 'expected_los_hours', 'actual_los_hours', 'medically_ready_timestamp', 'discharge_order_timestamp', 'alc_status', 'alc_status_late_coded', 'discharge_disposition', 'readmission_risk_band', 'synthetic_primary_blocker', 'synthetic_data_quality_note']
+patient_id_synthetic encounter_id facility_id        unit_id admission_timestamp           discharge_timestamp service_line diagnosis_group  case_mix_group  triage_level admission_source age_band frailty_band  complexity_score  expected_los_hours  actual_los_hours     medically_ready_timestamp     discharge_order_timestamp  alc_status  alc_status_late_coded discharge_disposition readmission_risk_band synthetic_primary_blocker synthetic_data_quality_note
+          PT_0000000 ENC_00000000     FAC_000 acute_medicine 2026-01-01 02:34:00 2026-01-06 20:23:14.860024950     medicine CMG_MED_COMPLEX CMG_MED_COMPLEX             3               ED      80+     moderate             0.639              132.59            137.82 2026-01-06 05:28:44.307583671 2026-01-06 05:53:04.959672895       False                  False                  home                   low                      none                          ok
+
+=== patient_journey_events.parquet ===
+shape: (75070, 15)
+columns: ['event_id', 'encounter_id', 'facility_id', 'unit_id', 'event_timestamp', 'event_type', 'event_status', 'event_owner_service', 'requested_timestamp', 'completed_timestamp', 'event_duration_hours', 'is_weekend', 'is_after_hours', 'delay_reason_observed', 'dependency_event_id']
+      event_id encounter_id facility_id        unit_id     event_timestamp event_type event_status event_owner_service requested_timestamp completed_timestamp  event_duration_hours  is_weekend  is_after_hours delay_reason_observed dependency_event_id
+EVT_0000000001 ENC_00000000     FAC_000 acute_medicine 2026-01-01 02:34:00   admitted    completed           admitting 2026-01-01 02:34:00 2026-01-01 02:34:00                   0.0       False            True                  none                None
+
+=== bed_resource_daily.parquet ===
+shape: (540, 8)
+columns: ['date', 'facility_id', 'unit_id', 'staffed_beds', 'occupied_beds', 'blocked_beds', 'boarding_patients', 'occupancy_pct']
+      date facility_id        unit_id  staffed_beds  occupied_beds  blocked_beds  boarding_patients  occupancy_pct
+2026-01-01     FAC_000 acute_medicine            30             24             1                  8          0.814
+
+=== service_availability.parquet ===
+shape: (720, 7)
+columns: ['date', 'facility_id', 'service_name', 'is_weekend', 'availability_index', 'open_hours', 'capacity_constraint_note']
+      date facility_id service_name  is_weekend  availability_index  open_hours capacity_constraint_note
+2026-01-01     FAC_000           PT       False               0.972          16                   normal
+
+=== discharge_delay_reference.parquet ===
+shape: (18, 10)
+columns: ['facility_id', 'service_line', 'case_mix_group', 'frailty_band', 'segment_count', 'median_los_hours', 'mad_los_hours', 'robust_sigma_hours', 'p95_los_hours', 'oob_limit_hours']
+facility_id service_line case_mix_group frailty_band  segment_count  median_los_hours  mad_los_hours  robust_sigma_hours  p95_los_hours  oob_limit_hours
+    FAC_000   cardiology    CMG_CARDIAC         high            231            120.41          13.01               19.29         179.68           161.71
+
+=== out_of_bounds_delay_flags.parquet ===
+shape: (9900, 25)
+columns: ['encounter_id', 'patient_id_synthetic', 'facility_id', 'unit_id', 'service_line', 'case_mix_group', 'frailty_band', 'admission_timestamp', 'discharge_timestamp', 'medically_ready_timestamp', 'actual_los_hours', 'expected_los_hours', 'median_los_hours', 'oob_limit_hours', 'hours_above_limit', 'hours_after_medically_ready', 'post_ready_excess_hours', 'robust_los_oob_flag', 'post_ready_hard_cap_flag', 'control_chart_signal_flag', 'oob_flag', 'priority_score', 'alc_status', 'synthetic_primary_blocker', 'synthetic_data_quality_note']
+encounter_id patient_id_synthetic facility_id        unit_id service_line  case_mix_group frailty_band admission_timestamp           discharge_timestamp     medically_ready_timestamp  actual_los_hours  expected_los_hours  median_los_hours  oob_limit_hours  hours_above_limit  hours_after_medically_ready  post_ready_excess_hours  robust_los_oob_flag  post_ready_hard_cap_flag  control_chart_signal_flag  oob_flag  priority_score  alc_status synthetic_primary_blocker synthetic_data_quality_note
+ENC_00000000           PT_0000000     FAC_000 acute_medicine     medicine CMG_MED_COMPLEX     moderate 2026-01-01 02:34:00 2026-01-06 20:23:14.860024950 2026-01-06 05:28:44.307583671            137.82              132.59            127.48           174.15                0.0                        14.91                      0.0                False                     False                      False     False             0.0       False                      none                          ok
+
+=== delay_blocker_attribution.parquet ===
+shape: (1467, 14)
+columns: ['encounter_id', 'facility_id', 'unit_id', 'service_line', 'discharge_timestamp', 'primary_blocker', 'secondary_blocker', 'blocker_confidence', 'evidence_summary', 'hours_above_limit', 'hours_after_medically_ready', 'post_ready_excess_hours', 'estimated_recoverable_bed_hours', 'priority_score']
+encounter_id facility_id     unit_id service_line           discharge_timestamp             primary_blocker secondary_blocker  blocker_confidence                                          evidence_summary  hours_above_limit  hours_after_medically_ready  post_ready_excess_hours  estimated_recoverable_bed_hours  priority_score
+ENC_00000002     FAC_000 respiratory  respiratory 2026-01-08 21:11:05.605996284 home care confirmation wait              none                0.86 Home-care confirmation exceeded expected operating window                0.0                        52.98                     4.98                              0.0           20.74
+
+=== ranked_actionable_signals.csv ===
+shape: (97, 11)
+columns: ['signal_rank', 'primary_blocker', 'facility_id', 'unit_id', 'service_line', 'flagged_cases', 'recoverable_bed_hours', 'median_priority_score', 'mean_confidence', 'signal_family', 'actionability_score']
+ signal_rank            primary_blocker facility_id     unit_id service_line  flagged_cases  recoverable_bed_hours  median_priority_score  mean_confidence      signal_family  actionability_score
+           1 radiology MRI access delay     FAC_000 orthopedics  orthopedics             49                1459.84                   51.6             0.84 diagnostics_access               832.96
+
+=== management_signal_groups.csv ===
+shape: (745, 15)
+columns: ['shift_date', 'shift_name', 'signal_family', 'primary_blocker', 'flagged_cases', 'affected_facilities', 'affected_units', 'affected_service_lines', 'recoverable_bed_hours', 'median_priority_score', 'mean_confidence', 'management_score', 'recommended_owner', 'recommended_management_action', 'signal_group_rank']
+shift_date shift_name                 signal_family primary_blocker  flagged_cases affected_facilities           affected_units affected_service_lines  recoverable_bed_hours  median_priority_score  mean_confidence  management_score             recommended_owner                                     recommended_management_action  signal_group_rank
+2026-01-08    evening transport_discharge_logistics transport delay              2             FAC_000 acute_medicine, surgical      medicine, surgery                  16.05                  38.87             0.78             53.68 patient_transport_coordinator Review and address transport delay for this discharge dependency.                  1
+
+=== management_signal_kpis.csv ===
+shape: (1, 10)
+columns: ['max_signal_groups_per_shift', 'total_shift_windows', 'management_signal_groups', 'avg_signal_groups_per_shift', 'raw_oob_delay_signals', 'raw_to_management_compression_ratio', 'management_recoverable_bed_hours', 'alc_wait_cases', 'alc_wait_case_rate', 'alc_recoverable_bed_hours']
+ max_signal_groups_per_shift  total_shift_windows  management_signal_groups  avg_signal_groups_per_shift  raw_oob_delay_signals  raw_to_management_compression_ratio  management_recoverable_bed_hours  alc_wait_cases  alc_wait_case_rate  alc_recoverable_bed_hours
+                           5                  267                       745                         2.79                   1467                                 1.97                          27565.23               7              0.0007                      68.83
+
+=== scenario_detection_summary.csv ===
+shape: (13, 6)
+columns: ['requested_scenario_mode', 'scenario_label', 'signal_family', 'recoverable_bed_hours', 'flagged_cases', 'share_of_recoverable_hours']
+requested_scenario_mode             scenario_label      signal_family  recoverable_bed_hours  flagged_cases  share_of_recoverable_hours
+      diagnostics_heavy diagnostics_heavy_detected diagnostics_access               15170.87            708                      0.5495
+
+=== delay_resolution_actions.csv ===
+shape: (881, 22)
+columns: ['executive_rank', 'action_id', 'encounter_id', 'facility_id', 'unit_id', 'service_line', 'priority', 'primary_blocker', 'evidence_summary', 'recommended_owner', 'recommended_action', 'target_resolution_hours', 'estimated_recoverable_bed_hours', 'status', 'reviewed_by', 'reviewed_timestamp', 'action_taken', 'reason_not_actioned', 'discharge_timestamp', 'shift_date', 'shift_name', 'signal_family']
+ executive_rank        action_id encounter_id facility_id  unit_id service_line priority primary_blocker                                        evidence_summary             recommended_owner                                                recommended_action  target_resolution_hours  estimated_recoverable_bed_hours status  reviewed_by  reviewed_timestamp  action_taken  reason_not_actioned           discharge_timestamp shift_date shift_name                 signal_family
+              1 3aa90277f1b130ae ENC_00000098     FAC_000 surgical      surgery     high transport delay Transport completion lag observed after discharge order patient_transport_coordinator Review and address transport delay for this discharge dependency.                       24                            10.17    new          NaN                 NaN           NaN                  NaN 2026-01-08 18:11:40.611195096 2026-01-08    evening transport_discharge_logistics
+
+=== admin_delay_dashboard_metrics.csv ===
+shape: (568, 15)
+columns: ['discharge_date', 'facility_id', 'unit_id', 'discharges', 'oob_cases', 'post_ready_hard_cap_cases', 'median_los_hours', 'median_post_ready_delay_hours', 'oob_rate', 'centerline_oob_rate', 'sigma_oob_rate', 'upper_control_limit', 'control_chart_signal_flag', 'top_blocker', 'estimated_bed_days_recoverable']
+discharge_date facility_id unit_id  discharges  oob_cases  post_ready_hard_cap_cases  median_los_hours  median_post_ready_delay_hours  oob_rate  centerline_oob_rate  sigma_oob_rate  upper_control_limit  control_chart_signal_flag                top_blocker  estimated_bed_days_recoverable
+    2026-01-04     FAC_000 cardiac           1          0                          0             72.83                          13.85       0.0             0.089791        0.131079             0.483027                      False computed_after_attribution                             NaN
+```
+
+## Recommended next operational actions
+
+1. Review urgent and high-priority rows in `delay_resolution_actions.csv`.
+2. Compare the delay-reason impact breakdown with discharge huddle experience.
+3. Use the control chart to distinguish day-to-day noise from systemic delay signals.
+4. Record adoption outcomes in `action_adoption_audit.csv` during shadow-mode review.

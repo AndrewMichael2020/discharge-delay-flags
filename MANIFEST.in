@@ -4,3 +4,4 @@ include requirements.txt
 recursive-include docs *.csv *.png
 recursive-include scripts *.py
 recursive-include src *.py
+recursive-include sample_data *

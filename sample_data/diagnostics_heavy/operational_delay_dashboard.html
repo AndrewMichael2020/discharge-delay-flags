@@ -1,0 +1,1127 @@
+<!doctype html><html><head><meta charset='utf-8'><title>Operational Delay Sentinel Dashboard</title>
+    <style>
+      body{font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin:0; background:#f5f2ec; color:#1f2933;}
+      header{background:linear-gradient(135deg,#17324d,#0f766e); color:white; padding:34px 46px;}
+      main{padding:28px 46px 60px;}
+      .grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; margin:22px 0;}
+      .card{background:white; border:1px solid #e5dfd3; border-radius:18px; padding:18px; box-shadow:0 12px 30px rgba(31,41,51,.08);}
+      .metric{font-size:30px; font-weight:800; margin-top:6px;}
+      h1{margin:0; font-size:34px;} h2{margin-top:30px;}
+      table{width:100%; border-collapse:collapse; background:white; border-radius:14px; overflow:hidden; box-shadow:0 8px 22px rgba(31,41,51,.06);}
+      th,td{padding:10px 12px; border-bottom:1px solid #eee7dc; text-align:left; font-size:13px;}
+      th{background:#e8f2ef; color:#17324d;}
+      .note{max-width:900px; color:#4b5563; line-height:1.55;}
+      .pill{display:inline-block; padding:4px 10px; border-radius:999px; background:#d9f99d; color:#365314; font-weight:700; font-size:12px;}
+      .barrow{display:grid; grid-template-columns:260px 1fr 96px; gap:12px; align-items:center; margin:10px 0;}
+      .bartrack{height:18px; background:#edf2f7; border-radius:999px; overflow:hidden;}
+      .bar{height:18px; background:linear-gradient(90deg,#0f766e,#f59e0b); border-radius:999px;}
+      .small{font-size:12px;color:#64748b}.chartwrap{display:grid;grid-template-columns:1fr 1fr;gap:18px}.charttitle{font-weight:800;margin-bottom:8px}
+      .filters{display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:12px;margin:18px 0}.filters label{font-size:12px;font-weight:800;color:#475569}.filters select{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:12px;background:white}.muted{color:#64748b;font-size:13px}
+      .barbutton{width:100%;border:0;background:transparent;text-align:left;cursor:pointer;font:inherit;color:inherit}.barbutton:hover .bar{filter:brightness(1.1)}.barbutton:focus{outline:3px solid #f59e0b;outline-offset:3px;border-radius:12px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.toolbar button{border:1px solid #0f766e;background:#0f766e;color:white;border-radius:12px;padding:9px 12px;font-weight:800;cursor:pointer}.toolbar button:hover{background:#115e59}@media print{.toolbar,.filters,#filterStatus{display:none}.card{box-shadow:none}.chartwrap{grid-template-columns:1fr}}
+    </style>
+    </head><body>
+<header><span class='pill'>Synthetic dashboard preview</span><h1>Operational Delay Sentinel</h1><p>Ranked operational discharge-delay signals for executive review and action huddles.</p></header>
+<main>
+<p class='note'>This dashboard highlights a manageable set of delay reasons for shift huddles, not every delay. Raw patient-level evidence stays available for audit, while the action view is grouped into a small number of signals per shift.</p>
+<section class='grid'>
+  <div class='card'><div>Patient encounters</div><div class='metric'>9,900</div></div>
+  <div class='card'><div>Raw OOB signals</div><div class='metric'>1,467</div></div>
+  <div class='card'><div>Management groups</div><div class='metric'>745</div></div>
+  <div class='card'><div>Avg groups / shift</div><div class='metric'>2.8</div></div>
+</section>
+<section class='grid'>
+  <div class='card'><div>Recoverable bed-days</div><div class='metric'>1,150.4</div></div>
+  <div class='card'><div>Compression ratio</div><div class='metric'>2.0x</div></div>
+  <div class='card'><div>Supporting patient examples</div><div class='metric'>881</div></div>
+  <div class='card'><div>Max groups / shift</div><div class='metric'>5</div></div>
+</section>
+<section class='card'><strong>Top signal:</strong> radiology MRI access delay</section>
+<section class='card'><div class='charttitle'>Dashboard filters</div><p class='muted'>Filters apply to the ranked signal and worklist tables. Click any delay-reason bar to filter by that signal family.</p><div class='filters'>
+<label>Facility<select id='facilityFilter'><option value='all'>All</option><option value='FAC_000'>FAC_000</option></select></label>
+<label>Unit<select id='unitFilter'><option value='all'>All</option><option value='acute_medicine'>acute_medicine</option><option value='cardiac'>cardiac</option><option value='orthopedics'>orthopedics</option><option value='respiratory'>respiratory</option><option value='surgical'>surgical</option><option value='transitional_care'>transitional_care</option></select></label>
+<label>Signal family<select id='familyFilter'><option value='all'>All</option><option value='alc_community_capacity'>alc_community_capacity</option><option value='care_team_assessment'>care_team_assessment</option><option value='diagnostics_access'>diagnostics_access</option><option value='documentation_readiness'>documentation_readiness</option><option value='front_door_screening'>front_door_screening</option><option value='nursing_discharge_readiness'>nursing_discharge_readiness</option><option value='pharmacy_discharge_readiness'>pharmacy_discharge_readiness</option><option value='social_support_readiness'>social_support_readiness</option><option value='transport_discharge_logistics'>transport_discharge_logistics</option><option value='unattributed'>unattributed</option><option value='unit_flow_capacity'>unit_flow_capacity</option><option value='vulnerable_patient_flow'>vulnerable_patient_flow</option><option value='weekend_flow_gap'>weekend_flow_gap</option></select></label>
+<label>Exact delay reason<select id='blockerFilter'><option value='all'>All</option><option value='ALC placement wait'>ALC placement wait</option><option value='ECG availability delay'>ECG availability delay</option><option value='Friday/weekend discharge gap'>Friday/weekend discharge gap</option><option value='blood testing turnaround delay'>blood testing turnaround delay</option><option value='diagnostic sign-off stall'>diagnostic sign-off stall</option><option value='discharge documentation readiness wait'>discharge documentation readiness wait</option><option value='home care confirmation wait'>home care confirmation wait</option><option value='interpreter availability wait'>interpreter availability wait</option><option value='nurse discharge screening wait'>nurse discharge screening wait</option><option value='pharmacy discharge delay'>pharmacy discharge delay</option><option value='radiology CT turnaround delay'>radiology CT turnaround delay</option><option value='radiology MRI access delay'>radiology MRI access delay</option><option value='radiology ultrasound turnaround delay'>radiology ultrasound turnaround delay</option><option value='social work assessment wait'>social work assessment wait</option><option value='therapy assessment stall'>therapy assessment stall</option><option value='transport delay'>transport delay</option><option value='triage screening backlog'>triage screening backlog</option><option value='unattributed operational delay'>unattributed operational delay</option><option value='unit-level bed-flow bottleneck'>unit-level bed-flow bottleneck</option><option value='vulnerable patient porter wait'>vulnerable patient porter wait</option></select></label>
+</div><div class='toolbar'><button type='button' onclick='resetFilters()'>Reset filters</button><button type='button' onclick='exportVisibleRows("signalsTable","visible_ranked_signals.csv")'>Export visible signals CSV</button><button type='button' onclick='exportVisibleRows("actionsTable","visible_executive_worklist.csv")'>Export visible worklist CSV</button><button type='button' onclick='window.print()'>Print / save PDF</button></div><p id='filterStatus' class='muted'>Showing all rows.</p></section>
+<div class='chartwrap'>
+<section class='card'><div class='charttitle'>Recoverable excess bed-hours by delay reason</div><button class='barrow barbutton' type='button' data-family='diagnostics_access' data-blocker='radiology MRI access delay' title='Filter worklist to diagnostics_access'><div>radiology MRI access delay</div><div class='bartrack'><div class='bar' style='width:100.0%'></div></div><div class='small'>4,804.4</div></button><button class='barrow barbutton' type='button' data-family='alc_community_capacity' data-blocker='home care confirmation wait' title='Filter worklist to alc_community_capacity'><div>home care confirmation wait</div><div class='bartrack'><div class='bar' style='width:83.2%'></div></div><div class='small'>3,998.1</div></button><button class='barrow barbutton' type='button' data-family='unattributed' data-blocker='unattributed operational delay' title='Filter worklist to unattributed'><div>unattributed operational delay</div><div class='bartrack'><div class='bar' style='width:80.3%'></div></div><div class='small'>3,856.5</div></button><button class='barrow barbutton' type='button' data-family='transport_discharge_logistics' data-blocker='transport delay' title='Filter worklist to transport_discharge_logistics'><div>transport delay</div><div class='bartrack'><div class='bar' style='width:71.7%'></div></div><div class='small'>3,442.7</div></button><button class='barrow barbutton' type='button' data-family='diagnostics_access' data-blocker='radiology CT turnaround delay' title='Filter worklist to diagnostics_access'><div>radiology CT turnaround delay</div><div class='bartrack'><div class='bar' style='width:71.5%'></div></div><div class='small'>3,437.5</div></button><button class='barrow barbutton' type='button' data-family='diagnostics_access' data-blocker='blood testing turnaround delay' title='Filter worklist to diagnostics_access'><div>blood testing turnaround delay</div><div class='bartrack'><div class='bar' style='width:54.5%'></div></div><div class='small'>2,618.9</div></button><button class='barrow barbutton' type='button' data-family='diagnostics_access' data-blocker='diagnostic sign-off stall' title='Filter worklist to diagnostics_access'><div>diagnostic sign-off stall</div><div class='bartrack'><div class='bar' style='width:46.4%'></div></div><div class='small'>2,230.1</div></button><button class='barrow barbutton' type='button' data-family='diagnostics_access' data-blocker='radiology ultrasound turnaround delay' title='Filter worklist to diagnostics_access'><div>radiology ultrasound turnaround delay</div><div class='bartrack'><div class='bar' style='width:22.1%'></div></div><div class='small'>1,064.1</div></button></section>
+<section class='card'><div class='charttitle'>OOB trend</div><svg viewBox='0 0 620 200' width='100%' height='220' role='img'><line x1='20' y1='170' x2='600' y2='170' stroke='#94a3b8'/><line x1='20' y1='30' x2='20' y2='170' stroke='#94a3b8'/><polyline fill='none' stroke='#0f766e' stroke-width='4' points='20.0,163.3 39.3,157.0 58.6,164.4 77.9,161.7 97.2,161.7 116.6,160.5 135.9,163.1 155.2,157.5 174.5,163.0 193.8,165.8 213.1,161.9 232.4,161.3 251.7,164.6 271.0,161.2 290.3,163.1 309.7,161.1 329.0,157.9 348.3,163.9 367.6,159.7 386.9,157.5 406.2,160.3 425.5,164.6 444.8,159.6 464.1,163.6 483.4,154.7 502.8,102.9 522.1,68.9 541.4,40.0 560.7,40.0 580.0,40.0'/><text x='20' y='18' fill='#475569' font-size='13'>Daily OOB signal rate, last 30 discharge dates</text></svg></section>
+</div>
+<h2>Detected scenario mix</h2><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>scenario_label</th>
+      <th>signal_family</th>
+      <th>recoverable_excess_bed_hours</th>
+      <th>share_of_recoverable_hours</th>
+      <th>flagged_cases</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>diagnostics_heavy_detected</td>
+      <td>diagnostics_access</td>
+      <td>15170.87</td>
+      <td>0.5495</td>
+      <td>708</td>
+    </tr>
+    <tr>
+      <td>diagnostics_heavy_detected</td>
+      <td>alc_community_capacity</td>
+      <td>4066.89</td>
+      <td>0.1473</td>
+      <td>247</td>
+    </tr>
+    <tr>
+      <td>diagnostics_heavy_detected</td>
+      <td>unattributed</td>
+      <td>3856.47</td>
+      <td>0.1397</td>
+      <td>206</td>
+    </tr>
+    <tr>
+      <td>diagnostics_heavy_detected</td>
+      <td>transport_discharge_logistics</td>
+      <td>3442.70</td>
+      <td>0.1247</td>
+      <td>190</td>
+    </tr>
+    <tr>
+      <td>diagnostics_heavy_detected</td>
+      <td>weekend_flow_gap</td>
+      <td>652.77</td>
+      <td>0.0236</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <td>diagnostics_heavy_detected</td>
+      <td>unit_flow_capacity</td>
+      <td>199.69</td>
+      <td>0.0072</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>diagnostics_heavy_detected</td>
+      <td>nursing_discharge_readiness</td>
+      <td>152.61</td>
+      <td>0.0055</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>diagnostics_heavy_detected</td>
+      <td>care_team_assessment</td>
+      <td>27.00</td>
+      <td>0.0010</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>diagnostics_heavy_detected</td>
+      <td>social_support_readiness</td>
+      <td>24.50</td>
+      <td>0.0009</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>diagnostics_heavy_detected</td>
+      <td>documentation_readiness</td>
+      <td>11.01</td>
+      <td>0.0004</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>diagnostics_heavy_detected</td>
+      <td>vulnerable_patient_flow</td>
+      <td>5.36</td>
+      <td>0.0002</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>diagnostics_heavy_detected</td>
+      <td>front_door_screening</td>
+      <td>0.00</td>
+      <td>0.0000</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Management signal groups by shift</h2><table id='signalsTable' border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>shift_date</th>
+      <th>shift_name</th>
+      <th>signal_group_rank</th>
+      <th>signal_family</th>
+      <th>delay_reason</th>
+      <th>flagged_cases</th>
+      <th>affected_facilities</th>
+      <th>affected_units</th>
+      <th>recoverable_excess_bed_hours</th>
+      <th>management_score</th>
+      <th>recommended_owner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2026-01-08</td>
+      <td>evening</td>
+      <td>1</td>
+      <td>transport_discharge_logistics</td>
+      <td>transport delay</td>
+      <td>2</td>
+      <td>FAC_000</td>
+      <td>acute_medicine, surgical</td>
+      <td>16.05</td>
+      <td>53.68</td>
+      <td>patient_transport_coordinator</td>
+    </tr>
+    <tr>
+      <td>2026-01-09</td>
+      <td>day</td>
+      <td>1</td>
+      <td>diagnostics_access</td>
+      <td>radiology CT turnaround delay</td>
+      <td>1</td>
+      <td>FAC_000</td>
+      <td>surgical</td>
+      <td>11.68</td>
+      <td>44.60</td>
+      <td>radiology_operations_lead</td>
+    </tr>
+    <tr>
+      <td>2026-01-09</td>
+      <td>day</td>
+      <td>2</td>
+      <td>alc_community_capacity</td>
+      <td>home care confirmation wait</td>
+      <td>1</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>0.46</td>
+      <td>33.17</td>
+      <td>home_care_liaison</td>
+    </tr>
+    <tr>
+      <td>2026-01-09</td>
+      <td>evening</td>
+      <td>1</td>
+      <td>alc_community_capacity</td>
+      <td>home care confirmation wait</td>
+      <td>1</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>30.38</td>
+      <td>57.20</td>
+      <td>home_care_liaison</td>
+    </tr>
+    <tr>
+      <td>2026-01-09</td>
+      <td>evening</td>
+      <td>2</td>
+      <td>diagnostics_access</td>
+      <td>diagnostic sign-off stall</td>
+      <td>1</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>13.35</td>
+      <td>44.02</td>
+      <td>diagnostics_operations_lead</td>
+    </tr>
+    <tr>
+      <td>2026-01-09</td>
+      <td>evening</td>
+      <td>3</td>
+      <td>diagnostics_access</td>
+      <td>radiology ultrasound turnaround delay</td>
+      <td>1</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>7.35</td>
+      <td>37.48</td>
+      <td>radiology_operations_lead</td>
+    </tr>
+    <tr>
+      <td>2026-01-10</td>
+      <td>day</td>
+      <td>1</td>
+      <td>diagnostics_access</td>
+      <td>radiology MRI access delay</td>
+      <td>2</td>
+      <td>FAC_000</td>
+      <td>cardiac, orthopedics</td>
+      <td>36.62</td>
+      <td>65.87</td>
+      <td>radiology_operations_lead</td>
+    </tr>
+    <tr>
+      <td>2026-01-10</td>
+      <td>day</td>
+      <td>2</td>
+      <td>unattributed</td>
+      <td>unattributed operational delay</td>
+      <td>1</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>28.03</td>
+      <td>51.02</td>
+      <td>patient_flow_coordinator</td>
+    </tr>
+    <tr>
+      <td>2026-01-10</td>
+      <td>evening</td>
+      <td>1</td>
+      <td>unattributed</td>
+      <td>unattributed operational delay</td>
+      <td>1</td>
+      <td>FAC_000</td>
+      <td>surgical</td>
+      <td>54.27</td>
+      <td>69.55</td>
+      <td>patient_flow_coordinator</td>
+    </tr>
+    <tr>
+      <td>2026-01-10</td>
+      <td>evening</td>
+      <td>2</td>
+      <td>diagnostics_access</td>
+      <td>radiology CT turnaround delay</td>
+      <td>3</td>
+      <td>FAC_000</td>
+      <td>acute_medicine, respiratory</td>
+      <td>19.78</td>
+      <td>68.41</td>
+      <td>radiology_operations_lead</td>
+    </tr>
+    <tr>
+      <td>2026-01-10</td>
+      <td>evening</td>
+      <td>3</td>
+      <td>diagnostics_access</td>
+      <td>diagnostic sign-off stall</td>
+      <td>1</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>2.36</td>
+      <td>34.68</td>
+      <td>diagnostics_operations_lead</td>
+    </tr>
+    <tr>
+      <td>2026-01-10</td>
+      <td>night</td>
+      <td>1</td>
+      <td>transport_discharge_logistics</td>
+      <td>transport delay</td>
+      <td>1</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>31.40</td>
+      <td>58.14</td>
+      <td>patient_transport_coordinator</td>
+    </tr>
+    <tr>
+      <td>2026-01-11</td>
+      <td>day</td>
+      <td>1</td>
+      <td>diagnostics_access</td>
+      <td>radiology MRI access delay</td>
+      <td>2</td>
+      <td>FAC_000</td>
+      <td>respiratory, surgical</td>
+      <td>80.35</td>
+      <td>91.42</td>
+      <td>radiology_operations_lead</td>
+    </tr>
+    <tr>
+      <td>2026-01-11</td>
+      <td>day</td>
+      <td>2</td>
+      <td>transport_discharge_logistics</td>
+      <td>transport delay</td>
+      <td>2</td>
+      <td>FAC_000</td>
+      <td>respiratory, surgical</td>
+      <td>64.19</td>
+      <td>81.73</td>
+      <td>patient_transport_coordinator</td>
+    </tr>
+    <tr>
+      <td>2026-01-11</td>
+      <td>day</td>
+      <td>3</td>
+      <td>alc_community_capacity</td>
+      <td>home care confirmation wait</td>
+      <td>1</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>52.18</td>
+      <td>77.25</td>
+      <td>home_care_liaison</td>
+    </tr>
+    <tr>
+      <td>2026-01-11</td>
+      <td>day</td>
+      <td>4</td>
+      <td>unattributed</td>
+      <td>unattributed operational delay</td>
+      <td>2</td>
+      <td>FAC_000</td>
+      <td>respiratory, transitional_care</td>
+      <td>24.52</td>
+      <td>52.09</td>
+      <td>patient_flow_coordinator</td>
+    </tr>
+    <tr>
+      <td>2026-01-11</td>
+      <td>evening</td>
+      <td>1</td>
+      <td>diagnostics_access</td>
+      <td>radiology CT turnaround delay</td>
+      <td>1</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>6.68</td>
+      <td>39.16</td>
+      <td>radiology_operations_lead</td>
+    </tr>
+    <tr>
+      <td>2026-01-11</td>
+      <td>night</td>
+      <td>1</td>
+      <td>transport_discharge_logistics</td>
+      <td>transport delay</td>
+      <td>3</td>
+      <td>FAC_000</td>
+      <td>respiratory, surgical, transitional_care</td>
+      <td>53.95</td>
+      <td>73.61</td>
+      <td>patient_transport_coordinator</td>
+    </tr>
+    <tr>
+      <td>2026-01-11</td>
+      <td>night</td>
+      <td>2</td>
+      <td>diagnostics_access</td>
+      <td>radiology CT turnaround delay</td>
+      <td>1</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>29.09</td>
+      <td>58.66</td>
+      <td>radiology_operations_lead</td>
+    </tr>
+    <tr>
+      <td>2026-01-11</td>
+      <td>night</td>
+      <td>3</td>
+      <td>diagnostics_access</td>
+      <td>diagnostic sign-off stall</td>
+      <td>1</td>
+      <td>FAC_000</td>
+      <td>cardiac</td>
+      <td>24.87</td>
+      <td>50.59</td>
+      <td>diagnostics_operations_lead</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Ranked raw signal patterns</h2><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>signal_rank</th>
+      <th>delay_reason</th>
+      <th>signal_family</th>
+      <th>facility_id</th>
+      <th>unit_id</th>
+      <th>service_line</th>
+      <th>flagged_cases</th>
+      <th>recoverable_excess_bed_hours</th>
+      <th>actionability_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>radiology MRI access delay</td>
+      <td>diagnostics_access</td>
+      <td>FAC_000</td>
+      <td>orthopedics</td>
+      <td>orthopedics</td>
+      <td>49</td>
+      <td>1459.84</td>
+      <td>832.96</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>home care confirmation wait</td>
+      <td>alc_community_capacity</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>medicine</td>
+      <td>62</td>
+      <td>1179.87</td>
+      <td>809.31</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>transport delay</td>
+      <td>transport_discharge_logistics</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>medicine</td>
+      <td>58</td>
+      <td>1146.06</td>
+      <td>770.94</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>radiology CT turnaround delay</td>
+      <td>diagnostics_access</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>medicine</td>
+      <td>52</td>
+      <td>956.51</td>
+      <td>670.25</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>unattributed operational delay</td>
+      <td>unattributed</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>medicine</td>
+      <td>48</td>
+      <td>1036.91</td>
+      <td>667.48</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>radiology MRI access delay</td>
+      <td>diagnostics_access</td>
+      <td>FAC_000</td>
+      <td>transitional_care</td>
+      <td>geriatrics</td>
+      <td>34</td>
+      <td>1214.03</td>
+      <td>658.97</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>blood testing turnaround delay</td>
+      <td>diagnostics_access</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>medicine</td>
+      <td>49</td>
+      <td>857.51</td>
+      <td>618.04</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>radiology CT turnaround delay</td>
+      <td>diagnostics_access</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>respiratory</td>
+      <td>34</td>
+      <td>1078.22</td>
+      <td>608.86</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>unattributed operational delay</td>
+      <td>unattributed</td>
+      <td>FAC_000</td>
+      <td>surgical</td>
+      <td>surgery</td>
+      <td>44</td>
+      <td>929.08</td>
+      <td>606.25</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>transport delay</td>
+      <td>transport_discharge_logistics</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>respiratory</td>
+      <td>40</td>
+      <td>755.93</td>
+      <td>527.63</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>unattributed operational delay</td>
+      <td>unattributed</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>respiratory</td>
+      <td>40</td>
+      <td>773.89</td>
+      <td>526.68</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>home care confirmation wait</td>
+      <td>alc_community_capacity</td>
+      <td>FAC_000</td>
+      <td>surgical</td>
+      <td>surgery</td>
+      <td>37</td>
+      <td>770.10</td>
+      <td>516.10</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Delay reason impact breakdown</h2><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>delay_reason</th>
+      <th>flagged_cases</th>
+      <th>case_rate</th>
+      <th>recoverable_excess_bed_hours</th>
+      <th>avg_recoverable_bed_hours_per_case</th>
+      <th>median_priority_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>radiology MRI access delay</td>
+      <td>148</td>
+      <td>0.0149</td>
+      <td>4804.45</td>
+      <td>32.46</td>
+      <td>56.310</td>
+    </tr>
+    <tr>
+      <td>home care confirmation wait</td>
+      <td>240</td>
+      <td>0.0242</td>
+      <td>3998.06</td>
+      <td>16.66</td>
+      <td>32.880</td>
+    </tr>
+    <tr>
+      <td>unattributed operational delay</td>
+      <td>206</td>
+      <td>0.0208</td>
+      <td>3856.47</td>
+      <td>18.72</td>
+      <td>32.220</td>
+    </tr>
+    <tr>
+      <td>transport delay</td>
+      <td>190</td>
+      <td>0.0192</td>
+      <td>3442.70</td>
+      <td>18.12</td>
+      <td>32.540</td>
+    </tr>
+    <tr>
+      <td>radiology CT turnaround delay</td>
+      <td>166</td>
+      <td>0.0168</td>
+      <td>3437.46</td>
+      <td>20.71</td>
+      <td>42.070</td>
+    </tr>
+    <tr>
+      <td>blood testing turnaround delay</td>
+      <td>145</td>
+      <td>0.0146</td>
+      <td>2618.91</td>
+      <td>18.06</td>
+      <td>35.590</td>
+    </tr>
+    <tr>
+      <td>diagnostic sign-off stall</td>
+      <td>100</td>
+      <td>0.0101</td>
+      <td>2230.06</td>
+      <td>22.30</td>
+      <td>45.015</td>
+    </tr>
+    <tr>
+      <td>radiology ultrasound turnaround delay</td>
+      <td>74</td>
+      <td>0.0075</td>
+      <td>1064.12</td>
+      <td>14.38</td>
+      <td>33.680</td>
+    </tr>
+    <tr>
+      <td>ECG availability delay</td>
+      <td>75</td>
+      <td>0.0076</td>
+      <td>1015.87</td>
+      <td>13.54</td>
+      <td>31.720</td>
+    </tr>
+    <tr>
+      <td>Friday/weekend discharge gap</td>
+      <td>55</td>
+      <td>0.0056</td>
+      <td>652.77</td>
+      <td>11.87</td>
+      <td>33.690</td>
+    </tr>
+    <tr>
+      <td>unit-level bed-flow bottleneck</td>
+      <td>6</td>
+      <td>0.0006</td>
+      <td>199.69</td>
+      <td>33.28</td>
+      <td>69.715</td>
+    </tr>
+    <tr>
+      <td>nurse discharge screening wait</td>
+      <td>13</td>
+      <td>0.0013</td>
+      <td>152.61</td>
+      <td>11.74</td>
+      <td>24.830</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Supporting patient-level examples</h2><table id='actionsTable' border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>executive_rank</th>
+      <th>encounter_id</th>
+      <th>facility_id</th>
+      <th>unit_id</th>
+      <th>shift_date</th>
+      <th>shift_name</th>
+      <th>priority</th>
+      <th>delay_reason</th>
+      <th>recommended_owner</th>
+      <th>estimated_recoverable_excess_bed_hours</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>ENC_00000098</td>
+      <td>FAC_000</td>
+      <td>surgical</td>
+      <td>2026-01-08</td>
+      <td>evening</td>
+      <td>high</td>
+      <td>transport delay</td>
+      <td>patient_transport_coordinator</td>
+      <td>10.17</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>ENC_00000071</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>2026-01-08</td>
+      <td>evening</td>
+      <td>high</td>
+      <td>transport delay</td>
+      <td>patient_transport_coordinator</td>
+      <td>5.88</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>ENC_00000066</td>
+      <td>FAC_000</td>
+      <td>surgical</td>
+      <td>2026-01-09</td>
+      <td>day</td>
+      <td>high</td>
+      <td>radiology CT turnaround delay</td>
+      <td>radiology_operations_lead</td>
+      <td>11.68</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>ENC_00000116</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>2026-01-09</td>
+      <td>day</td>
+      <td>routine</td>
+      <td>home care confirmation wait</td>
+      <td>home_care_liaison</td>
+      <td>0.46</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>ENC_00000101</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>2026-01-09</td>
+      <td>evening</td>
+      <td>high</td>
+      <td>home care confirmation wait</td>
+      <td>home_care_liaison</td>
+      <td>30.38</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>ENC_00000181</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>2026-01-09</td>
+      <td>evening</td>
+      <td>high</td>
+      <td>diagnostic sign-off stall</td>
+      <td>diagnostics_operations_lead</td>
+      <td>13.35</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>ENC_00000048</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>2026-01-09</td>
+      <td>evening</td>
+      <td>high</td>
+      <td>radiology ultrasound turnaround delay</td>
+      <td>radiology_operations_lead</td>
+      <td>7.35</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>ENC_00000141</td>
+      <td>FAC_000</td>
+      <td>cardiac</td>
+      <td>2026-01-10</td>
+      <td>day</td>
+      <td>urgent</td>
+      <td>radiology MRI access delay</td>
+      <td>radiology_operations_lead</td>
+      <td>36.62</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>ENC_00000045</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>2026-01-10</td>
+      <td>day</td>
+      <td>high</td>
+      <td>unattributed operational delay</td>
+      <td>patient_flow_coordinator</td>
+      <td>28.03</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>ENC_00000089</td>
+      <td>FAC_000</td>
+      <td>surgical</td>
+      <td>2026-01-10</td>
+      <td>evening</td>
+      <td>urgent</td>
+      <td>unattributed operational delay</td>
+      <td>patient_flow_coordinator</td>
+      <td>54.27</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>ENC_00000184</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>2026-01-10</td>
+      <td>evening</td>
+      <td>high</td>
+      <td>radiology CT turnaround delay</td>
+      <td>radiology_operations_lead</td>
+      <td>11.79</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>ENC_00000276</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>2026-01-10</td>
+      <td>evening</td>
+      <td>high</td>
+      <td>radiology CT turnaround delay</td>
+      <td>radiology_operations_lead</td>
+      <td>4.80</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>ENC_00000291</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>2026-01-10</td>
+      <td>evening</td>
+      <td>high</td>
+      <td>diagnostic sign-off stall</td>
+      <td>diagnostics_operations_lead</td>
+      <td>2.36</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>ENC_00000016</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>2026-01-10</td>
+      <td>night</td>
+      <td>high</td>
+      <td>transport delay</td>
+      <td>patient_transport_coordinator</td>
+      <td>31.40</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>ENC_00000137</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>2026-01-11</td>
+      <td>day</td>
+      <td>urgent</td>
+      <td>home care confirmation wait</td>
+      <td>home_care_liaison</td>
+      <td>52.18</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>ENC_00000166</td>
+      <td>FAC_000</td>
+      <td>surgical</td>
+      <td>2026-01-11</td>
+      <td>day</td>
+      <td>urgent</td>
+      <td>transport delay</td>
+      <td>patient_transport_coordinator</td>
+      <td>49.11</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>ENC_00000110</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>2026-01-11</td>
+      <td>day</td>
+      <td>urgent</td>
+      <td>radiology MRI access delay</td>
+      <td>radiology_operations_lead</td>
+      <td>47.09</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>ENC_00000225</td>
+      <td>FAC_000</td>
+      <td>surgical</td>
+      <td>2026-01-11</td>
+      <td>day</td>
+      <td>high</td>
+      <td>radiology MRI access delay</td>
+      <td>radiology_operations_lead</td>
+      <td>33.26</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>ENC_00000085</td>
+      <td>FAC_000</td>
+      <td>transitional_care</td>
+      <td>2026-01-11</td>
+      <td>day</td>
+      <td>high</td>
+      <td>unattributed operational delay</td>
+      <td>patient_flow_coordinator</td>
+      <td>22.79</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>ENC_00000297</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>2026-01-11</td>
+      <td>day</td>
+      <td>high</td>
+      <td>transport delay</td>
+      <td>patient_transport_coordinator</td>
+      <td>15.08</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Control-chart daily metrics</h2><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>discharge_date</th>
+      <th>facility_id</th>
+      <th>unit_id</th>
+      <th>discharges</th>
+      <th>oob_cases</th>
+      <th>oob_rate</th>
+      <th>control_chart_signal_flag</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2026-01-04</td>
+      <td>FAC_000</td>
+      <td>cardiac</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>2026-01-05</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>2026-01-05</td>
+      <td>FAC_000</td>
+      <td>cardiac</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>2026-01-05</td>
+      <td>FAC_000</td>
+      <td>surgical</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>2026-01-06</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>13</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>2026-01-06</td>
+      <td>FAC_000</td>
+      <td>cardiac</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>2026-01-06</td>
+      <td>FAC_000</td>
+      <td>orthopedics</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>2026-01-06</td>
+      <td>FAC_000</td>
+      <td>respiratory</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>2026-01-06</td>
+      <td>FAC_000</td>
+      <td>surgical</td>
+      <td>11</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>2026-01-07</td>
+      <td>FAC_000</td>
+      <td>acute_medicine</td>
+      <td>27</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>2026-01-07</td>
+      <td>FAC_000</td>
+      <td>cardiac</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <td>2026-01-07</td>
+      <td>FAC_000</td>
+      <td>orthopedics</td>
+      <td>7</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<script>
+function currentFilters(){
+  return {
+    facility: document.getElementById('facilityFilter').value,
+    unit: document.getElementById('unitFilter').value,
+    family: document.getElementById('familyFilter').value,
+    blocker: document.getElementById('blockerFilter').value
+  };
+}
+function updateFilterStatus(visible, total){
+  const f=currentFilters();
+  const parts=[];
+  if(f.facility!=='all') parts.push('facility '+f.facility);
+  if(f.unit!=='all') parts.push('unit '+f.unit);
+  if(f.family!=='all') parts.push('family '+f.family);
+  if(f.blocker!=='all') parts.push('delay reason '+f.blocker);
+  document.getElementById('filterStatus').textContent = `${visible} of ${total} table rows visible${parts.length ? ' for ' + parts.join(', ') : ''}.`;
+}
+function filterTables(){
+  const f=currentFilters();
+  let visible=0,total=0;
+  ['signalsTable','actionsTable'].forEach(id=>{
+    const table=document.getElementById(id); if(!table) return;
+    const headers=[...table.querySelectorAll('th')].map(th=>th.textContent.trim());
+    const fi=headers.indexOf('facility_id'), ui=headers.indexOf('unit_id'), si=headers.indexOf('signal_family');
+    let bi=headers.indexOf('delay_reason'); if(bi<0) bi=headers.indexOf('primary_blocker');
+    table.querySelectorAll('tbody tr').forEach(row=>{
+      total += 1;
+      const cells=row.querySelectorAll('td');
+      const okFacility=f.facility==='all'||fi<0||(cells[fi].textContent.trim().includes(f.facility));
+      const okUnit=f.unit==='all'||ui<0||(cells[ui].textContent.trim().includes(f.unit));
+      const okFamily=f.family==='all'||si<0||(cells[si].textContent.trim()===f.family);
+      const okBlocker=f.blocker==='all'||bi<0||(cells[bi].textContent.trim()===f.blocker);
+      const ok = okFacility&&okUnit&&okFamily&&okBlocker;
+      row.style.display=ok?'':'none';
+      if(ok) visible += 1;
+    });
+  });
+  updateFilterStatus(visible,total);
+}
+function resetFilters(){
+  ['facilityFilter','unitFilter','familyFilter','blockerFilter'].forEach(id=>document.getElementById(id).value='all');
+  filterTables();
+}
+function exportVisibleRows(tableId, filename){
+  const table=document.getElementById(tableId); if(!table) return;
+  const rows=[...table.querySelectorAll('tr')].filter((row,idx)=>idx===0||row.style.display!=='none');
+  const csv=rows.map(row=>[...row.children].map(cell=>'"'+cell.textContent.replaceAll('"','""').trim()+'"').join(',')).join('
+');
+  const blob=new Blob([csv],{type:'text/csv'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download=filename; a.click(); URL.revokeObjectURL(url);
+}
+document.querySelectorAll('.barbutton').forEach(btn=>btn.addEventListener('click',()=>{
+  document.getElementById('familyFilter').value = btn.dataset.family || 'all';
+  document.getElementById('blockerFilter').value = btn.dataset.blocker || 'all';
+  filterTables();
+  document.getElementById('signalsTable').scrollIntoView({behavior:'smooth', block:'start'});
+}));
+['facilityFilter','unitFilter','familyFilter','blockerFilter'].forEach(id=>document.getElementById(id).addEventListener('change', filterTables));
+filterTables();
+</script>
+</main></body></html>

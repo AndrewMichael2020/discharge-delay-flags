@@ -1,0 +1,14 @@
+requested_scenario_mode,scenario_label,signal_family,recoverable_bed_hours,flagged_cases,share_of_recoverable_hours
+diagnostics_heavy,diagnostics_heavy_detected,diagnostics_access,15170.869999999999,708,0.5495
+diagnostics_heavy,diagnostics_heavy_detected,alc_community_capacity,4066.89,247,0.1473
+diagnostics_heavy,diagnostics_heavy_detected,unattributed,3856.47,206,0.1397
+diagnostics_heavy,diagnostics_heavy_detected,transport_discharge_logistics,3442.7,190,0.1247
+diagnostics_heavy,diagnostics_heavy_detected,weekend_flow_gap,652.77,55,0.0236
+diagnostics_heavy,diagnostics_heavy_detected,unit_flow_capacity,199.69,6,0.0072
+diagnostics_heavy,diagnostics_heavy_detected,nursing_discharge_readiness,152.61,13,0.0055
+diagnostics_heavy,diagnostics_heavy_detected,care_team_assessment,27.0,15,0.001
+diagnostics_heavy,diagnostics_heavy_detected,social_support_readiness,24.5,6,0.0009
+diagnostics_heavy,diagnostics_heavy_detected,documentation_readiness,11.01,3,0.0004
+diagnostics_heavy,diagnostics_heavy_detected,vulnerable_patient_flow,5.36,9,0.0002
+diagnostics_heavy,diagnostics_heavy_detected,front_door_screening,0.0,4,0.0
+diagnostics_heavy,diagnostics_heavy_detected,pharmacy_discharge_readiness,0.0,5,0.0
