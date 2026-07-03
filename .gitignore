@@ -30,3 +30,6 @@ docs/screenshots/dashboard-screenshot-*.png
 !docs/screenshots/balanced-dashboard.png
 !docs/screenshots/diagnostics-dashboard.png
 !docs/screenshots/weekend-dashboard.png
+
+# Local planning notes
+IMPLEMENTATION_PLAN.md

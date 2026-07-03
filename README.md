@@ -46,27 +46,66 @@ This app reframes those misses as **reviewable delay signals**:
 
 ## What it detects
 
-The current synthetic workflow ranks delay reasons such as:
+The dashboard presents operational diagnostic KPIs. These are not clinical quality judgements or staff performance ratings; they are review prompts that help patient-flow teams decide what to look at first.
 
-- ALC placement wait,
-- Friday/weekend discharge gap,
-- home-care confirmation wait,
-- therapy assessment stall,
-- transport delay,
-- pharmacy discharge delay,
-- radiology CT turnaround delay,
-- radiology MRI access delay,
-- radiology ultrasound turnaround delay,
-- blood testing turnaround delay,
-- ECG availability delay,
-- diagnostic sign-off stall,
-- unit-level bed-flow bottleneck,
-- triage screening backlog,
-- nurse discharge screening wait,
-- vulnerable patient porter wait,
-- social work assessment wait,
-- interpreter availability wait,
-- discharge documentation readiness wait.
+### Core KPI definitions
+
+| KPI | Formula | What it means | How to use it |
+|---|---|---|---|
+| Patient encounters | `count(patient_admission_events.encounter_id)` | Number of synthetic admissions/encounters in the run. | Denominator for signal rates. |
+| Raw OOB delay signals | `count(out_of_bounds_delay_flags where oob_flag = true)` | Encounter-level rows that crossed at least one out-of-bounds rule. | Audit evidence, not the huddle worklist. |
+| OOB signal rate | `raw_oob_delay_signals / patient_encounters` | Share of encounters with an out-of-bounds delay signal. | Overall operating pressure indicator. |
+| Management signal groups | `count(management_signal_groups)` | Shift-level grouped signals after compressing raw patient rows. | Main huddle/action surface. |
+| Average groups per shift | `management_signal_groups / total_shift_windows` | Typical number of signals a shift team reviews. | Keep manageable, usually under 3-5. |
+| Delay-reason case rate | `flagged_cases_for_delay_reason / patient_encounters` | How often a specific reason appears. | Prevents overreacting to normal high-volume work. |
+| Recoverable excess bed-hours | `sum(estimated_recoverable_bed_hours)` | Estimated bed-hours above expected operational thresholds. | Measures impact, not case count. |
+| Bed-hour share by signal family | `family_recoverable_bed_hours / total_recoverable_bed_hours` | Concentration of impact in one family. | Used to label scenarios as mixed or dominant. |
+| Compression ratio | `raw_oob_delay_signals / management_signal_groups` | How much raw evidence is compressed into huddle signals. | Shows whether the worklist is manageable. |
+| Priority score | `0.65 * hours_above_limit + 0.55 * post_ready_excess_hours + 18 * post_ready_hard_cap_flag + 8 * control_chart_signal_flag` | Sorting score for operational review. | Higher means review sooner. |
+
+### Core flag formulas
+
+```text
+robust_los_oob_flag = actual_los_hours > oob_limit_hours
+post_ready_hard_cap_flag = hours_after_medically_ready > 48
+control_chart_signal_flag = daily_oob_rate > upper_control_limit
+oob_flag = robust_los_oob_flag OR post_ready_hard_cap_flag OR control_chart_signal_flag
+```
+
+```text
+post_ready_excess_hours = max(hours_after_medically_ready - 48, 0)
+los_excess = max(actual_los_hours - oob_limit_hours, 0)
+
+if post_ready_excess_hours > 0:
+    estimated_recoverable_bed_hours = min(los_excess, post_ready_excess_hours)
+else:
+    estimated_recoverable_bed_hours = 0.35 * los_excess
+```
+
+### Delay reason KPI dictionary
+
+| Delay reason / KPI | Signal family | Definition | Formula / detection evidence | Default owner | Caveat |
+|---|---|---|---|---|---|
+| ALC placement wait | `alc_community_capacity` | Medically stable patient appears to be waiting for LTC, rehab, or alternate-level placement. | ALC status plus LTC/rehab referral or placement timing; KPI rate = `ALC placement wait cases / encounters`. | Transition services lead | High-impact but should be a small subset, not a dominant volume. |
+| Friday/weekend discharge gap | `weekend_flow_gap` | Discharge readiness crosses a period with reduced weekend or Friday-afternoon service availability. | Medically ready near Friday/weekend plus delayed discharge; KPI rate = `Friday/weekend cases / encounters`. | Site operations director | Not every weekend discharge is a problem; public demo caps this near 5% or less. |
+| Home-care confirmation wait | `alc_community_capacity` | Discharge depends on home-care confirmation or community support setup. | Home-care referral and confirmation timestamps; KPI rate = `home-care wait cases / encounters`. | Home-care liaison | Can overlap with frailty, ALC, and social-support needs. |
+| Therapy assessment stall | `care_team_assessment` | PT/OT or therapy assessment takes longer than expected for a discharge-dependent case. | Assessment requested/completed timestamps above expected window. | Therapy services manager | Some delays reflect clinically appropriate assessment complexity. |
+| Transport delay | `transport_discharge_logistics` | Discharge or transfer waits on transport coordination. | Transport requested/completed timestamps or discharge-order-to-transport lag. | Patient transport coordinator | May reflect external ambulance, family pickup, or destination constraints. |
+| Pharmacy discharge delay | `pharmacy_discharge_readiness` | Medication reconciliation or discharge medication readiness delays discharge. | Discharge order timing plus pharmacy dependency timing. | Pharmacy operations lead | Complex medication reviews may be appropriate and safety-protective. |
+| Radiology CT turnaround delay | `diagnostics_access` | CT completion or reporting appears discharge-dependent and delayed. | CT ordered/completed timestamps above expected discharge-dependent window. | Radiology operations lead | Frequent CT use is normal; only threshold-crossing cases signal. |
+| Radiology MRI access delay | `diagnostics_access` | MRI access, completion, or reporting appears discharge-dependent and delayed. | MRI ordered/completed timestamps above expected window. | Radiology operations lead | MRI scarcity may be structural, not locally fixable same day. |
+| Radiology ultrasound turnaround delay | `diagnostics_access` | Ultrasound completion or reporting appears discharge-dependent and delayed. | Ultrasound ordered/completed timestamps above expected window. | Radiology operations lead | Prioritization may be clinically appropriate. |
+| Blood testing turnaround delay | `diagnostics_access` | Blood collection, processing, or result release appears discharge-dependent and delayed. | Blood test ordered/available timestamps above expected window. | Laboratory operations lead | Repeat or abnormal tests may be clinically necessary. |
+| ECG availability delay | `diagnostics_access` | ECG completion or interpretation appears discharge-dependent and delayed. | ECG ordered/completed timestamps above expected window. | Cardiology diagnostics lead | Clinical urgency and interpretation requirements matter. |
+| Diagnostic sign-off stall | `diagnostics_access` | Final diagnostic completion, sign-off, or consultant interpretation appears to hold discharge. | Diagnostic completion/sign-off timing above expected window. | Diagnostics operations lead | May reflect specialist dependency rather than diagnostic department delay. |
+| Unit-level bed-flow bottleneck | `unit_flow_capacity` | A facility/unit/day has an unusual concentration of OOB delay signals. | `daily_oob_rate > centerline + 3 * sigma`. | Unit operations manager | Pattern signal only; not an individual-case conclusion. |
+| Triage screening backlog | `front_door_screening` | Front-door screening delay may contribute to downstream flow pressure. | Triage screening requested/completed timestamps above expected window. | Triage operations lead | Flow signal, not discharge-only signal. |
+| Nurse discharge screening wait | `nursing_discharge_readiness` | Nursing discharge readiness checklist or screening is delayed for a discharge-dependent case. | Nurse screening requested/completed timestamps above expected window. | Nursing flow lead | Staffing and acuity context should be reviewed before action. |
+| Vulnerable patient porter wait | `vulnerable_patient_flow` | Mobility-limited or vulnerable patients wait for safe movement or porter support. | Porter request/completion timestamps plus frailty/mobility context. | Patient transport coordinator | Should be handled as access and safe-flow support, not waste. |
+| Social work assessment wait | `social_support_readiness` | Social work assessment is delayed for a discharge-dependent case. | Social work assessment requested/completed timestamps above expected window. | Social work lead | May indicate complexity rather than avoidable delay. |
+| Interpreter availability wait | `social_support_readiness` | Interpreter support is delayed for discharge-dependent communication. | Interpreter requested/completed timestamps above expected window. | Language services lead | Equity and access support should not be sacrificed for speed. |
+| Discharge documentation readiness wait | `documentation_readiness` | Required discharge documentation is not ready in expected window. | Documentation started/ready timestamps above expected window. | Unit clerk lead | Documentation quality should not be reduced to improve speed. |
+| Unattributed operational delay | `unattributed` | OOB delay exists but no single dependency explains it. | OOB flag without clear event-level attribution. | Patient flow coordinator | Often points to missing workflow instrumentation or data quality gaps. |
 
 ## How the sentinel works
 
@@ -221,7 +260,6 @@ python3 scripts/export_dashboard.py \
 ```text
 .
 ├── README.md
-├── IMPLEMENTATION_PLAN.md
 ├── pyproject.toml
 ├── requirements.txt
 ├── run_discharge_delay_workflow.py
@@ -239,7 +277,7 @@ python3 scripts/export_dashboard.py \
 └── .github/workflows/ci.yml
 ```
 
-Generated `outputs/`, `exports/`, local data, virtual environments, and timestamped screenshot exports are ignored. The repository keeps only curated screenshots and summary CSVs for the README.
+Generated `outputs/`, `exports/`, local data, virtual environments, timestamped screenshot exports, and local implementation notes are ignored. The repository keeps only curated screenshots and summary CSVs for the README.
 
 ## Main outputs
 
