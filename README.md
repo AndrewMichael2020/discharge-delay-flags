@@ -8,15 +8,15 @@
   <img alt="License MIT" src="https://img.shields.io/badge/License-MIT-111827?style=for-the-badge">
 </p>
 
-<p align="center"><strong>A synthetic hospital-flow app for finding out-of-bounds discharge delays, ranking operational blockers, and turning them into dashboard-ready action lists.</strong></p>
+<p align="center"><strong>A synthetic hospital-flow app for finding out-of-bounds discharge delays, grouping them into plain-language delay reasons, and turning them into dashboard-ready action lists.</strong></p>
 
 Operational Delay Sentinel is a small, self-contained prototype for hospital operations teams who need to answer a deceptively hard question:
 
-> Which discharge delays are no longer normal clinical variation, and which operational blocker should we look at first?
+> Which discharge delays are no longer normal clinical variation, and which delay reason should we look at first?
 
-It generates synthetic hospital-flow data, flags out-of-bounds operational delay signals, attributes likely operational constraints, trains local statistical baselines, and produces an interactive HTML dashboard plus CSV worklists. It is intentionally **dashboard-first and CSV-first**: no EHR write-back, no PHI, no punitive language, and no dependency on a live hospital system.
+It generates synthetic hospital-flow data, flags out-of-bounds operational delay signals, attributes likely operational delay reasons, trains local statistical baselines, and produces an interactive HTML dashboard plus CSV worklists. It is intentionally **dashboard-first and CSV-first**: no EHR write-back, no PHI, no punitive language, and no dependency on a live hospital system.
 
-The important design choice is signal compression: thousands of patient-level rows are rolled into **3-5 management signal groups per shift**, while case counts and recoverable bed-hours are reported separately. A blocker can be high-impact without being high-volume, and common service throughput is not treated as a crisis just because it is frequent.
+The important design choice is signal compression: thousands of patient-level rows are rolled into **3-5 management signal groups per shift**, while case counts and recoverable bed-hours are reported separately. A delay reason can be high-impact without being high-volume, and common service throughput is not treated as a crisis just because it is frequent.
 
 ## Why this exists
 
@@ -25,10 +25,10 @@ Hospital discharge delays are not just statistical outliers. A five-day miss on 
 This app reframes those misses as **reviewable delay signals**:
 
 - soft operational language,
-- ranked recoverable bed-hours,
+- ranked recoverable excess bed-hours,
 - clear recommended owners,
 - auditable CSV action lists,
-- dashboard filters for facility, unit, signal family, and exact blocker.
+- dashboard filters for facility, unit, signal family, and exact delay reason.
 
 ## Screenshots
 
@@ -46,7 +46,7 @@ This app reframes those misses as **reviewable delay signals**:
 
 ## What it detects
 
-The current synthetic workflow ranks blockers such as:
+The current synthetic workflow ranks delay reasons such as:
 
 - ALC placement wait,
 - Friday/weekend discharge gap,
@@ -74,7 +74,7 @@ The current synthetic workflow ranks blockers such as:
 flowchart LR
   A["Synthetic admissions"] --> B["Journey events"]
   B --> C["OOB delay detection"]
-  C --> D["Blocker attribution"]
+  C --> D["Delay reason attribution"]
   D --> E["Ranked signals"]
   E --> F["Shift-level management signal groups"]
   E --> G["Dashboard + CSV exports"]
@@ -89,7 +89,7 @@ The detection layer uses three complementary signals:
 
 The action layer keeps three views:
 
-- `delay_blocker_attribution.parquet`: raw patient-level evidence,
+- `delay_blocker_attribution.parquet`: raw patient-level delay-reason evidence,
 - `management_signal_groups.csv`: capped shift-level management agenda, default 5 groups per shift,
 - `delay_resolution_actions.csv`: supporting patient examples for the selected management groups.
 
@@ -133,17 +133,17 @@ python3 run_discharge_delay_workflow.py --scenario-mode weekend_flow_gap --out o
 | `diagnostics_heavy` | Radiology, blood testing, ECG, and diagnostic sign-off delays dominate. |
 | `weekend_flow_gap` | Friday/weekend service gaps dominate recoverable bed-hours. |
 
-The app also detects the scenario actually produced by the data in `scenario_detection_summary.csv`. That matters because the requested scenario and the observed signal mix can differ.
+The app also detects the scenario actually produced by the data in `scenario_detection_summary.csv`. If no single signal family contributes at least 40% of recoverable excess bed-hours, the run is labelled mixed instead of forcing a misleading dominant category.
 
 ## Latest synthetic run results
 
 All three latest runs use one large synthetic hospital, 90 days, and 9,900 admissions. Earlier health-authority-scale stress runs are intentionally not used as the public demo baseline.
 
-| Scenario mode | Detected scenario | Raw OOB signals | Management groups | Avg groups / shift | Compression | ALC cases | ALC case rate | Top signal family | Family share |
-|---|---|---:|---:|---:|---:|---:|---:|---|---:|
-| `balanced` | `weekend_flow_gap_detected` | 811 | 543 | 2.25 | 1.49x | 43 | 0.43% | `weekend_flow_gap` | 34.19% |
-| `diagnostics_heavy` | `diagnostics_heavy_detected` | 1,467 | 745 | 2.79 | 1.97x | 7 | 0.07% | `diagnostics_access` | 54.95% |
-| `weekend_flow_gap` | `weekend_flow_gap_detected` | 952 | 373 | 1.55 | 2.55x | 14 | 0.14% | `weekend_flow_gap` | 94.78% |
+| Scenario mode | Detected scenario | Raw OOB signals | Management groups | Avg groups / shift | Compression | ALC cases | ALC case rate | Weekend cases | Weekend case rate | Top signal family | Family share |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|
+| `balanced` | `mixed_operational_pressure_detected` | 811 | 543 | 2.25 | 1.49x | 43 | 0.43% | 119 | 1.20% | `weekend_flow_gap` | 34.19% |
+| `diagnostics_heavy` | `diagnostics_heavy_detected` | 1,467 | 745 | 2.79 | 1.97x | 7 | 0.07% | 55 | 0.56% | `diagnostics_access` | 54.95% |
+| `weekend_flow_gap` | `weekend_flow_gap_detected` | 910 | 456 | 1.85 | 2.00x | 15 | 0.15% | 466 | 4.71% | `weekend_flow_gap` | 91.42% |
 
 The latest runs intentionally separate **raw evidence volume**, **case rates**, and **recoverable excess bed-hours**. Raw OOB rows remain available for audit, but the dashboard caps the shift-level agenda to a manageable number of signal groups. This prevents normal large-system friction, such as radiology throughput at scale, from being mislabeled as a crisis simply because it is frequent. ALC/community-capacity rows are bounded as a small high-impact subset rather than a structurally dominant source of synthetic delay.
 
@@ -152,14 +152,26 @@ Full run summary:
 - `docs/scenario_run_summary.csv`
 - `docs/model_metrics_summary.csv`
 
+
+### Signal-volume guardrails
+
+The public demo is tuned so signal volumes stay believable for one large hospital:
+
+- no delay-reason group should represent more than about `5%` of all encounters, even in a stress scenario,
+- most delay reasons should sit around `1%` to `5%` of encounters or lower,
+- common throughput processes, such as radiology or blood testing, are treated as delay reasons only when they cross timing and actionability thresholds,
+- management views stay grouped to a small number of shift-level signals rather than exposing every patient-level row as an executive action.
+
+This keeps the dashboard useful for a huddle: it points to a few practical signals, not a wall of normal operating friction.
+
 ### One-hospital interpretation
 
 The public demo is intentionally sized like a single large hospital, not a provincial or health-authority-wide extract. The current default produces:
 
 - `9,900` admissions over 90 days,
 - `811` to `1,467` raw OOB delay signals depending on scenario,
-- `373` to `745` shift-level management groups,
-- about `1.55` to `2.79` management groups per shift,
+- `456` to `745` shift-level management groups,
+- about `1.85` to `2.79` management groups per shift,
 - ALC case rates between `0.07%` and `0.43%`.
 
 That distinction matters: ALC is represented as a small, high-impact subset. Recoverable excess bed-hours are not case counts.
@@ -233,7 +245,7 @@ Generated `outputs/`, `exports/`, local data, virtual environments, and timestam
 | `bed_resource_daily.parquet` | Bed occupancy and resource context. |
 | `service_availability.parquet` | PT, OT, imaging, pharmacy, home care, transport, LTC, rehab availability. |
 | `out_of_bounds_delay_flags.parquet` | OOB delay signals and priority scores. |
-| `delay_blocker_attribution.parquet` | Likely blocker attribution and evidence. |
+| `delay_blocker_attribution.parquet` | Likely delay-reason attribution and evidence. |
 | `ranked_actionable_signals.csv` | Raw ranked facility/unit/service/signal pattern table. |
 | `management_signal_groups.csv` | Capped 3-5-per-shift management agenda. |
 | `management_signal_kpis.csv` | Signal compression and manageability KPIs. |
@@ -253,14 +265,14 @@ The workflow trains local statistical baselines:
 - `HistGradientBoostingClassifier`,
 - `ExtraTreesClassifier`.
 
-The models are not the whole product. They are used to estimate expected LOS and OOB risk, while the operational layer converts delay signals into explainable blockers and worklists.
+The models are not the whole product. They are used to estimate expected LOS and OOB risk, while the operational layer converts delay signals into explainable delay reasons and worklists.
 
 ## Language and governance
 
 This project deliberately avoids punitive terminology. It uses terms like:
 
 - delay signal,
-- operational blocker,
+- delay reason,
 - capacity constraint,
 - unresolved discharge dependency,
 - recoverable excess bed-hours.

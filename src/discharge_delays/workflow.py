@@ -97,7 +97,7 @@ def generate_synthetic_flow(config: SyntheticFlowConfig, out_dir: Path) -> dict[
         p_radiology_ct *= 3.40; p_radiology_mri *= 3.90; p_radiology_ultrasound *= 3.20; p_blood_testing *= 3.10; p_ecg *= 2.90; p_diag *= 2.50
         p_triage_screening *= 0.80; p_nurse_discharge_screening *= 0.90; p_vulnerable_porter *= 0.90; p_social_work *= 0.85; p_interpreter *= 0.85; p_documentation *= 0.85
     elif config.scenario_mode == "weekend_flow_gap":
-        p_alc *= 0.35; p_home *= 0.90; p_therapy *= 0.90; p_weekend *= 5.20
+        p_alc *= 0.35; p_home *= 0.90; p_therapy *= 0.90; p_weekend *= 4.00
         p_radiology_ct *= 0.55; p_radiology_mri *= 0.50; p_radiology_ultrasound *= 0.55; p_blood_testing *= 0.55; p_ecg *= 0.55; p_diag *= 0.55
         p_triage_screening *= 1.05; p_nurse_discharge_screening *= 1.20; p_vulnerable_porter *= 1.20; p_social_work *= 1.05; p_interpreter *= 1.00; p_documentation *= 1.00
 
@@ -485,12 +485,20 @@ def build_scenario_detection_summary(out_dir: Path, requested_mode: str) -> pd.D
     ).sort_values("recoverable_bed_hours", ascending=False)
     total = max(float(summary["recoverable_bed_hours"].sum()), 1.0)
     summary["share_of_recoverable_hours"] = (summary["recoverable_bed_hours"] / total).round(4)
-    dominant = summary.iloc[0]["signal_family"] if len(summary) else "none"
-    scenario_label = {
-        "alc_community_capacity": "alc_heavy_detected",
-        "diagnostics_access": "diagnostics_heavy_detected",
-        "weekend_flow_gap": "weekend_flow_gap_detected",
-    }.get(dominant, "balanced_or_mixed_detected")
+    if len(summary):
+        top_share = float(summary.iloc[0]["share_of_recoverable_hours"])
+        dominant = summary.iloc[0]["signal_family"]
+    else:
+        top_share = 0.0
+        dominant = "none"
+    if top_share < 0.40:
+        scenario_label = "mixed_operational_pressure_detected"
+    else:
+        scenario_label = {
+            "alc_community_capacity": "alc_heavy_detected",
+            "diagnostics_access": "diagnostics_heavy_detected",
+            "weekend_flow_gap": "weekend_flow_gap_detected",
+        }.get(dominant, "balanced_or_mixed_detected")
     summary.insert(0, "requested_scenario_mode", requested_mode)
     summary.insert(1, "scenario_label", scenario_label)
     summary.to_csv(out_dir / "scenario_detection_summary.csv", index=False)
@@ -537,7 +545,13 @@ def build_dashboard_html(out_dir: Path) -> Path:
     """
     def table_html(df, cols, n=10, table_id=None):
         attrs = f" id='{table_id}'" if table_id else ""
-        return df[cols].head(n).to_html(index=False, escape=False).replace("<table", f"<table{attrs}", 1)
+        display = df[cols].head(n).rename(columns={
+            "primary_blocker": "delay_reason",
+            "secondary_blocker": "secondary_delay_reason",
+            "recoverable_bed_hours": "recoverable_excess_bed_hours",
+            "estimated_recoverable_bed_hours": "estimated_recoverable_excess_bed_hours",
+        })
+        return display.to_html(index=False, escape=False).replace("<table", f"<table{attrs}", 1)
     facilities = sorted(signals['facility_id'].dropna().unique().tolist()) if 'facility_id' in signals else []
     units = sorted(signals['unit_id'].dropna().unique().tolist()) if 'unit_id' in signals else []
     families = sorted(scenario['signal_family'].dropna().unique().tolist()) if not scenario.empty and 'signal_family' in scenario else []
@@ -581,7 +595,7 @@ def build_dashboard_html(out_dir: Path) -> Path:
     html = f"""<!doctype html><html><head><meta charset='utf-8'><title>Operational Delay Sentinel Dashboard</title>{css}</head><body>
 <header><span class='pill'>Synthetic dashboard preview</span><h1>Operational Delay Sentinel</h1><p>Ranked operational discharge-delay signals for executive review and action huddles.</p></header>
 <main>
-<p class='note'>This dashboard highlights the most actionable delay signals, not every delay. The executive worklist is constrained to the top 5% of flagged delay episodes by estimated recoverable bed-hours and priority.</p>
+<p class='note'>This dashboard highlights a manageable set of delay reasons for shift huddles, not every delay. Raw patient-level evidence stays available for audit, while the action view is grouped into a small number of signals per shift.</p>
 <section class='grid'>
   <div class='card'><div>Patient encounters</div><div class='metric'>{total:,}</div></div>
   <div class='card'><div>Raw OOB signals</div><div class='metric'>{oob:,}</div></div>
@@ -595,20 +609,20 @@ def build_dashboard_html(out_dir: Path) -> Path:
   <div class='card'><div>Max groups / shift</div><div class='metric'>{int(management_kpis.iloc[0]["max_signal_groups_per_shift"]) if not management_kpis.empty else 5}</div></div>
 </section>
 <section class='card'><strong>Top signal:</strong> {top_signal}</section>
-<section class='card'><div class='charttitle'>Dashboard filters</div><p class='muted'>Filters apply to the ranked signal and executive worklist tables. Click any blocker bar to filter by that signal family.</p><div class='filters'>
+<section class='card'><div class='charttitle'>Dashboard filters</div><p class='muted'>Filters apply to the ranked signal and worklist tables. Click any delay-reason bar to filter by that signal family.</p><div class='filters'>
 <label>Facility<select id='facilityFilter'>{options(facilities)}</select></label>
 <label>Unit<select id='unitFilter'>{options(units)}</select></label>
 <label>Signal family<select id='familyFilter'>{options(families)}</select></label>
-<label>Exact blocker<select id='blockerFilter'>{options(blockers)}</select></label>
+<label>Exact delay reason<select id='blockerFilter'>{options(blockers)}</select></label>
 </div><div class='toolbar'><button type='button' onclick='resetFilters()'>Reset filters</button><button type='button' onclick='exportVisibleRows("signalsTable","visible_ranked_signals.csv")'>Export visible signals CSV</button><button type='button' onclick='exportVisibleRows("actionsTable","visible_executive_worklist.csv")'>Export visible worklist CSV</button><button type='button' onclick='window.print()'>Print / save PDF</button></div><p id='filterStatus' class='muted'>Showing all rows.</p></section>
 <div class='chartwrap'>
-<section class='card'><div class='charttitle'>Recoverable excess bed-hours by blocker</div>{bar_chart(pareto, 'primary_blocker', 'recoverable_bed_hours', 8)}</section>
+<section class='card'><div class='charttitle'>Recoverable excess bed-hours by delay reason</div>{bar_chart(pareto, 'primary_blocker', 'recoverable_bed_hours', 8)}</section>
 <section class='card'><div class='charttitle'>OOB trend</div>{trend_svg}</section>
 </div>
 <h2>Detected scenario mix</h2>{table_html(scenario, ['scenario_label','signal_family','recoverable_bed_hours','share_of_recoverable_hours','flagged_cases'], 12) if not scenario.empty else '<p>No scenario summary.</p>'}
 <h2>Management signal groups by shift</h2>{table_html(management_groups, ['shift_date','shift_name','signal_group_rank','signal_family','primary_blocker','flagged_cases','affected_facilities','affected_units','recoverable_bed_hours','management_score','recommended_owner'], 20, 'signalsTable') if not management_groups.empty else '<p>No management signal groups.</p>'}
 <h2>Ranked raw signal patterns</h2>{table_html(signals, ['signal_rank','primary_blocker','signal_family','facility_id','unit_id','service_line','flagged_cases','recoverable_bed_hours','actionability_score'], 12)}
-<h2>Blocker Pareto</h2>{table_html(pareto, ['primary_blocker','flagged_cases','case_rate','recoverable_bed_hours','avg_recoverable_bed_hours_per_case','median_priority_score'], 12)}
+<h2>Delay reason impact breakdown</h2>{table_html(pareto, ['primary_blocker','flagged_cases','case_rate','recoverable_bed_hours','avg_recoverable_bed_hours_per_case','median_priority_score'], 12)}
 <h2>Supporting patient-level examples</h2>{table_html(actions, ['executive_rank','encounter_id','facility_id','unit_id','shift_date','shift_name','priority','primary_blocker','recommended_owner','estimated_recoverable_bed_hours'], 20, 'actionsTable')}
 <h2>Control-chart daily metrics</h2>{table_html(metrics, ['discharge_date','facility_id','unit_id','discharges','oob_cases','oob_rate','control_chart_signal_flag'], 12)}
 <script>
@@ -626,7 +640,7 @@ function updateFilterStatus(visible, total){{
   if(f.facility!=='all') parts.push('facility '+f.facility);
   if(f.unit!=='all') parts.push('unit '+f.unit);
   if(f.family!=='all') parts.push('family '+f.family);
-  if(f.blocker!=='all') parts.push('blocker '+f.blocker);
+  if(f.blocker!=='all') parts.push('delay reason '+f.blocker);
   document.getElementById('filterStatus').textContent = `${{visible}} of ${{total}} table rows visible${{parts.length ? ' for ' + parts.join(', ') : ''}}.`;
 }}
 function filterTables(){{
@@ -635,7 +649,8 @@ function filterTables(){{
   ['signalsTable','actionsTable'].forEach(id=>{{
     const table=document.getElementById(id); if(!table) return;
     const headers=[...table.querySelectorAll('th')].map(th=>th.textContent.trim());
-    const fi=headers.indexOf('facility_id'), ui=headers.indexOf('unit_id'), si=headers.indexOf('signal_family'), bi=headers.indexOf('primary_blocker');
+    const fi=headers.indexOf('facility_id'), ui=headers.indexOf('unit_id'), si=headers.indexOf('signal_family');
+    let bi=headers.indexOf('delay_reason'); if(bi<0) bi=headers.indexOf('primary_blocker');
     table.querySelectorAll('tbody tr').forEach(row=>{{
       total += 1;
       const cells=row.querySelectorAll('td');
@@ -691,7 +706,7 @@ This synthetic run evaluated **{total:,}** patient encounters and flagged **{oob
 - Post-medically-ready hard-cap signals: **{hard:,}**
 - Estimated recoverable bed-hours: **{rec:,.1f}**
 - Estimated recoverable bed-days: **{rec / 24:,.1f}**
-- Top blocker: **{top}**
+- Top delay reason: **{top}**
 
 Flags are operational delay signals for review, not punitive findings.
 
@@ -701,7 +716,7 @@ Flags are operational delay signals for review, not punitive findings.
 {json.dumps(metrics, indent=2)}
 ```
 
-## Blocker Pareto
+## Delay reason impact breakdown
 
 ```text\n{pareto.head(10).to_string(index=False)}\n```
 
@@ -722,7 +737,7 @@ Flags are operational delay signals for review, not punitive findings.
 ## Recommended next operational actions
 
 1. Review urgent and high-priority rows in `delay_resolution_actions.csv`.
-2. Compare blocker Pareto with discharge huddle experience.
+2. Compare the delay-reason impact breakdown with discharge huddle experience.
 3. Use the control chart to distinguish day-to-day noise from systemic delay signals.
 4. Record adoption outcomes in `action_adoption_audit.csv` during shadow-mode review.
 """

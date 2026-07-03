@@ -1,4 +1,4 @@
 scenario_mode,roc_auc,pr_auc,recall_at_top_5pct_risk,score_std,los_mae_hours,los_rmse_hours,los_median_absolute_error_hours,los_prediction_std_ratio
 balanced,0.567,0.112,0.069,0.07955,12.316,16.853,10.021,0.779
 diagnostics_heavy,0.513,0.159,0.057,0.075,20.24,29.171,15.379,0.573
-weekend_flow_gap,0.629,0.142,0.088,0.10964,17.697,27.804,12.334,0.616
+weekend_flow_gap,0.613,0.142,0.101,0.09781,16.355,25.866,11.422,0.633

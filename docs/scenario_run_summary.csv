@@ -1,4 +1,4 @@
-scenario_mode,admissions,journey_events,raw_oob_delay_signals,oob_signal_rate,management_signal_groups,avg_signal_groups_per_shift,compression_ratio,alc_wait_cases,alc_wait_case_rate,alc_recoverable_bed_hours,detected_scenario,top_signal_family,top_family_share,top_management_blocker,top_management_score,top_raw_pattern
-balanced,9900,74180,811,0.0819,543,2.25,1.49,43,0.0043,1060.25,weekend_flow_gap_detected,weekend_flow_gap,0.3419,transport delay,45.5,Friday/weekend discharge gap
-diagnostics_heavy,9900,75070,1467,0.1482,745,2.79,1.97,7,0.0007,68.83,diagnostics_heavy_detected,diagnostics_access,0.5495,transport delay,53.68,radiology MRI access delay
-weekend_flow_gap,9900,73800,952,0.0962,373,1.55,2.55,14,0.0014,230.5,weekend_flow_gap_detected,weekend_flow_gap,0.9478,Friday/weekend discharge gap,44.16,Friday/weekend discharge gap
+scenario_mode,admissions,journey_events,raw_oob_delay_signals,oob_signal_rate,management_signal_groups,avg_signal_groups_per_shift,compression_ratio,alc_wait_cases,alc_wait_case_rate,alc_recoverable_bed_hours,weekend_gap_cases,weekend_gap_case_rate,detected_scenario,top_signal_family,top_family_share,top_management_delay_reason,top_management_score,top_raw_delay_reason
+balanced,9900,74180,811,0.0819,543,2.25,1.49,43,0.0043,1060.25,119,0.012,mixed_operational_pressure_detected,weekend_flow_gap,0.3419,transport delay,45.5,Friday/weekend discharge gap
+diagnostics_heavy,9900,75070,1467,0.1482,745,2.79,1.97,7,0.0007,68.83,55,0.0056,diagnostics_heavy_detected,diagnostics_access,0.5495,transport delay,53.68,radiology MRI access delay
+weekend_flow_gap,9900,73812,910,0.0919,456,1.85,2.0,15,0.0015,277.9,466,0.0471,weekend_flow_gap_detected,weekend_flow_gap,0.9142,Friday/weekend discharge gap,44.86,Friday/weekend discharge gap
