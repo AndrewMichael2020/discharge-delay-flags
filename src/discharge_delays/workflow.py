@@ -22,9 +22,9 @@ SEGMENT_COLS = ["facility_id", "service_line", "case_mix_group", "frailty_band"]
 
 @dataclass
 class SyntheticFlowConfig:
-    facilities: int = 4
+    facilities: int = 1
     days: int = 90
-    encounters_per_day: int = 180
+    encounters_per_day: int = 110
     seed: int = 42
     oob_rate_target: float = 0.05
     weekend_service_reduction: float = 0.35
@@ -70,10 +70,10 @@ def generate_synthetic_flow(config: SyntheticFlowConfig, out_dir: Path) -> dict[
     is_weekend_ready = ready_dow >= 5
 
     target_scale = float(np.clip(config.oob_rate_target / 0.10, 0.25, 1.5))
-    p_alc = np.clip((0.025 + (service_line=="geriatrics")*0.060 + (frailty_band=="high")*0.035) * config.alc_pressure_multiplier * target_scale, 0, 0.40)
+    p_alc = np.clip((0.008 + (service_line=="geriatrics")*0.030 + (frailty_band=="high")*0.018) * config.alc_pressure_multiplier * target_scale, 0, 0.12)
     p_home = (0.028 + (age_band=="80+")*0.020 + (frailty_band!="low")*0.015) * target_scale
     p_therapy = (0.035 + (service_line=="orthopedics")*0.050 + (frailty_band=="high")*0.020) * target_scale
-    p_weekend = (is_friday_late*0.42 + is_weekend_ready*config.weekend_service_reduction*0.30) * target_scale
+    p_weekend = (is_friday_late*0.16 + is_weekend_ready*config.weekend_service_reduction*0.12) * target_scale
     p_transport = (0.030 + (admission_source=="transfer")*0.020) * target_scale
     p_pharm = (0.025 + (service_line=="cardiology")*0.015) * target_scale
     p_radiology_ct = (0.018 + (triage_level<=2)*0.025 + (service_line=="respiratory")*0.012) * target_scale
@@ -81,16 +81,25 @@ def generate_synthetic_flow(config: SyntheticFlowConfig, out_dir: Path) -> dict[
     p_radiology_ultrasound = (0.012 + (service_line=="surgery")*0.018) * target_scale
     p_blood_testing = (0.018 + (service_line=="medicine")*0.012 + (triage_level<=2)*0.010) * target_scale
     p_ecg = (0.012 + (service_line=="cardiology")*0.035 + (age_band=="80+")*0.010) * target_scale
+    p_triage_screening = (0.014 + (admission_source=="ED")*0.018 + (triage_level>=4)*0.010) * target_scale
+    p_nurse_discharge_screening = (0.020 + (age_band=="80+")*0.018 + (frailty_band!="low")*0.014) * target_scale
+    p_vulnerable_porter = (0.012 + (age_band=="80+")*0.018 + (frailty_band=="high")*0.020) * target_scale
+    p_social_work = (0.010 + (frailty_band=="high")*0.020 + (admission_source=="transfer")*0.010) * target_scale
+    p_interpreter = (0.007 + (service_line=="medicine")*0.006 + (age_band=="80+")*0.006) * target_scale
+    p_documentation = (0.014 + (service_line=="surgery")*0.010 + (service_line=="geriatrics")*0.010) * target_scale
     p_diag = (0.018 + (triage_level<=2)*0.012) * target_scale
     if config.scenario_mode == "alc_heavy":
-        p_alc *= 1.75; p_home *= 0.85; p_therapy *= 0.90; p_weekend *= 0.90
+        p_alc *= 1.45; p_home *= 0.85; p_therapy *= 0.90; p_weekend *= 0.90
         p_radiology_ct *= 0.75; p_radiology_mri *= 0.75; p_radiology_ultrasound *= 0.75; p_blood_testing *= 0.80; p_ecg *= 0.80; p_diag *= 0.80
+        p_triage_screening *= 0.85; p_nurse_discharge_screening *= 1.10; p_vulnerable_porter *= 1.10; p_social_work *= 1.15; p_interpreter *= 0.90; p_documentation *= 0.90
     elif config.scenario_mode == "diagnostics_heavy":
         p_alc *= 0.15; p_home *= 0.45; p_therapy *= 0.55; p_weekend *= 0.45
-        p_radiology_ct *= 5.20; p_radiology_mri *= 6.00; p_radiology_ultrasound *= 4.80; p_blood_testing *= 4.60; p_ecg *= 4.20; p_diag *= 3.20
+        p_radiology_ct *= 3.40; p_radiology_mri *= 3.90; p_radiology_ultrasound *= 3.20; p_blood_testing *= 3.10; p_ecg *= 2.90; p_diag *= 2.50
+        p_triage_screening *= 0.80; p_nurse_discharge_screening *= 0.90; p_vulnerable_porter *= 0.90; p_social_work *= 0.85; p_interpreter *= 0.85; p_documentation *= 0.85
     elif config.scenario_mode == "weekend_flow_gap":
         p_alc *= 0.35; p_home *= 0.90; p_therapy *= 0.90; p_weekend *= 5.20
         p_radiology_ct *= 0.55; p_radiology_mri *= 0.50; p_radiology_ultrasound *= 0.55; p_blood_testing *= 0.55; p_ecg *= 0.55; p_diag *= 0.55
+        p_triage_screening *= 1.05; p_nurse_discharge_screening *= 1.20; p_vulnerable_porter *= 1.20; p_social_work *= 1.05; p_interpreter *= 1.00; p_documentation *= 1.00
 
     blocker = np.array(["none"]*n, dtype=object)
     alc = rng.random(n) < p_alc
@@ -104,7 +113,13 @@ def generate_synthetic_flow(config: SyntheticFlowConfig, out_dir: Path) -> dict[
     rad_us = (~alc) & (~home) & (~therapy) & (~friday) & (~transport) & (~pharm) & (~rad_ct) & (~rad_mri) & (rng.random(n) < p_radiology_ultrasound)
     blood = (~alc) & (~home) & (~therapy) & (~friday) & (~transport) & (~pharm) & (~rad_ct) & (~rad_mri) & (~rad_us) & (rng.random(n) < p_blood_testing)
     ecg = (~alc) & (~home) & (~therapy) & (~friday) & (~transport) & (~pharm) & (~rad_ct) & (~rad_mri) & (~rad_us) & (~blood) & (rng.random(n) < p_ecg)
-    diag = (~alc) & (~home) & (~therapy) & (~friday) & (~transport) & (~pharm) & (~rad_ct) & (~rad_mri) & (~rad_us) & (~blood) & (~ecg) & (rng.random(n) < p_diag)
+    triage_screening = (~alc) & (~home) & (~therapy) & (~friday) & (~transport) & (~pharm) & (~rad_ct) & (~rad_mri) & (~rad_us) & (~blood) & (~ecg) & (rng.random(n) < p_triage_screening)
+    nurse_screening = (~alc) & (~home) & (~therapy) & (~friday) & (~transport) & (~pharm) & (~rad_ct) & (~rad_mri) & (~rad_us) & (~blood) & (~ecg) & (~triage_screening) & (rng.random(n) < p_nurse_discharge_screening)
+    vulnerable_porter = (~alc) & (~home) & (~therapy) & (~friday) & (~transport) & (~pharm) & (~rad_ct) & (~rad_mri) & (~rad_us) & (~blood) & (~ecg) & (~triage_screening) & (~nurse_screening) & (rng.random(n) < p_vulnerable_porter)
+    social_work = (~alc) & (~home) & (~therapy) & (~friday) & (~transport) & (~pharm) & (~rad_ct) & (~rad_mri) & (~rad_us) & (~blood) & (~ecg) & (~triage_screening) & (~nurse_screening) & (~vulnerable_porter) & (rng.random(n) < p_social_work)
+    interpreter = (~alc) & (~home) & (~therapy) & (~friday) & (~transport) & (~pharm) & (~rad_ct) & (~rad_mri) & (~rad_us) & (~blood) & (~ecg) & (~triage_screening) & (~nurse_screening) & (~vulnerable_porter) & (~social_work) & (rng.random(n) < p_interpreter)
+    documentation = (~alc) & (~home) & (~therapy) & (~friday) & (~transport) & (~pharm) & (~rad_ct) & (~rad_mri) & (~rad_us) & (~blood) & (~ecg) & (~triage_screening) & (~nurse_screening) & (~vulnerable_porter) & (~social_work) & (~interpreter) & (rng.random(n) < p_documentation)
+    diag = (~alc) & (~home) & (~therapy) & (~friday) & (~transport) & (~pharm) & (~rad_ct) & (~rad_mri) & (~rad_us) & (~blood) & (~ecg) & (~triage_screening) & (~nurse_screening) & (~vulnerable_porter) & (~social_work) & (~interpreter) & (~documentation) & (rng.random(n) < p_diag)
     blocker[alc] = "ALC placement wait"
     blocker[home] = "home care confirmation wait"
     blocker[therapy] = "therapy assessment stall"
@@ -116,13 +131,22 @@ def generate_synthetic_flow(config: SyntheticFlowConfig, out_dir: Path) -> dict[
     blocker[rad_us] = "radiology ultrasound turnaround delay"
     blocker[blood] = "blood testing turnaround delay"
     blocker[ecg] = "ECG availability delay"
+    blocker[triage_screening] = "triage screening backlog"
+    blocker[nurse_screening] = "nurse discharge screening wait"
+    blocker[vulnerable_porter] = "vulnerable patient porter wait"
+    blocker[social_work] = "social work assessment wait"
+    blocker[interpreter] = "interpreter availability wait"
+    blocker[documentation] = "discharge documentation readiness wait"
     blocker[diag] = "diagnostic sign-off stall"
 
     op_delay = rng.gamma(1.4,5.0,n)
-    op_delay += alc*rng.gamma(3.0,28.0,n) + home*rng.gamma(2.6,18.0,n) + therapy*rng.gamma(2.2,14.0,n)
+    alc_extended_wait = alc & (rng.random(n) < 0.16)
+    op_delay += alc*rng.gamma(2.2,11.0,n) + alc_extended_wait*rng.uniform(24,72,n) + home*rng.gamma(2.1,11.0,n) + therapy*rng.gamma(2.0,9.0,n)
     op_delay += friday*rng.uniform(42,72,n) + transport*rng.gamma(1.8,10.0,n) + pharm*rng.gamma(1.7,8.0,n)
     op_delay += rad_ct*rng.gamma(1.9,9.0,n) + rad_mri*rng.gamma(2.4,14.0,n) + rad_us*rng.gamma(1.8,8.5,n)
-    op_delay += blood*rng.gamma(1.7,6.5,n) + ecg*rng.gamma(1.6,5.5,n) + diag*rng.gamma(1.9,9.0,n)
+    op_delay += blood*rng.gamma(1.7,6.5,n) + ecg*rng.gamma(1.6,5.5,n)
+    op_delay += triage_screening*rng.gamma(1.8,7.0,n) + nurse_screening*rng.gamma(2.0,9.0,n) + vulnerable_porter*rng.gamma(2.1,10.0,n)
+    op_delay += social_work*rng.gamma(2.2,12.0,n) + interpreter*rng.gamma(1.8,9.0,n) + documentation*rng.gamma(1.9,7.5,n) + diag*rng.gamma(1.9,9.0,n)
     if config.scenario_mode == "diagnostics_heavy":
         diagnostic_mask = rad_ct | rad_mri | rad_us | blood | ecg | diag
         op_delay += diagnostic_mask * rng.gamma(2.4, 18.0, n)
@@ -182,6 +206,24 @@ def generate_synthetic_flow(config: SyntheticFlowConfig, out_dir: Path) -> dict[
         if r.synthetic_primary_blocker == "ECG availability delay" or (r.service_line == "cardiology" and rng.random() < 0.35):
             req = r.admission_timestamp + pd.Timedelta(hours=float(rng.uniform(1,12))); comp = req + pd.Timedelta(hours=float(rng.uniform(1,24 if r.synthetic_primary_blocker == "ECG availability delay" else 5)))
             base_events += [("ecg_ordered", req, req, "cardiology_diagnostics", "none"), ("ecg_completed", req, comp, "cardiology_diagnostics", r.synthetic_primary_blocker)]
+        if r.synthetic_primary_blocker == "triage screening backlog" or (r.admission_source == "ED" and rng.random() < 0.18):
+            req = r.admission_timestamp + pd.Timedelta(hours=float(rng.uniform(0.2, 3))); comp = req + pd.Timedelta(hours=float(rng.uniform(1, 26 if r.synthetic_primary_blocker == "triage screening backlog" else 6)))
+            base_events += [("triage_screening_requested", req, req, "triage", "none"), ("triage_screening_completed", req, comp, "triage", r.synthetic_primary_blocker)]
+        if r.synthetic_primary_blocker == "nurse discharge screening wait" or rng.random() < 0.16:
+            req = r.discharge_order_timestamp - pd.Timedelta(hours=float(rng.uniform(2, 18))); comp = req + pd.Timedelta(hours=float(rng.uniform(4, 36 if r.synthetic_primary_blocker == "nurse discharge screening wait" else 10)))
+            base_events += [("nurse_discharge_screening_requested", req, req, "nursing", "none"), ("nurse_discharge_screening_completed", req, comp, "nursing", r.synthetic_primary_blocker)]
+        if r.synthetic_primary_blocker == "vulnerable patient porter wait" or (r.frailty_band == "high" and rng.random() < 0.12):
+            req = r.discharge_order_timestamp; comp = req + pd.Timedelta(hours=float(rng.uniform(3, 40 if r.synthetic_primary_blocker == "vulnerable patient porter wait" else 9)))
+            base_events += [("vulnerable_porter_requested", req, req, "patient_transport", "none"), ("vulnerable_porter_completed", req, comp, "patient_transport", r.synthetic_primary_blocker)]
+        if r.synthetic_primary_blocker == "social work assessment wait" or (r.frailty_band == "high" and rng.random() < 0.10):
+            req = r.admission_timestamp + pd.Timedelta(hours=float(rng.uniform(12, 48))); comp = req + pd.Timedelta(hours=float(rng.uniform(8, 72 if r.synthetic_primary_blocker == "social work assessment wait" else 24)))
+            base_events += [("social_work_assessment_requested", req, req, "social_work", "none"), ("social_work_assessment_completed", req, comp, "social_work", r.synthetic_primary_blocker)]
+        if r.synthetic_primary_blocker == "interpreter availability wait" or rng.random() < 0.05:
+            req = r.discharge_order_timestamp - pd.Timedelta(hours=float(rng.uniform(1, 12))); comp = req + pd.Timedelta(hours=float(rng.uniform(2, 36 if r.synthetic_primary_blocker == "interpreter availability wait" else 8)))
+            base_events += [("interpreter_requested", req, req, "language_services", "none"), ("interpreter_completed", req, comp, "language_services", r.synthetic_primary_blocker)]
+        if r.synthetic_primary_blocker == "discharge documentation readiness wait" or rng.random() < 0.12:
+            req = r.discharge_order_timestamp - pd.Timedelta(hours=float(rng.uniform(1, 10))); comp = req + pd.Timedelta(hours=float(rng.uniform(3, 30 if r.synthetic_primary_blocker == "discharge documentation readiness wait" else 8)))
+            base_events += [("discharge_documentation_started", req, req, "unit_clerk", "none"), ("discharge_documentation_ready", req, comp, "unit_clerk", r.synthetic_primary_blocker)]
         if r.synthetic_primary_blocker == "transport delay" or rng.random() < 0.16:
             base_events += [("transport_requested", r.discharge_order_timestamp, r.discharge_order_timestamp, "transport", "none"), ("transport_completed", r.discharge_order_timestamp, r.discharge_timestamp, "transport", r.synthetic_primary_blocker)]
         for etype, req, comp, owner, reason in base_events:
@@ -225,6 +267,7 @@ def detect_oob_delays(pae: pd.DataFrame, brd: pd.DataFrame, out_dir: Path, post_
     f["discharge_date"] = discharge.dt.date.astype(str)
     f["robust_los_oob_flag"] = f["actual_los_hours"] > f["oob_limit_hours"]
     f["post_ready_hard_cap_flag"] = f["hours_after_medically_ready"] > post_ready_hard_cap_hours
+    f["post_ready_excess_hours"] = (f["hours_after_medically_ready"] - post_ready_hard_cap_hours).clip(lower=0).round(2)
     f["hours_above_limit"] = (f["actual_los_hours"] - f["oob_limit_hours"]).clip(lower=0).round(2)
     daily = f.groupby(["discharge_date","facility_id","unit_id"], as_index=False).agg(discharges=("encounter_id","count"), oob_cases=("robust_los_oob_flag","sum"), post_ready_hard_cap_cases=("post_ready_hard_cap_flag","sum"), median_los_hours=("actual_los_hours","median"), median_post_ready_delay_hours=("hours_after_medically_ready","median"))
     daily["oob_rate"] = daily["oob_cases"] / daily["discharges"].clip(lower=1)
@@ -234,15 +277,15 @@ def detect_oob_delays(pae: pd.DataFrame, brd: pd.DataFrame, out_dir: Path, post_
     sig = daily.loc[daily["control_chart_signal_flag"], ["discharge_date","facility_id","unit_id"]].copy(); sig["control_chart_signal_flag"] = True
     f = f.merge(sig, on=["discharge_date","facility_id","unit_id"], how="left"); f["control_chart_signal_flag"] = f["control_chart_signal_flag"].fillna(False)
     f["oob_flag"] = f["robust_los_oob_flag"] | f["post_ready_hard_cap_flag"] | f["control_chart_signal_flag"]
-    f["priority_score"] = (f["hours_above_limit"].fillna(0)*0.6 + f["hours_after_medically_ready"].fillna(0).clip(lower=0)*0.4 + f["post_ready_hard_cap_flag"].astype(int)*24).round(2)
-    cols = ["encounter_id","patient_id_synthetic","facility_id","unit_id","service_line","case_mix_group","frailty_band","admission_timestamp","discharge_timestamp","medically_ready_timestamp","actual_los_hours","expected_los_hours","median_los_hours","oob_limit_hours","hours_above_limit","hours_after_medically_ready","robust_los_oob_flag","post_ready_hard_cap_flag","control_chart_signal_flag","oob_flag","priority_score","alc_status","synthetic_primary_blocker","synthetic_data_quality_note"]
+    f["priority_score"] = (f["hours_above_limit"].fillna(0)*0.65 + f["post_ready_excess_hours"].fillna(0)*0.55 + f["post_ready_hard_cap_flag"].astype(int)*18 + f["control_chart_signal_flag"].astype(int)*8).round(2)
+    cols = ["encounter_id","patient_id_synthetic","facility_id","unit_id","service_line","case_mix_group","frailty_band","admission_timestamp","discharge_timestamp","medically_ready_timestamp","actual_los_hours","expected_los_hours","median_los_hours","oob_limit_hours","hours_above_limit","hours_after_medically_ready","post_ready_excess_hours","robust_los_oob_flag","post_ready_hard_cap_flag","control_chart_signal_flag","oob_flag","priority_score","alc_status","synthetic_primary_blocker","synthetic_data_quality_note"]
     out = f[cols].copy(); out.to_parquet(out_dir / "out_of_bounds_delay_flags.parquet", index=False)
     daily["top_blocker"] = "computed_after_attribution"; daily["estimated_bed_days_recoverable"] = np.nan
     daily.to_csv(out_dir / "admin_delay_dashboard_metrics.csv", index=False); daily.rename(columns={"discharge_date":"date"}).to_csv(out_dir / "control_chart_points.csv", index=False)
     return out, daily, ref
 
 
-def attribute_blockers(flags: pd.DataFrame, pje: pd.DataFrame, out_dir: Path):
+def attribute_blockers(flags: pd.DataFrame, pje: pd.DataFrame, out_dir: Path, max_signal_groups_per_shift: int = 5):
     pivot = pje.pivot_table(index="encounter_id", columns="event_type", values="event_duration_hours", aggfunc="max").reset_index()
     df = flags.merge(pivot, on="encounter_id", how="left")
     rows = []
@@ -259,11 +302,20 @@ def attribute_blockers(flags: pd.DataFrame, pje: pd.DataFrame, out_dir: Path):
         elif d.get("radiology_ultrasound_completed", 0) and d.get("radiology_ultrasound_completed", 0) > 18: b, conf, ev = "radiology ultrasound turnaround delay", 0.80, "Ultrasound completion lag exceeded expected discharge-dependent window"
         elif d.get("blood_test_available", 0) and d.get("blood_test_available", 0) > 8: b, conf, ev = "blood testing turnaround delay", 0.79, "Blood testing result availability exceeded expected operating window"
         elif d.get("ecg_completed", 0) and d.get("ecg_completed", 0) > 6: b, conf, ev = "ECG availability delay", 0.78, "ECG completion lag exceeded expected operating window"
+        elif d.get("triage_screening_completed", 0) and d.get("triage_screening_completed", 0) > 8: b, conf, ev = "triage screening backlog", 0.76, "Triage screening completion lag exceeded expected operating window"
+        elif d.get("nurse_discharge_screening_completed", 0) and d.get("nurse_discharge_screening_completed", 0) > 12: b, conf, ev = "nurse discharge screening wait", 0.80, "Nurse discharge screening lag exceeded expected operating window"
+        elif d.get("vulnerable_porter_completed", 0) and d.get("vulnerable_porter_completed", 0) > 10: b, conf, ev = "vulnerable patient porter wait", 0.81, "Porter support for vulnerable patient exceeded expected operating window"
+        elif d.get("social_work_assessment_completed", 0) and d.get("social_work_assessment_completed", 0) > 24: b, conf, ev = "social work assessment wait", 0.79, "Social work assessment lag exceeded expected operating window"
+        elif d.get("interpreter_completed", 0) and d.get("interpreter_completed", 0) > 8: b, conf, ev = "interpreter availability wait", 0.74, "Interpreter availability lag exceeded expected operating window"
+        elif d.get("discharge_documentation_ready", 0) and d.get("discharge_documentation_ready", 0) > 10: b, conf, ev = "discharge documentation readiness wait", 0.75, "Discharge documentation readiness lag exceeded expected operating window"
         elif d.get("synthetic_primary_blocker") == "diagnostic sign-off stall": b, conf, ev = "diagnostic sign-off stall", 0.72, "Diagnostic completion or sign-off timing exceeded expected operating window"
         elif bool(d.get("control_chart_signal_flag", False)): b, conf, ev = "unit-level bed-flow bottleneck", 0.62, "Unit-day OOB rate crossed control-chart signal threshold"
-        rows.append({"encounter_id":r.encounter_id,"facility_id":r.facility_id,"unit_id":r.unit_id,"service_line":r.service_line,"primary_blocker":b,"secondary_blocker":r.synthetic_primary_blocker if r.synthetic_primary_blocker != b else "none","blocker_confidence":conf,"evidence_summary":ev,"hours_above_limit":r.hours_above_limit,"hours_after_medically_ready":r.hours_after_medically_ready,"estimated_recoverable_bed_hours":round(float(max(0, min(r.hours_above_limit or 0, r.hours_after_medically_ready if pd.notna(r.hours_after_medically_ready) else r.hours_above_limit or 0))),2),"priority_score":r.priority_score})
+        los_excess = float(r.hours_above_limit) if pd.notna(r.hours_above_limit) else 0.0
+        post_ready_excess = float(r.post_ready_excess_hours) if pd.notna(r.post_ready_excess_hours) else 0.0
+        recoverable = min(max(0.0, los_excess), max(0.0, post_ready_excess)) if post_ready_excess > 0 else max(0.0, los_excess * 0.35)
+        rows.append({"encounter_id":r.encounter_id,"facility_id":r.facility_id,"unit_id":r.unit_id,"service_line":r.service_line,"discharge_timestamp":r.discharge_timestamp,"primary_blocker":b,"secondary_blocker":r.synthetic_primary_blocker if r.synthetic_primary_blocker != b else "none","blocker_confidence":conf,"evidence_summary":ev,"hours_above_limit":r.hours_above_limit,"hours_after_medically_ready":r.hours_after_medically_ready,"post_ready_excess_hours":r.post_ready_excess_hours,"estimated_recoverable_bed_hours":round(float(recoverable),2),"priority_score":r.priority_score})
     attr = pd.DataFrame(rows); attr = attr[flags["oob_flag"].to_numpy()].copy(); attr.to_parquet(out_dir / "delay_blocker_attribution.parquet", index=False)
-    owner = {"ALC placement wait":"transition_services_lead","Friday/weekend discharge gap":"site_operations_director","home care confirmation wait":"home_care_liaison","therapy assessment stall":"therapy_services_manager","transport delay":"patient_transport_coordinator","pharmacy discharge delay":"pharmacy_operations_lead","radiology CT turnaround delay":"radiology_operations_lead","radiology MRI access delay":"radiology_operations_lead","radiology ultrasound turnaround delay":"radiology_operations_lead","blood testing turnaround delay":"laboratory_operations_lead","ECG availability delay":"cardiology_diagnostics_lead","diagnostic sign-off stall":"diagnostics_operations_lead","unit-level bed-flow bottleneck":"unit_operations_manager","unattributed operational delay":"patient_flow_coordinator"}
+    owner = {"ALC placement wait":"transition_services_lead","Friday/weekend discharge gap":"site_operations_director","home care confirmation wait":"home_care_liaison","therapy assessment stall":"therapy_services_manager","transport delay":"patient_transport_coordinator","pharmacy discharge delay":"pharmacy_operations_lead","radiology CT turnaround delay":"radiology_operations_lead","radiology MRI access delay":"radiology_operations_lead","radiology ultrasound turnaround delay":"radiology_operations_lead","blood testing turnaround delay":"laboratory_operations_lead","ECG availability delay":"cardiology_diagnostics_lead","diagnostic sign-off stall":"diagnostics_operations_lead","triage screening backlog":"triage_operations_lead","nurse discharge screening wait":"nursing_flow_lead","vulnerable patient porter wait":"patient_transport_coordinator","social work assessment wait":"social_work_lead","interpreter availability wait":"language_services_lead","discharge documentation readiness wait":"unit_clerk_lead","unit-level bed-flow bottleneck":"unit_operations_manager","unattributed operational delay":"patient_flow_coordinator"}
     action = {k:f"Review and address {k.lower()} for this discharge dependency." for k in owner}
     action.update({
         "radiology CT turnaround delay":"Review CT queue priority, protocol readiness, and report finalization for discharge-dependent case.",
@@ -271,6 +323,12 @@ def attribute_blockers(flags: pd.DataFrame, pje: pd.DataFrame, out_dir: Path):
         "radiology ultrasound turnaround delay":"Review ultrasound slot availability and report finalization for discharge-dependent case.",
         "blood testing turnaround delay":"Review collection, processing, and result-release timing for discharge-dependent bloodwork.",
         "ECG availability delay":"Review ECG completion queue and interpretation handoff for discharge-dependent case.",
+        "triage screening backlog":"Review triage screening queue, screening criteria, and escalation coverage for delayed cases.",
+        "nurse discharge screening wait":"Review nurse discharge screening queue and readiness checklist handoff.",
+        "vulnerable patient porter wait":"Review porter support timing for vulnerable or mobility-limited discharge-dependent patients.",
+        "social work assessment wait":"Review social work assessment capacity for discharge-dependent cases.",
+        "interpreter availability wait":"Review interpreter booking and handoff for discharge-dependent communication needs.",
+        "discharge documentation readiness wait":"Review discharge documentation readiness and unit-clerk handoff steps.",
     })
     actions = attr.copy(); run_date = pd.Timestamp.utcnow().date().isoformat()
     actions["action_id"] = actions.apply(lambda x: hashlib.sha1(f"{x['encounter_id']}|{x['primary_blocker']}|{run_date}".encode()).hexdigest()[:16], axis=1)
@@ -281,19 +339,82 @@ def attribute_blockers(flags: pd.DataFrame, pje: pd.DataFrame, out_dir: Path):
     action_cols = ["action_id","encounter_id","facility_id","unit_id","service_line","priority","primary_blocker","evidence_summary","recommended_owner","recommended_action","target_resolution_hours","estimated_recoverable_bed_hours","status","reviewed_by","reviewed_timestamp","action_taken","reason_not_actioned"]
     all_actions = actions[action_cols].sort_values(["estimated_recoverable_bed_hours", "priority"], ascending=[False, False]).copy()
     all_actions.to_csv(out_dir / "delay_resolution_actions_all.csv", index=False)
-    executive_count = max(1, int(np.ceil(len(all_actions) * 0.05)))
-    executive_actions = all_actions.head(executive_count).copy()
-    executive_actions.insert(0, "executive_rank", np.arange(1, len(executive_actions) + 1))
-    executive_actions.to_csv(out_dir / "delay_resolution_actions.csv", index=False)
-    pareto = attr.groupby("primary_blocker", as_index=False).agg(flagged_cases=("encounter_id","count"), recoverable_bed_hours=("estimated_recoverable_bed_hours","sum"), median_priority_score=("priority_score","median")).sort_values("recoverable_bed_hours", ascending=False); pareto.to_csv(out_dir / "blocker_pareto.csv", index=False)
+    pareto = attr.groupby("primary_blocker", as_index=False).agg(flagged_cases=("encounter_id","count"), recoverable_bed_hours=("estimated_recoverable_bed_hours","sum"), median_priority_score=("priority_score","median")).sort_values("recoverable_bed_hours", ascending=False)
+    pareto["case_rate"] = (pareto["flagged_cases"] / max(len(flags), 1)).round(4)
+    pareto["avg_recoverable_bed_hours_per_case"] = (pareto["recoverable_bed_hours"] / pareto["flagged_cases"].clip(lower=1)).round(2)
+    pareto.to_csv(out_dir / "blocker_pareto.csv", index=False)
     heatmap = attr.groupby(["facility_id","unit_id"], as_index=False).agg(flagged_cases=("encounter_id","count"), recoverable_bed_hours=("estimated_recoverable_bed_hours","sum"), median_priority_score=("priority_score","median")).sort_values("recoverable_bed_hours", ascending=False); heatmap.to_csv(out_dir / "unit_delay_heatmap.csv", index=False)
     ranked = attr.groupby(["primary_blocker", "facility_id", "unit_id", "service_line"], as_index=False).agg(flagged_cases=("encounter_id","count"), recoverable_bed_hours=("estimated_recoverable_bed_hours","sum"), median_priority_score=("priority_score","median"), mean_confidence=("blocker_confidence","mean"))
-    ranked["actionability_score"] = (ranked["recoverable_bed_hours"] * 0.55 + ranked["flagged_cases"] * 4.0 + ranked["median_priority_score"] * 0.35 + ranked["mean_confidence"] * 20).round(2)
+    family_map_local = {
+        "ALC placement wait":"alc_community_capacity", "home care confirmation wait":"alc_community_capacity",
+        "Friday/weekend discharge gap":"weekend_flow_gap", "therapy assessment stall":"care_team_assessment",
+        "transport delay":"transport_discharge_logistics", "pharmacy discharge delay":"pharmacy_discharge_readiness",
+        "radiology CT turnaround delay":"diagnostics_access", "radiology MRI access delay":"diagnostics_access", "radiology ultrasound turnaround delay":"diagnostics_access",
+        "blood testing turnaround delay":"diagnostics_access", "ECG availability delay":"diagnostics_access", "diagnostic sign-off stall":"diagnostics_access",
+        "triage screening backlog":"front_door_screening", "nurse discharge screening wait":"nursing_discharge_readiness",
+        "vulnerable patient porter wait":"vulnerable_patient_flow", "social work assessment wait":"social_support_readiness",
+        "interpreter availability wait":"social_support_readiness", "discharge documentation readiness wait":"documentation_readiness",
+        "unit-level bed-flow bottleneck":"unit_flow_capacity", "unattributed operational delay":"unattributed"
+    }
+    ranked["signal_family"] = ranked["primary_blocker"].map(family_map_local).fillna("other")
+    ranked["actionability_score"] = (ranked["recoverable_bed_hours"] * 0.35 + ranked["flagged_cases"] * 6.0 + ranked["median_priority_score"] * 0.25 + ranked["mean_confidence"] * 18).round(2)
     ranked = ranked.sort_values("actionability_score", ascending=False)
     ranked.insert(0, "signal_rank", np.arange(1, len(ranked) + 1))
     ranked.to_csv(out_dir / "ranked_actionable_signals.csv", index=False)
+
+    mg = attr.copy()
+    mg["signal_family"] = mg["primary_blocker"].map(family_map_local).fillna("other")
+    discharge_ts = pd.to_datetime(mg["discharge_timestamp"])
+    mg["shift_date"] = discharge_ts.dt.date.astype(str)
+    hour = discharge_ts.dt.hour
+    mg["shift_name"] = np.select([hour.between(7,14), hour.between(15,22)], ["day", "evening"], default="night")
+    grouped = mg.groupby(["shift_date", "shift_name", "signal_family", "primary_blocker"], as_index=False).agg(
+        flagged_cases=("encounter_id", "count"),
+        affected_facilities=("facility_id", lambda x: ", ".join(sorted(set(x.astype(str)))[:6])),
+        affected_units=("unit_id", lambda x: ", ".join(sorted(set(x.astype(str)))[:8])),
+        affected_service_lines=("service_line", lambda x: ", ".join(sorted(set(x.astype(str)))[:8])),
+        recoverable_bed_hours=("estimated_recoverable_bed_hours", "sum"),
+        median_priority_score=("priority_score", "median"),
+        mean_confidence=("blocker_confidence", "mean"),
+    )
+    grouped["management_score"] = (grouped["recoverable_bed_hours"] * 0.40 + grouped["flagged_cases"] * 10.0 + grouped["median_priority_score"] * 0.30 + grouped["mean_confidence"] * 20).round(2)
+    grouped["recommended_owner"] = grouped["primary_blocker"].map(owner).fillna("patient_flow_coordinator")
+    grouped["recommended_management_action"] = grouped["primary_blocker"].map(action).fillna("Review this operational delay signal in the next flow huddle.")
+    grouped = grouped[grouped["recoverable_bed_hours"] > 0].copy()
+    grouped = grouped.sort_values(["shift_date", "shift_name", "management_score"], ascending=[True, True, False])
+    grouped["signal_group_rank"] = grouped.groupby(["shift_date", "shift_name"]).cumcount() + 1
+    management_groups = grouped[grouped["signal_group_rank"] <= max_signal_groups_per_shift].copy()
+    management_groups.to_csv(out_dir / "management_signal_groups.csv", index=False)
+    alc_cases = int((attr["primary_blocker"] == "ALC placement wait").sum()) if len(attr) else 0
+    alc_hours = float(attr.loc[attr["primary_blocker"] == "ALC placement wait", "estimated_recoverable_bed_hours"].sum()) if len(attr) else 0.0
+    kpi = pd.DataFrame([{
+        "max_signal_groups_per_shift": max_signal_groups_per_shift,
+        "total_shift_windows": int(grouped.groupby(["shift_date", "shift_name"]).ngroups),
+        "management_signal_groups": int(len(management_groups)),
+        "avg_signal_groups_per_shift": round(float(len(management_groups) / max(grouped.groupby(["shift_date", "shift_name"]).ngroups, 1)), 2),
+        "raw_oob_delay_signals": int(len(attr)),
+        "raw_to_management_compression_ratio": round(float(len(attr) / max(len(management_groups), 1)), 2),
+        "management_recoverable_bed_hours": round(float(management_groups["recoverable_bed_hours"].sum()), 2),
+        "alc_wait_cases": alc_cases,
+        "alc_wait_case_rate": round(float(alc_cases / max(len(flags), 1)), 4),
+        "alc_recoverable_bed_hours": round(alc_hours, 2),
+    }])
+    kpi.to_csv(out_dir / "management_signal_kpis.csv", index=False)
+
+    support_keys = management_groups[["shift_date", "shift_name", "primary_blocker"]].drop_duplicates()
+    all_actions_support = all_actions.merge(attr[["encounter_id", "discharge_timestamp"]], on="encounter_id", how="left")
+    ts = pd.to_datetime(all_actions_support["discharge_timestamp"])
+    all_actions_support["shift_date"] = ts.dt.date.astype(str)
+    hr = ts.dt.hour
+    all_actions_support["shift_name"] = np.select([hr.between(7,14), hr.between(15,22)], ["day", "evening"], default="night")
+    all_actions_support = all_actions_support.merge(support_keys, on=["shift_date", "shift_name", "primary_blocker"], how="inner")
+    all_actions_support = all_actions_support[all_actions_support["estimated_recoverable_bed_hours"] > 0].copy()
+    executive_actions = all_actions_support.sort_values(["shift_date", "shift_name", "estimated_recoverable_bed_hours"], ascending=[True, True, False]).groupby(["shift_date", "shift_name", "primary_blocker"]).head(2).copy()
+    executive_actions["signal_family"] = executive_actions["primary_blocker"].map(family_map_local).fillna("other")
+    executive_actions.insert(0, "executive_rank", np.arange(1, len(executive_actions) + 1))
+    executive_actions.to_csv(out_dir / "delay_resolution_actions.csv", index=False)
     audit = all_actions.copy(); audit["adoption_status"] = "pending_review"; audit["simulated_review_outcome"] = np.where(audit["priority"].astype(str).isin(["urgent","high"]), "likely_reviewed", "queue"); audit.to_csv(out_dir / "action_adoption_audit.csv", index=False)
-    return attr, executive_actions, pareto, heatmap
+    return attr, management_groups, pareto, heatmap
 
 
 def train_prediction_baselines(pae: pd.DataFrame, flags: pd.DataFrame, out_dir: Path, seed: int = 42):
@@ -347,6 +468,12 @@ def build_scenario_detection_summary(out_dir: Path, requested_mode: str) -> pd.D
         "blood testing turnaround delay": "diagnostics_access",
         "ECG availability delay": "diagnostics_access",
         "diagnostic sign-off stall": "diagnostics_access",
+        "triage screening backlog": "front_door_screening",
+        "nurse discharge screening wait": "nursing_discharge_readiness",
+        "vulnerable patient porter wait": "vulnerable_patient_flow",
+        "social work assessment wait": "social_support_readiness",
+        "interpreter availability wait": "social_support_readiness",
+        "discharge documentation readiness wait": "documentation_readiness",
         "unit-level bed-flow bottleneck": "unit_flow_capacity",
         "unattributed operational delay": "unattributed",
     }
@@ -374,6 +501,8 @@ def build_dashboard_html(out_dir: Path) -> Path:
     pareto = pd.read_csv(out_dir / "blocker_pareto.csv")
     signals = pd.read_csv(out_dir / "ranked_actionable_signals.csv")
     scenario = pd.read_csv(out_dir / "scenario_detection_summary.csv") if (out_dir / "scenario_detection_summary.csv").exists() else pd.DataFrame()
+    management_groups = pd.read_csv(out_dir / "management_signal_groups.csv") if (out_dir / "management_signal_groups.csv").exists() else pd.DataFrame()
+    management_kpis = pd.read_csv(out_dir / "management_signal_kpis.csv") if (out_dir / "management_signal_kpis.csv").exists() else pd.DataFrame()
     actions = pd.read_csv(out_dir / "delay_resolution_actions.csv")
     metrics = pd.read_csv(out_dir / "admin_delay_dashboard_metrics.csv")
     flags = pd.read_parquet(out_dir / "out_of_bounds_delay_flags.parquet")
@@ -381,6 +510,9 @@ def build_dashboard_html(out_dir: Path) -> Path:
     oob = int(flags["oob_flag"].sum())
     recoverable = float(pareto["recoverable_bed_hours"].sum()) if len(pareto) else 0.0
     top_signal = signals.iloc[0]["primary_blocker"] if len(signals) else "none"
+    mg_count = int(management_kpis.iloc[0]["management_signal_groups"]) if not management_kpis.empty else len(management_groups)
+    avg_groups = float(management_kpis.iloc[0]["avg_signal_groups_per_shift"]) if not management_kpis.empty else 0.0
+    compression = float(management_kpis.iloc[0]["raw_to_management_compression_ratio"]) if not management_kpis.empty else 0.0
     css = """
     <style>
       body{font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin:0; background:#f5f2ec; color:#1f2933;}
@@ -416,6 +548,9 @@ def build_dashboard_html(out_dir: Path) -> Path:
         "transport delay":"transport_discharge_logistics", "pharmacy discharge delay":"pharmacy_discharge_readiness",
         "radiology CT turnaround delay":"diagnostics_access", "radiology MRI access delay":"diagnostics_access", "radiology ultrasound turnaround delay":"diagnostics_access",
         "blood testing turnaround delay":"diagnostics_access", "ECG availability delay":"diagnostics_access", "diagnostic sign-off stall":"diagnostics_access",
+        "triage screening backlog":"front_door_screening", "nurse discharge screening wait":"nursing_discharge_readiness",
+        "vulnerable patient porter wait":"vulnerable_patient_flow", "social work assessment wait":"social_support_readiness",
+        "interpreter availability wait":"social_support_readiness", "discharge documentation readiness wait":"documentation_readiness",
         "unit-level bed-flow bottleneck":"unit_flow_capacity", "unattributed operational delay":"unattributed"
     }
     signals = signals.copy(); signals['signal_family'] = signals['primary_blocker'].map(family_for_blocker).fillna('other')
@@ -449,9 +584,15 @@ def build_dashboard_html(out_dir: Path) -> Path:
 <p class='note'>This dashboard highlights the most actionable delay signals, not every delay. The executive worklist is constrained to the top 5% of flagged delay episodes by estimated recoverable bed-hours and priority.</p>
 <section class='grid'>
   <div class='card'><div>Patient encounters</div><div class='metric'>{total:,}</div></div>
-  <div class='card'><div>OOB delay signals</div><div class='metric'>{oob:,}</div></div>
-  <div class='card'><div>Executive worklist rows</div><div class='metric'>{len(actions):,}</div></div>
+  <div class='card'><div>Raw OOB signals</div><div class='metric'>{oob:,}</div></div>
+  <div class='card'><div>Management groups</div><div class='metric'>{mg_count:,}</div></div>
+  <div class='card'><div>Avg groups / shift</div><div class='metric'>{avg_groups:.1f}</div></div>
+</section>
+<section class='grid'>
   <div class='card'><div>Recoverable bed-days</div><div class='metric'>{recoverable/24:,.1f}</div></div>
+  <div class='card'><div>Compression ratio</div><div class='metric'>{compression:.1f}x</div></div>
+  <div class='card'><div>Supporting patient examples</div><div class='metric'>{len(actions):,}</div></div>
+  <div class='card'><div>Max groups / shift</div><div class='metric'>{int(management_kpis.iloc[0]["max_signal_groups_per_shift"]) if not management_kpis.empty else 5}</div></div>
 </section>
 <section class='card'><strong>Top signal:</strong> {top_signal}</section>
 <section class='card'><div class='charttitle'>Dashboard filters</div><p class='muted'>Filters apply to the ranked signal and executive worklist tables. Click any blocker bar to filter by that signal family.</p><div class='filters'>
@@ -461,13 +602,14 @@ def build_dashboard_html(out_dir: Path) -> Path:
 <label>Exact blocker<select id='blockerFilter'>{options(blockers)}</select></label>
 </div><div class='toolbar'><button type='button' onclick='resetFilters()'>Reset filters</button><button type='button' onclick='exportVisibleRows("signalsTable","visible_ranked_signals.csv")'>Export visible signals CSV</button><button type='button' onclick='exportVisibleRows("actionsTable","visible_executive_worklist.csv")'>Export visible worklist CSV</button><button type='button' onclick='window.print()'>Print / save PDF</button></div><p id='filterStatus' class='muted'>Showing all rows.</p></section>
 <div class='chartwrap'>
-<section class='card'><div class='charttitle'>Recoverable bed-hours by blocker</div>{bar_chart(pareto, 'primary_blocker', 'recoverable_bed_hours', 8)}</section>
+<section class='card'><div class='charttitle'>Recoverable excess bed-hours by blocker</div>{bar_chart(pareto, 'primary_blocker', 'recoverable_bed_hours', 8)}</section>
 <section class='card'><div class='charttitle'>OOB trend</div>{trend_svg}</section>
 </div>
 <h2>Detected scenario mix</h2>{table_html(scenario, ['scenario_label','signal_family','recoverable_bed_hours','share_of_recoverable_hours','flagged_cases'], 12) if not scenario.empty else '<p>No scenario summary.</p>'}
-<h2>Ranked actionable signals</h2>{table_html(signals, ['signal_rank','primary_blocker','signal_family','facility_id','unit_id','service_line','flagged_cases','recoverable_bed_hours','actionability_score'], 20, 'signalsTable')}
-<h2>Blocker Pareto</h2>{table_html(pareto, ['primary_blocker','flagged_cases','recoverable_bed_hours','median_priority_score'], 12)}
-<h2>Executive action worklist</h2>{table_html(actions, ['executive_rank','encounter_id','facility_id','unit_id','signal_family','priority','primary_blocker','recommended_owner','estimated_recoverable_bed_hours'], 20, 'actionsTable')}
+<h2>Management signal groups by shift</h2>{table_html(management_groups, ['shift_date','shift_name','signal_group_rank','signal_family','primary_blocker','flagged_cases','affected_facilities','affected_units','recoverable_bed_hours','management_score','recommended_owner'], 20, 'signalsTable') if not management_groups.empty else '<p>No management signal groups.</p>'}
+<h2>Ranked raw signal patterns</h2>{table_html(signals, ['signal_rank','primary_blocker','signal_family','facility_id','unit_id','service_line','flagged_cases','recoverable_bed_hours','actionability_score'], 12)}
+<h2>Blocker Pareto</h2>{table_html(pareto, ['primary_blocker','flagged_cases','case_rate','recoverable_bed_hours','avg_recoverable_bed_hours_per_case','median_priority_score'], 12)}
+<h2>Supporting patient-level examples</h2>{table_html(actions, ['executive_rank','encounter_id','facility_id','unit_id','shift_date','shift_name','priority','primary_blocker','recommended_owner','estimated_recoverable_bed_hours'], 20, 'actionsTable')}
 <h2>Control-chart daily metrics</h2>{table_html(metrics, ['discharge_date','facility_id','unit_id','discharges','oob_cases','oob_rate','control_chart_signal_flag'], 12)}
 <script>
 function currentFilters(){{
@@ -497,10 +639,10 @@ function filterTables(){{
     table.querySelectorAll('tbody tr').forEach(row=>{{
       total += 1;
       const cells=row.querySelectorAll('td');
-      const okFacility=f.facility==='all'||(fi>=0&&cells[fi].textContent.trim()===f.facility);
-      const okUnit=f.unit==='all'||(ui>=0&&cells[ui].textContent.trim()===f.unit);
-      const okFamily=f.family==='all'||(si>=0&&cells[si].textContent.trim()===f.family);
-      const okBlocker=f.blocker==='all'||(bi>=0&&cells[bi].textContent.trim()===f.blocker);
+      const okFacility=f.facility==='all'||fi<0||(cells[fi].textContent.trim().includes(f.facility));
+      const okUnit=f.unit==='all'||ui<0||(cells[ui].textContent.trim().includes(f.unit));
+      const okFamily=f.family==='all'||si<0||(cells[si].textContent.trim()===f.family);
+      const okBlocker=f.blocker==='all'||bi<0||(cells[bi].textContent.trim()===f.blocker);
       const ok = okFacility&&okUnit&&okFamily&&okBlocker;
       row.style.display=ok?'':'none';
       if(ok) visible += 1;
@@ -536,7 +678,7 @@ filterTables();
 
 
 def build_reports(out_dir: Path, top_n_text: str = ""):
-    flags = pd.read_parquet(out_dir / "out_of_bounds_delay_flags.parquet"); attr = pd.read_parquet(out_dir / "delay_blocker_attribution.parquet"); actions = pd.read_csv(out_dir / "delay_resolution_actions.csv"); pareto = pd.read_csv(out_dir / "blocker_pareto.csv"); signals = pd.read_csv(out_dir / "ranked_actionable_signals.csv"); metrics = json.loads((out_dir / "prediction_metrics.json").read_text()); adm = pd.read_parquet(out_dir / "patient_admission_events.parquet")
+    flags = pd.read_parquet(out_dir / "out_of_bounds_delay_flags.parquet"); attr = pd.read_parquet(out_dir / "delay_blocker_attribution.parquet"); actions = pd.read_csv(out_dir / "delay_resolution_actions.csv"); pareto = pd.read_csv(out_dir / "blocker_pareto.csv"); signals = pd.read_csv(out_dir / "ranked_actionable_signals.csv"); management_groups = pd.read_csv(out_dir / "management_signal_groups.csv") if (out_dir / "management_signal_groups.csv").exists() else pd.DataFrame(); management_kpis = pd.read_csv(out_dir / "management_signal_kpis.csv") if (out_dir / "management_signal_kpis.csv").exists() else pd.DataFrame(); metrics = json.loads((out_dir / "prediction_metrics.json").read_text()); adm = pd.read_parquet(out_dir / "patient_admission_events.parquet")
     total = len(flags); oob = int(flags["oob_flag"].sum()); hard = int(flags["post_ready_hard_cap_flag"].sum()); rec = float(attr["estimated_recoverable_bed_hours"].sum()) if len(attr) else 0.0; top = pareto.iloc[0]["primary_blocker"] if len(pareto) else "none"
     dq = adm["synthetic_data_quality_note"].value_counts(dropna=False).reset_index(); dq.columns = ["data_quality_note","rows"]
     md = f"""# Operational Delay Sentinel Run Report
@@ -591,17 +733,17 @@ Flags are operational delay signals for review, not punitive findings.
 
 def parse_args(argv=None):
     p = argparse.ArgumentParser(description="Run Operational Delay Sentinel synthetic workflow.")
-    p.add_argument("--facilities", type=int, default=4); p.add_argument("--days", type=int, default=90); p.add_argument("--encounters-per-day", type=int, default=180); p.add_argument("--seed", type=int, default=42); p.add_argument("--oob-rate-target", type=float, default=0.05); p.add_argument("--post-ready-hard-cap-hours", type=float, default=48.0); p.add_argument("--weekend-service-reduction", type=float, default=0.35); p.add_argument("--alc-pressure-multiplier", type=float, default=1.25); p.add_argument("--scenario-mode", choices=["balanced", "alc_heavy", "diagnostics_heavy", "weekend_flow_gap"], default="balanced"); p.add_argument("--out", type=Path, default=Path("outputs/synthetic_90d_v1")); p.add_argument("--print-top-n", type=int, default=5)
+    p.add_argument("--facilities", type=int, default=1); p.add_argument("--days", type=int, default=90); p.add_argument("--encounters-per-day", type=int, default=110); p.add_argument("--seed", type=int, default=42); p.add_argument("--oob-rate-target", type=float, default=0.05); p.add_argument("--post-ready-hard-cap-hours", type=float, default=48.0); p.add_argument("--weekend-service-reduction", type=float, default=0.35); p.add_argument("--alc-pressure-multiplier", type=float, default=1.25); p.add_argument("--scenario-mode", choices=["balanced", "alc_heavy", "diagnostics_heavy", "weekend_flow_gap"], default="balanced"); p.add_argument("--max-signal-groups-per-shift", type=int, default=5); p.add_argument("--out", type=Path, default=Path("outputs/synthetic_90d_v1")); p.add_argument("--print-top-n", type=int, default=5)
     return p.parse_args(argv)
 
 
 def main(argv=None):
     args = parse_args(argv); root = Path(__file__).resolve().parents[2]; out = args.out if args.out.is_absolute() else root / args.out; out.mkdir(parents=True, exist_ok=True)
     cfg = SyntheticFlowConfig(args.facilities, args.days, args.encounters_per_day, args.seed, args.oob_rate_target, args.weekend_service_reduction, args.alc_pressure_multiplier, args.scenario_mode)
-    tables = generate_synthetic_flow(cfg, out); flags, daily, ref = detect_oob_delays(tables["patient_admission_events"], tables["bed_resource_daily"], out, args.post_ready_hard_cap_hours); attr, actions, pareto, heatmap = attribute_blockers(flags, tables["patient_journey_events"], out); scenario_summary = build_scenario_detection_summary(out, args.scenario_mode); metrics, risk = train_prediction_baselines(tables["patient_admission_events"], flags, out, args.seed)
-    top_paths = [out / x for x in ["patient_admission_events.parquet","patient_journey_events.parquet","bed_resource_daily.parquet","service_availability.parquet","discharge_delay_reference.parquet","out_of_bounds_delay_flags.parquet","delay_blocker_attribution.parquet","ranked_actionable_signals.csv","scenario_detection_summary.csv","delay_resolution_actions.csv","admin_delay_dashboard_metrics.csv"]]
+    tables = generate_synthetic_flow(cfg, out); flags, daily, ref = detect_oob_delays(tables["patient_admission_events"], tables["bed_resource_daily"], out, args.post_ready_hard_cap_hours); attr, actions, pareto, heatmap = attribute_blockers(flags, tables["patient_journey_events"], out, args.max_signal_groups_per_shift); scenario_summary = build_scenario_detection_summary(out, args.scenario_mode); metrics, risk = train_prediction_baselines(tables["patient_admission_events"], flags, out, args.seed)
+    top_paths = [out / x for x in ["patient_admission_events.parquet","patient_journey_events.parquet","bed_resource_daily.parquet","service_availability.parquet","discharge_delay_reference.parquet","out_of_bounds_delay_flags.parquet","delay_blocker_attribution.parquet","ranked_actionable_signals.csv","management_signal_groups.csv","management_signal_kpis.csv","scenario_detection_summary.csv","delay_resolution_actions.csv","admin_delay_dashboard_metrics.csv"]]
     top = show_top_tables(top_paths, args.print_top_n); dashboard = build_dashboard_html(out); md, html = build_reports(out, top)
-    print("\n=== Run summary ==="); print(f"Output directory: {out}"); print(f"Admissions: {len(tables['patient_admission_events']):,}"); print(f"Journey events: {len(tables['patient_journey_events']):,}"); print(f"OOB delay signals: {int(flags['oob_flag'].sum()):,}"); print(f"OOB signal rate: {flags['oob_flag'].mean():.2%}"); print(f"Attributed delay signals: {len(attr):,}"); print(f"Executive worklist actions: {len(actions):,}"); print(f"Requested scenario mode: {args.scenario_mode}"); print(f"Detected scenario label: {scenario_summary.iloc[0]['scenario_label'] if len(scenario_summary) else 'none'}"); print(f"Dashboard HTML: {dashboard}"); print(f"Report markdown: {md}"); print(f"Report HTML: {html}")
+    print("\n=== Run summary ==="); print(f"Output directory: {out}"); print(f"Admissions: {len(tables['patient_admission_events']):,}"); print(f"Journey events: {len(tables['patient_journey_events']):,}"); print(f"OOB delay signals: {int(flags['oob_flag'].sum()):,}"); print(f"OOB signal rate: {flags['oob_flag'].mean():.2%}"); print(f"Attributed delay signals: {len(attr):,}"); print(f"Supporting patient examples: {len(actions):,}"); print(f"Management signal groups: {len(pd.read_csv(out / 'management_signal_groups.csv')) if (out / 'management_signal_groups.csv').exists() else 0:,}"); print(f"Requested scenario mode: {args.scenario_mode}"); print(f"Detected scenario label: {scenario_summary.iloc[0]['scenario_label'] if len(scenario_summary) else 'none'}"); print(f"Dashboard HTML: {dashboard}"); print(f"Report markdown: {md}"); print(f"Report HTML: {html}")
 
 if __name__ == "__main__":
     main()

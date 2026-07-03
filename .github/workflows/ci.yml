@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+      - name: Compile sources
+        run: |
+          python -m py_compile run_discharge_delay_workflow.py scripts/export_dashboard.py src/discharge_delays/workflow.py
+      - name: Smoke workflow
+        run: |
+          python run_discharge_delay_workflow.py \
+            --facilities 1 \
+            --days 14 \
+            --encounters-per-day 40 \
+            --scenario-mode balanced \
+            --out outputs/ci_smoke \
+            --print-top-n 1
+      - name: Verify key outputs
+        run: |
+          test -f outputs/ci_smoke/management_signal_groups.csv
+          test -f outputs/ci_smoke/management_signal_kpis.csv
+          test -f outputs/ci_smoke/operational_delay_dashboard.html
+          test -f outputs/ci_smoke/prediction_metrics.json
