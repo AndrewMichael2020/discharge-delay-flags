@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Local generated data
+outputs/
+exports/
+data/
+
+# Keep curated documentation artifacts
+!docs/
+!docs/screenshots/
+!docs/screenshots/*.png
+!docs/*.csv
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+
+# Generated screenshot exports; keep stable README screenshots only
+docs/screenshots/dashboard-export-*.html
+docs/screenshots/dashboard-screenshot-*.png
+!docs/screenshots/balanced-dashboard.png
+!docs/screenshots/diagnostics-dashboard.png
+!docs/screenshots/weekend-dashboard.png

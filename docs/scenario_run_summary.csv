@@ -1,0 +1,4 @@
+scenario_mode,admissions,journey_events,oob_delay_signals,oob_signal_rate,executive_worklist_actions,executive_share,detected_scenario,top_signal_family,top_family_share,top_blocker,top_recoverable_bed_hours
+balanced,64800,423130,6961,0.1074,349,0.0501,alc_heavy_detected,alc_community_capacity,0.6126,ALC placement wait,6894.34
+diagnostics_heavy,64800,433064,13825,0.2133,692,0.0501,diagnostics_heavy_detected,diagnostics_access,0.5329,home care confirmation wait,2179.83
+weekend_flow_gap,64800,415162,11362,0.1753,569,0.0501,weekend_flow_gap_detected,weekend_flow_gap,0.9146,Friday/weekend discharge gap,13124.64

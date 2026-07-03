@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "operational-delay-sentinel"
+version = "0.1.0"
+description = "Synthetic hospital discharge-delay sentinel for out-of-bounds operational delay detection, blocker attribution, dashboards, and CSV action worklists."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Andrew Michael" }]
+keywords = ["healthcare", "hospital operations", "synthetic data", "discharge delays", "dashboard", "operations research"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Healthcare Industry",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = [
+  "pandas>=2.0",
+  "numpy>=1.24",
+  "scikit-learn>=1.3",
+  "pyarrow>=14.0",
+]
+
+[project.optional-dependencies]
+screenshot = ["playwright>=1.40"]
+
+[project.scripts]
+discharge-delay-sentinel = "discharge_delays.workflow:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
