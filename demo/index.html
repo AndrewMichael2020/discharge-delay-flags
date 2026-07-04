@@ -4,120 +4,120 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Discharge Delay Flags Demo</title>
-  <meta name="description" content="A clean GitHub Pages demo showing how synthetic hospital flow data becomes a small, actionable discharge-delay worklist.">
+  <meta name="description" content="A compact GitHub Pages dashboard showing how synthetic hospital flow data becomes an actionable discharge-delay worklist.">
   <link rel="stylesheet" href="assets/demo.css">
 </head>
 <body>
-  <header class="hero">
-    <nav class="nav" aria-label="Demo navigation">
-      <a href="../README.md" class="brand">Discharge Delay Flags</a>
-      <a href="../docs/METRICS_AND_SIGNALS.md">Metric definitions</a>
-      <a href="../sample_data/README.md">Synthetic data</a>
-      <a href="https://github.com/AndrewMichael2020/discharge-delay-flags">GitHub</a>
-    </nav>
-    <section class="hero-grid">
+  <div class="app-shell">
+    <header class="topbar">
       <div>
-        <p class="eyebrow">Synthetic hospital operations demo</p>
-        <h1>Find the few discharge-delay signals that deserve attention today.</h1>
-        <p class="lede">This page turns 90 days of synthetic hospital-flow data into a small management agenda: what is delayed, how much it matters, where to look first, and what action is suggested.</p>
-        <div class="hero-actions">
-          <a href="#dashboard" class="button primary">Open the demo dashboard</a>
-          <a href="#story" class="button ghost">See the case story</a>
-        </div>
+        <p class="app-kicker">Synthetic hospital operations demo</p>
+        <h1>Discharge Delay Flags</h1>
       </div>
-      <aside class="hero-card">
-        <span class="badge">No PHI</span>
-        <h2>One large synthetic hospital</h2>
-        <p>Raw encounter-level evidence is compressed into a few shift-level signals so leaders can act without mistaking normal friction for a crisis.</p>
+      <nav class="topnav" aria-label="Demo navigation">
+        <a href="../README.md">README</a>
+        <a href="../docs/METRICS_AND_SIGNALS.md">Metrics</a>
+        <a href="../sample_data/README.md">Data</a>
+        <a href="https://github.com/AndrewMichael2020/discharge-delay-flags">GitHub</a>
+      </nav>
+    </header>
+
+    <main class="dashboard-layout">
+      <aside class="sidebar" aria-label="Dashboard filters and case notes">
+        <section class="side-card">
+          <p class="eyebrow">Case selector</p>
+          <div class="scenario-tabs" id="scenarioTabs" role="tablist" aria-label="Scenario selector"></div>
+        </section>
+
+        <section class="side-card compact-copy">
+          <p class="eyebrow">Question</p>
+          <h2>What should the flow team review first?</h2>
+          <p>Raw patient-level delay evidence is grouped into a short, shift-ready action list.</p>
+        </section>
+
+        <section class="side-card" id="scenarioSummary"></section>
+
+        <section class="side-card legend-card">
+          <p class="eyebrow">How to read</p>
+          <div class="legend-item"><span class="dot blue"></span>Observed daily signal rate</div>
+          <div class="legend-item"><span class="dot red"></span>Review threshold</div>
+          <div class="legend-item"><span class="dot green"></span>Expected baseline</div>
+        </section>
       </aside>
-    </section>
-  </header>
 
-  <main id="dashboard">
-    <section class="panel intro-panel">
-      <div>
-        <p class="eyebrow">Choose a case</p>
-        <h2>Three scenarios, one operating question</h2>
-        <p>Each scenario uses the same demo structure. The balanced case is the default public story; the two stress cases show how the sentinel behaves when diagnostics access or weekend flow dominates.</p>
-      </div>
-      <div class="scenario-tabs" id="scenarioTabs" role="tablist" aria-label="Scenario selector"></div>
-    </section>
-
-    <section class="kpi-grid" id="kpiGrid" aria-label="Executive KPI cards"></section>
-
-    <section id="story" class="story panel">
-      <div>
-        <p class="eyebrow">How to read this</p>
-        <h2>From thousands of rows to a short shift huddle</h2>
-      </div>
-      <ol class="steps">
-        <li><strong>Detect:</strong> flag stays that cross robust delay thresholds, post-ready caps, or control-chart limits.</li>
-        <li><strong>Explain:</strong> attribute a likely operational delay reason such as transport, home care, diagnostics, or weekend flow.</li>
-        <li><strong>Compress:</strong> group patient-level evidence into a small number of management signals per shift.</li>
-        <li><strong>Act:</strong> produce a CSV-friendly worklist with owner, evidence, and recommended next step.</li>
-      </ol>
-    </section>
-
-    <section class="grid-two">
-      <article class="panel chart-panel">
-        <div class="section-heading">
+      <section class="content">
+        <section class="hero-strip panel">
           <div>
-            <p class="eyebrow">Where should we look first?</p>
-            <h2>Delay reasons by recoverable bed-hours</h2>
+            <p class="eyebrow">One large synthetic hospital, 90 days</p>
+            <h2>Find the few discharge-delay signals that deserve attention today.</h2>
+            <p>The dashboard keeps the executive view compact: a few KPIs, an impact ranking, a control-chart signal, and a CSV-ready action table.</p>
           </div>
-          <p class="hint">Impact-ranked, not volume-ranked.</p>
-        </div>
-        <div id="reasonChart" class="bar-chart" aria-label="Delay reason chart"></div>
-      </article>
+          <div class="status-pill" id="statusPill"></div>
+        </section>
 
-      <article class="panel chart-panel">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Is this normal noise?</p>
-            <h2>Control-chart view</h2>
+        <section class="kpi-grid" id="kpiGrid" aria-label="Executive KPI cards"></section>
+
+        <section class="visual-grid">
+          <article class="panel chart-tile wide">
+            <div class="tile-head">
+              <div>
+                <p class="eyebrow">Impact ranking</p>
+                <h3>Delay reasons by recoverable bed-hours</h3>
+              </div>
+              <span class="micro-note">Impact-ranked, not volume-ranked</span>
+            </div>
+            <div id="reasonChart" class="bar-chart" aria-label="Delay reason chart"></div>
+          </article>
+
+          <article class="panel chart-tile">
+            <div class="tile-head">
+              <div>
+                <p class="eyebrow">Variation check</p>
+                <h3>Control chart</h3>
+              </div>
+              <span class="micro-note">Red points need review</span>
+            </div>
+            <svg id="controlChart" class="line-chart" role="img" aria-label="Daily out-of-bounds signal rate control chart"></svg>
+          </article>
+        </section>
+
+        <section class="table-grid">
+          <article class="panel table-tile">
+            <div class="tile-head">
+              <div>
+                <p class="eyebrow">Shift huddle</p>
+                <h3>Management signal groups</h3>
+              </div>
+              <span class="micro-note">Top groups only</span>
+            </div>
+            <div class="table-wrap"><table id="worklistTable"></table></div>
+          </article>
+
+          <article class="panel table-tile">
+            <div class="tile-head">
+              <div>
+                <p class="eyebrow">Action examples</p>
+                <h3>CSV-ready worklist</h3>
+              </div>
+              <span class="micro-note">Owner + evidence + next step</span>
+            </div>
+            <div class="table-wrap"><table id="actionTable"></table></div>
+          </article>
+        </section>
+
+        <section class="panel glossary-panel">
+          <div class="tile-head">
+            <div>
+              <p class="eyebrow">Metric glossary</p>
+              <h3>Plain-language definitions</h3>
+            </div>
+            <a class="small-link" href="../docs/METRICS_AND_SIGNALS.md">Full formulas</a>
           </div>
-          <p class="hint">Dots above the red line deserve review.</p>
-        </div>
-        <svg id="controlChart" class="line-chart" role="img" aria-label="Daily out-of-bounds signal rate control chart"></svg>
-      </article>
-    </section>
-
-    <section class="panel">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Shift huddle view</p>
-          <h2>Management signal groups</h2>
-        </div>
-        <p class="hint">Limited to the highest-priority groups for the selected scenario.</p>
-      </div>
-      <div class="table-wrap"><table id="worklistTable"></table></div>
-    </section>
-
-    <section class="panel">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">What action is suggested?</p>
-          <h2>Example action worklist</h2>
-        </div>
-        <p class="hint">Dashboard-ready CSV rows for review and adoption tracking.</p>
-      </div>
-      <div class="table-wrap"><table id="actionTable"></table></div>
-    </section>
-
-    <section class="panel glossary">
-      <div>
-        <p class="eyebrow">Metric glossary</p>
-        <h2>Plain-language definitions</h2>
-        <p>These are operational KPIs and review prompts, not staff performance ratings or clinical quality judgements. Full formulas live in <a href="../docs/METRICS_AND_SIGNALS.md">docs/METRICS_AND_SIGNALS.md</a>.</p>
-      </div>
-      <div id="glossaryGrid" class="glossary-grid"></div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <p><strong>Source:</strong> curated synthetic data from <code>sample_data/</code>. No real patients, no PHI, no EHR connection.</p>
-    <p>Designed for a GitHub Pages product demo. The production pathway is dashboard plus CSV first; idempotent integration can come later.</p>
-  </footer>
+          <div id="glossaryGrid" class="glossary-grid"></div>
+        </section>
+      </section>
+    </main>
+  </div>
 
   <script src="data/demo_bundle.js"></script>
   <script src="assets/demo.js"></script>
