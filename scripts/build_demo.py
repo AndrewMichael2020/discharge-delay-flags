@@ -21,7 +21,7 @@ SCENARIO_DESCRIPTIONS = {
     "diagnostics_heavy": "A stress view where imaging, lab, ECG, and diagnostic sign-off signals carry more recoverable bed-hours.",
     "weekend_flow_gap": "A stress view where Friday/weekend service timing dominates recoverable bed-hour impact.",
 }
-BUILD_ID = "20260704-ods-v2"
+BUILD_ID = "20260704-ods-v3"
 ROOT_FILES = ["docs/scenario_run_summary.csv", "docs/model_metrics_summary.csv"]
 SCENARIO_FILES = [
     "management_signal_groups.csv",
@@ -64,6 +64,14 @@ def require_files(root: Path) -> None:
         raise SystemExit("Curated demo source data is missing:\n" + "\n".join(f"- {m}" for m in missing))
 
 
+def split_multi(value: Any) -> list[str]:
+    if value is None or value == "":
+        return []
+    if isinstance(value, list):
+        return [str(v).strip() for v in value if str(v).strip()]
+    return [part.strip() for part in str(value).split(",") if part.strip()]
+
+
 def display_row(row: dict[str, Any]) -> dict[str, Any]:
     out = {}
     for key, value in row.items():
@@ -85,6 +93,22 @@ def display_row(row: dict[str, Any]) -> dict[str, Any]:
             out[display_key] = title_case(out[raw_key])
     if "delay_reason" in out:
         out["delay_reason_display"] = str(out["delay_reason"] or "").capitalize()
+
+    # Canonical filter arrays make mixed grains behave consistently:
+    # management groups use affected_* fields, action rows use unit_id/service_line.
+    out["filter_signal_family"] = split_multi(out.get("signal_family"))
+    out["filter_delay_reason"] = split_multi(out.get("delay_reason"))
+    out["filter_unit"] = split_multi(out.get("unit_id")) or split_multi(out.get("affected_units"))
+    out["filter_service_line"] = split_multi(out.get("service_line")) or split_multi(out.get("affected_service_lines"))
+    out["filter_shift"] = split_multi(out.get("shift_name"))
+    if out.get("priority"):
+        priority = str(out["priority"])
+    else:
+        priority = "high" if float(out.get("median_priority_score") or 0) >= 25 else "routine"
+        out["priority"] = priority
+        out["priority_display"] = title_case(priority)
+    out["filter_priority"] = [priority]
+    out["filter_owner"] = split_multi(out.get("recommended_owner"))
     return out
 
 
@@ -95,13 +119,14 @@ def display_records(df: pd.DataFrame) -> list[dict[str, Any]]:
 def filter_options(rows: list[dict[str, Any]], keys: list[str]) -> dict[str, list[dict[str, str]]]:
     options: dict[str, list[dict[str, str]]] = {}
     for key in keys:
-        display_key = f"{key}_display"
         seen: dict[str, str] = {}
         for row in rows:
-            value = row.get(key)
-            if value is None or value == "":
-                continue
-            seen[str(value)] = str(row.get(display_key) or title_case(value))
+            raw_value = row.get(key)
+            values = raw_value if isinstance(raw_value, list) else [raw_value]
+            for value in values:
+                if value is None or value == "":
+                    continue
+                seen[str(value)] = title_case(value)
         options[key] = [{"value": value, "label": seen[value]} for value in sorted(seen, key=lambda x: seen[x].lower())]
     return options
 
@@ -226,13 +251,13 @@ def build(root: Path, out_dir: Path) -> dict[str, Any]:
 
         combined = management_rows[scenario] + action_rows[scenario]
         filters[scenario] = filter_options(combined, [
-            "signal_family",
-            "delay_reason",
-            "unit_id",
-            "service_line",
-            "shift_name",
-            "priority",
-            "recommended_owner",
+            "filter_signal_family",
+            "filter_delay_reason",
+            "filter_unit",
+            "filter_service_line",
+            "filter_shift",
+            "filter_priority",
+            "filter_owner",
         ])
         dates = sorted({str(row.get("shift_date")) for row in combined if row.get("shift_date")})
         filters[scenario]["date"] = [{"value": d, "label": d} for d in dates]

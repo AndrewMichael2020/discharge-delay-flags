@@ -1,8 +1,8 @@
 {
   "title": "Discharge Delay Flags Demo",
-  "build_id": "20260704-ods-v2",
+  "build_id": "20260704-ods-v3",
   "default_scenario": "balanced",
-  "generated_at_utc": "2026-07-04T00:52:48+00:00",
+  "generated_at_utc": "2026-07-04T01:03:47+00:00",
   "source": "Curated synthetic sample data in sample_data/. No PHI or real patient data.",
   "metric_glossary": [
     {

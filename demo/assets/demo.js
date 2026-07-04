@@ -7,16 +7,26 @@ const fmtHours = (n) => `${Number(n || 0).toLocaleString(undefined,{maximumFract
 const fmtNum = (n,d=2) => Number(n || 0).toFixed(d);
 const titleCase = (s) => String(s || '').replaceAll('_',' ').replace(/\b\w/g, m => m.toUpperCase());
 const filterDefs = [
-  ['signal_family','Signal family'], ['delay_reason','Delay reason'], ['unit_id','Unit'], ['service_line','Service line'],
-  ['shift_name','Shift'], ['priority','Priority'], ['recommended_owner','Owner']
+  ['filter_signal_family','Signal category'], ['filter_delay_reason','Specific delay reason'], ['filter_unit','Unit'], ['filter_service_line','Service line'],
+  ['filter_shift','Shift'], ['filter_priority','Priority'], ['filter_owner','Owner']
 ];
 function scenario(){ return data.scenarios.find(s => s.scenario_mode === state.scenario) || data.scenarios[0]; }
 function labelFor(key, value){ const opt=(data.filters[state.scenario]?.[key]||[]).find(o=>o.value===value); return opt?.label || titleCase(value); }
 function setFilter(key, value){ if(value) state.filters[key]=value; else delete state.filters[key]; renderAll(false); }
+function signalDateSet(){
+  return new Set((data.control_chart[state.scenario] || []).filter(r => r.control_chart_signal_flag).map(r => r.date));
+}
 function rowMatches(row){
-  for(const [key] of filterDefs){ if(state.filters[key] && String(row[key]) !== String(state.filters[key])) return false; }
-  if(state.filters.startDate && String(row.shift_date || row.date || '') < state.filters.startDate) return false;
-  if(state.filters.endDate && String(row.shift_date || row.date || '') > state.filters.endDate) return false;
+  for(const [key] of filterDefs){
+    if(!state.filters[key]) continue;
+    const raw = row[key];
+    const values = Array.isArray(raw) ? raw.map(String) : [String(raw ?? '')];
+    if(!values.includes(String(state.filters[key]))) return false;
+  }
+  const rowDate = String(row.shift_date || row.date || '');
+  if(state.filters.startDate && rowDate < state.filters.startDate) return false;
+  if(state.filters.endDate && rowDate > state.filters.endDate) return false;
+  if(state.filters.signalDaysOnly && !signalDateSet().has(rowDate)) return false;
   return true;
 }
 function currentRows(){
@@ -66,7 +76,7 @@ function renderReasonChart(){
   const list=Object.values(by).sort((a,b)=>b.recoverable_bed_hours-a.recoverable_bed_hours).slice(0,10);
   const max=Math.max(...list.map(r=>r.recoverable_bed_hours),1);
   $('reasonCount').textContent = `${fmtInt(list.length)} visible reasons`;
-  $('reasonChart').innerHTML = list.length ? list.map(r=>{ const pct=Math.max(3,r.recoverable_bed_hours/max*100); return `<div class="bar-row"><div class="bar-label" title="${r.delay_reason}">${r.delay_reason}</div><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><div class="bar-value">${fmtHours(r.recoverable_bed_hours)}</div></div>`; }).join('') : '<p>No records match the current filters.</p>';
+  $('reasonChart').innerHTML = list.length ? list.map(r=>{ const pct=Math.max(3,r.recoverable_bed_hours/max*100); return `<div class="bar-row"><div class="bar-label" title="${r.delay_reason}">${r.delay_reason}</div><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><div class="bar-value">${fmtHours(r.recoverable_bed_hours)}</div></div>`; }).join('') + `<div class="bar-axis"><span>0h</span><strong>Recoverable bed-hours</strong><span>${fmtHours(max)}</span></div>` : '<p>No records match the current filters.</p>';
 }
 function filteredControlRows(){
   let rows = (data.control_chart[state.scenario]||[]).filter(r => (!state.filters.startDate || r.date >= state.filters.startDate) && (!state.filters.endDate || r.date <= state.filters.endDate));
@@ -80,7 +90,12 @@ function renderControlChart(){
   const path=f=>rows.map((r,i)=>`${i?'L':'M'} ${x(i)} ${y(r[f])}`).join(' ');
   const ticks=[0,.25,.5,.75,1];
   svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
-  svg.innerHTML = `<rect width="${w}" height="${h}" rx="7" fill="#fff"/>${ticks.map(t=>`<line x1="${p.l}" y1="${p.t+t*(h-p.t-p.b)}" x2="${w-p.r}" y2="${p.t+t*(h-p.t-p.b)}" stroke="#e8edf3"/>`).join('')}<line x1="${p.l}" y1="${h-p.b}" x2="${w-p.r}" y2="${h-p.b}" stroke="#cfd8e3"/><line x1="${p.l}" y1="${p.t}" x2="${p.l}" y2="${h-p.b}" stroke="#cfd8e3"/><path d="${path('upper_control_limit')}" fill="none" stroke="#c84e3a" stroke-width="2" stroke-dasharray="5 5"/><path d="${path('centerline_oob_rate')}" fill="none" stroke="#14866d" stroke-width="2" stroke-dasharray="3 4"/><path d="${path('oob_rate')}" fill="none" stroke="#1565a9" stroke-width="2.4"/>${rows.map((r,i)=>`<circle cx="${x(i)}" cy="${y(r.oob_rate)}" r="${r.control_chart_signal_flag?4:2.1}" fill="${r.control_chart_signal_flag?'#c84e3a':'#1565a9'}"><title>${r.date}: ${fmtPct(r.oob_rate)}</title></circle>`).join('')}<text x="${p.l}" y="${h-8}" fill="#657386" font-size="10">${fmtInt(rows.length)} days</text><text x="${w-p.r}" y="${p.t+2}" text-anchor="end" fill="#657386" font-size="10">OOB rate</text>`;
+  const yLabels = ticks.map(t => {
+    const value = maxY * (1 - t);
+    const yy = p.t + t * (h - p.t - p.b);
+    return `<text x="${p.l-8}" y="${yy+3}" text-anchor="end" fill="#657386" font-size="9">${fmtPct(value)}</text>`;
+  }).join('');
+  svg.innerHTML = `<rect width="${w}" height="${h}" rx="7" fill="#fff"/>${ticks.map(t=>`<line x1="${p.l}" y1="${p.t+t*(h-p.t-p.b)}" x2="${w-p.r}" y2="${p.t+t*(h-p.t-p.b)}" stroke="#e8edf3"/>`).join('')}${yLabels}<line x1="${p.l}" y1="${h-p.b}" x2="${w-p.r}" y2="${h-p.b}" stroke="#cfd8e3"/><line x1="${p.l}" y1="${p.t}" x2="${p.l}" y2="${h-p.b}" stroke="#cfd8e3"/><path d="${path('upper_control_limit')}" fill="none" stroke="#c84e3a" stroke-width="2" stroke-dasharray="5 5"/><path d="${path('centerline_oob_rate')}" fill="none" stroke="#14866d" stroke-width="2" stroke-dasharray="3 4"/><path d="${path('oob_rate')}" fill="none" stroke="#1565a9" stroke-width="2.4"/>${rows.map((r,i)=>`<circle cx="${x(i)}" cy="${y(r.oob_rate)}" r="${r.control_chart_signal_flag?4:2.1}" fill="${r.control_chart_signal_flag?'#c84e3a':'#1565a9'}"><title>${r.date}: ${fmtPct(r.oob_rate)}</title></circle>`).join('')}<text x="${p.l}" y="${h-8}" fill="#657386" font-size="10">Date (${fmtInt(rows.length)} days)</text><text transform="translate(12 ${h/2}) rotate(-90)" text-anchor="middle" fill="#657386" font-size="10">Daily OOB signal rate</text><text x="${w-p.r}" y="${p.t+2}" text-anchor="end" fill="#657386" font-size="10">Observed vs threshold</text><g transform="translate(${p.l} ${p.t-6})"><circle r="3" fill="#1565a9"></circle><text x="8" y="3" font-size="9" fill="#657386">Observed</text><line x1="62" x2="78" y1="0" y2="0" stroke="#c84e3a" stroke-width="2" stroke-dasharray="4 4"></line><text x="84" y="3" font-size="9" fill="#657386">Review threshold</text><line x1="172" x2="188" y1="0" y2="0" stroke="#14866d" stroke-width="2" stroke-dasharray="3 3"></line><text x="194" y="3" font-size="9" fill="#657386">Expected baseline</text></g>`;
 }
 function cell(value, cls=''){ return `<td class="${cls}" title="${String(value??'').replaceAll('"','&quot;')}">${value??''}</td>`; }
 function renderTable(id, rows, columns){ $(id).innerHTML = `<thead><tr>${columns.map(c=>`<th style="width:${c.w||'auto'}">${c.label}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${columns.map(c=>cell(c.format?c.format(r[c.key],r):(r[c.key]??''),c.truncate?'truncate':'')).join('')}</tr>`).join('')}</tbody>`; }

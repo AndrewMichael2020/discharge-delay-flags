@@ -9,7 +9,22 @@
       "mean_confidence": 0.88,
       "actionability_score": 1716.42,
       "signal_family_display": "Weekend Flow Gap",
-      "delay_reason_display": "Friday/weekend discharge gap"
+      "delay_reason_display": "Friday/weekend discharge gap",
+      "filter_signal_family": [
+        "weekend_flow_gap"
+      ],
+      "filter_delay_reason": [
+        "Friday/weekend discharge gap"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "ALC placement wait",
@@ -20,7 +35,22 @@
       "mean_confidence": 0.94,
       "actionability_score": 804.29,
       "signal_family_display": "Alc Community Capacity",
-      "delay_reason_display": "Alc placement wait"
+      "delay_reason_display": "Alc placement wait",
+      "filter_signal_family": [
+        "alc_community_capacity"
+      ],
+      "filter_delay_reason": [
+        "ALC placement wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "home care confirmation wait",
@@ -31,7 +61,22 @@
       "mean_confidence": 0.86,
       "actionability_score": 1324.11,
       "signal_family_display": "Alc Community Capacity",
-      "delay_reason_display": "Home care confirmation wait"
+      "delay_reason_display": "Home care confirmation wait",
+      "filter_signal_family": [
+        "alc_community_capacity"
+      ],
+      "filter_delay_reason": [
+        "home care confirmation wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "unattributed operational delay",
@@ -42,7 +87,22 @@
       "mean_confidence": 0.45,
       "actionability_score": 1547.28,
       "signal_family_display": "Unattributed",
-      "delay_reason_display": "Unattributed operational delay"
+      "delay_reason_display": "Unattributed operational delay",
+      "filter_signal_family": [
+        "unattributed"
+      ],
+      "filter_delay_reason": [
+        "unattributed operational delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "transport delay",
@@ -53,7 +113,22 @@
       "mean_confidence": 0.78,
       "actionability_score": 849.22,
       "signal_family_display": "Transport Discharge Logistics",
-      "delay_reason_display": "Transport delay"
+      "delay_reason_display": "Transport delay",
+      "filter_signal_family": [
+        "transport_discharge_logistics"
+      ],
+      "filter_delay_reason": [
+        "transport delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "radiology MRI access delay",
@@ -64,7 +139,22 @@
       "mean_confidence": 0.84,
       "actionability_score": 362.81,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Radiology mri access delay"
+      "delay_reason_display": "Radiology mri access delay",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "radiology MRI access delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "therapy assessment stall",
@@ -75,7 +165,22 @@
       "mean_confidence": 0.82,
       "actionability_score": 332.61,
       "signal_family_display": "Care Team Assessment",
-      "delay_reason_display": "Therapy assessment stall"
+      "delay_reason_display": "Therapy assessment stall",
+      "filter_signal_family": [
+        "care_team_assessment"
+      ],
+      "filter_delay_reason": [
+        "therapy assessment stall"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "nurse discharge screening wait",
@@ -86,7 +191,22 @@
       "mean_confidence": 0.8,
       "actionability_score": 304.64,
       "signal_family_display": "Nursing Discharge Readiness",
-      "delay_reason_display": "Nurse discharge screening wait"
+      "delay_reason_display": "Nurse discharge screening wait",
+      "filter_signal_family": [
+        "nursing_discharge_readiness"
+      ],
+      "filter_delay_reason": [
+        "nurse discharge screening wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "diagnostic sign-off stall",
@@ -97,7 +217,22 @@
       "mean_confidence": 0.72,
       "actionability_score": 265.99,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Diagnostic sign-off stall"
+      "delay_reason_display": "Diagnostic sign-off stall",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "diagnostic sign-off stall"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "social work assessment wait",
@@ -108,7 +243,22 @@
       "mean_confidence": 0.79,
       "actionability_score": 253.9,
       "signal_family_display": "Social Support Readiness",
-      "delay_reason_display": "Social work assessment wait"
+      "delay_reason_display": "Social work assessment wait",
+      "filter_signal_family": [
+        "social_support_readiness"
+      ],
+      "filter_delay_reason": [
+        "social work assessment wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "radiology CT turnaround delay",
@@ -119,7 +269,22 @@
       "mean_confidence": 0.82,
       "actionability_score": 223.98,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Radiology ct turnaround delay"
+      "delay_reason_display": "Radiology ct turnaround delay",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "radiology CT turnaround delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "vulnerable patient porter wait",
@@ -130,7 +295,22 @@
       "mean_confidence": 0.81,
       "actionability_score": 203.43,
       "signal_family_display": "Vulnerable Patient Flow",
-      "delay_reason_display": "Vulnerable patient porter wait"
+      "delay_reason_display": "Vulnerable patient porter wait",
+      "filter_signal_family": [
+        "vulnerable_patient_flow"
+      ],
+      "filter_delay_reason": [
+        "vulnerable patient porter wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "blood testing turnaround delay",
@@ -141,7 +321,22 @@
       "mean_confidence": 0.79,
       "actionability_score": 242.61,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Blood testing turnaround delay"
+      "delay_reason_display": "Blood testing turnaround delay",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "blood testing turnaround delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "discharge documentation readiness wait",
@@ -152,7 +347,22 @@
       "mean_confidence": 0.75,
       "actionability_score": 127.53,
       "signal_family_display": "Documentation Readiness",
-      "delay_reason_display": "Discharge documentation readiness wait"
+      "delay_reason_display": "Discharge documentation readiness wait",
+      "filter_signal_family": [
+        "documentation_readiness"
+      ],
+      "filter_delay_reason": [
+        "discharge documentation readiness wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "unit-level bed-flow bottleneck",
@@ -163,7 +373,22 @@
       "mean_confidence": 0.62,
       "actionability_score": 241.01,
       "signal_family_display": "Unit Flow Capacity",
-      "delay_reason_display": "Unit-level bed-flow bottleneck"
+      "delay_reason_display": "Unit-level bed-flow bottleneck",
+      "filter_signal_family": [
+        "unit_flow_capacity"
+      ],
+      "filter_delay_reason": [
+        "unit-level bed-flow bottleneck"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "triage screening backlog",
@@ -174,7 +399,22 @@
       "mean_confidence": 0.76,
       "actionability_score": 130.93,
       "signal_family_display": "Front Door Screening",
-      "delay_reason_display": "Triage screening backlog"
+      "delay_reason_display": "Triage screening backlog",
+      "filter_signal_family": [
+        "front_door_screening"
+      ],
+      "filter_delay_reason": [
+        "triage screening backlog"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "pharmacy discharge delay",
@@ -185,7 +425,22 @@
       "mean_confidence": 0.74,
       "actionability_score": 126.36,
       "signal_family_display": "Pharmacy Discharge Readiness",
-      "delay_reason_display": "Pharmacy discharge delay"
+      "delay_reason_display": "Pharmacy discharge delay",
+      "filter_signal_family": [
+        "pharmacy_discharge_readiness"
+      ],
+      "filter_delay_reason": [
+        "pharmacy discharge delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "ECG availability delay",
@@ -196,7 +451,22 @@
       "mean_confidence": 0.78,
       "actionability_score": 108.48,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Ecg availability delay"
+      "delay_reason_display": "Ecg availability delay",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "ECG availability delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "radiology ultrasound turnaround delay",
@@ -207,7 +477,22 @@
       "mean_confidence": 0.8,
       "actionability_score": 76.91,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Radiology ultrasound turnaround delay"
+      "delay_reason_display": "Radiology ultrasound turnaround delay",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "radiology ultrasound turnaround delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "interpreter availability wait",
@@ -218,7 +503,22 @@
       "mean_confidence": 0.74,
       "actionability_score": 21.22,
       "signal_family_display": "Social Support Readiness",
-      "delay_reason_display": "Interpreter availability wait"
+      "delay_reason_display": "Interpreter availability wait",
+      "filter_signal_family": [
+        "social_support_readiness"
+      ],
+      "filter_delay_reason": [
+        "interpreter availability wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     }
   ],
   "diagnostics_heavy": [
@@ -231,7 +531,22 @@
       "mean_confidence": 0.84,
       "actionability_score": 2749.56,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Radiology mri access delay"
+      "delay_reason_display": "Radiology mri access delay",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "radiology MRI access delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "home care confirmation wait",
@@ -242,7 +557,22 @@
       "mean_confidence": 0.86,
       "actionability_score": 2981.27,
       "signal_family_display": "Alc Community Capacity",
-      "delay_reason_display": "Home care confirmation wait"
+      "delay_reason_display": "Home care confirmation wait",
+      "filter_signal_family": [
+        "alc_community_capacity"
+      ],
+      "filter_delay_reason": [
+        "home care confirmation wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "unattributed operational delay",
@@ -253,7 +583,22 @@
       "mean_confidence": 0.45,
       "actionability_score": 2682.09,
       "signal_family_display": "Unattributed",
-      "delay_reason_display": "Unattributed operational delay"
+      "delay_reason_display": "Unattributed operational delay",
+      "filter_signal_family": [
+        "unattributed"
+      ],
+      "filter_delay_reason": [
+        "unattributed operational delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "transport delay",
@@ -264,7 +609,22 @@
       "mean_confidence": 0.78,
       "actionability_score": 2480.22,
       "signal_family_display": "Transport Discharge Logistics",
-      "delay_reason_display": "Transport delay"
+      "delay_reason_display": "Transport delay",
+      "filter_signal_family": [
+        "transport_discharge_logistics"
+      ],
+      "filter_delay_reason": [
+        "transport delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "radiology CT turnaround delay",
@@ -275,7 +635,22 @@
       "mean_confidence": 0.82,
       "actionability_score": 2352.56,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Radiology ct turnaround delay"
+      "delay_reason_display": "Radiology ct turnaround delay",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "radiology CT turnaround delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "blood testing turnaround delay",
@@ -286,7 +661,22 @@
       "mean_confidence": 0.79,
       "actionability_score": 1928.68,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Blood testing turnaround delay"
+      "delay_reason_display": "Blood testing turnaround delay",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "blood testing turnaround delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "diagnostic sign-off stall",
@@ -297,7 +687,22 @@
       "mean_confidence": 0.72,
       "actionability_score": 1527.6,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Diagnostic sign-off stall"
+      "delay_reason_display": "Diagnostic sign-off stall",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "diagnostic sign-off stall"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "radiology ultrasound turnaround delay",
@@ -308,7 +713,22 @@
       "mean_confidence": 0.8,
       "actionability_score": 960.2,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Radiology ultrasound turnaround delay"
+      "delay_reason_display": "Radiology ultrasound turnaround delay",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "radiology ultrasound turnaround delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "ECG availability delay",
@@ -319,7 +739,22 @@
       "mean_confidence": 0.78,
       "actionability_score": 941.11,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Ecg availability delay"
+      "delay_reason_display": "Ecg availability delay",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "ECG availability delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "Friday/weekend discharge gap",
@@ -330,7 +765,22 @@
       "mean_confidence": 0.88,
       "actionability_score": 702.95,
       "signal_family_display": "Weekend Flow Gap",
-      "delay_reason_display": "Friday/weekend discharge gap"
+      "delay_reason_display": "Friday/weekend discharge gap",
+      "filter_signal_family": [
+        "weekend_flow_gap"
+      ],
+      "filter_delay_reason": [
+        "Friday/weekend discharge gap"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "unit-level bed-flow bottleneck",
@@ -341,7 +791,22 @@
       "mean_confidence": 0.62,
       "actionability_score": 219.41,
       "signal_family_display": "Unit Flow Capacity",
-      "delay_reason_display": "Unit-level bed-flow bottleneck"
+      "delay_reason_display": "Unit-level bed-flow bottleneck",
+      "filter_signal_family": [
+        "unit_flow_capacity"
+      ],
+      "filter_delay_reason": [
+        "unit-level bed-flow bottleneck"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "nurse discharge screening wait",
@@ -352,7 +817,22 @@
       "mean_confidence": 0.8,
       "actionability_score": 255.97,
       "signal_family_display": "Nursing Discharge Readiness",
-      "delay_reason_display": "Nurse discharge screening wait"
+      "delay_reason_display": "Nurse discharge screening wait",
+      "filter_signal_family": [
+        "nursing_discharge_readiness"
+      ],
+      "filter_delay_reason": [
+        "nurse discharge screening wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "ALC placement wait",
@@ -363,7 +843,22 @@
       "mean_confidence": 0.94,
       "actionability_score": 166.82,
       "signal_family_display": "Alc Community Capacity",
-      "delay_reason_display": "Alc placement wait"
+      "delay_reason_display": "Alc placement wait",
+      "filter_signal_family": [
+        "alc_community_capacity"
+      ],
+      "filter_delay_reason": [
+        "ALC placement wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "therapy assessment stall",
@@ -374,7 +869,22 @@
       "mean_confidence": 0.82,
       "actionability_score": 220.78,
       "signal_family_display": "Care Team Assessment",
-      "delay_reason_display": "Therapy assessment stall"
+      "delay_reason_display": "Therapy assessment stall",
+      "filter_signal_family": [
+        "care_team_assessment"
+      ],
+      "filter_delay_reason": [
+        "therapy assessment stall"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "social work assessment wait",
@@ -385,7 +895,22 @@
       "mean_confidence": 0.79,
       "actionability_score": 124.26,
       "signal_family_display": "Social Support Readiness",
-      "delay_reason_display": "Social work assessment wait"
+      "delay_reason_display": "Social work assessment wait",
+      "filter_signal_family": [
+        "social_support_readiness"
+      ],
+      "filter_delay_reason": [
+        "social work assessment wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "discharge documentation readiness wait",
@@ -396,7 +921,22 @@
       "mean_confidence": 0.75,
       "actionability_score": 62.0,
       "signal_family_display": "Documentation Readiness",
-      "delay_reason_display": "Discharge documentation readiness wait"
+      "delay_reason_display": "Discharge documentation readiness wait",
+      "filter_signal_family": [
+        "documentation_readiness"
+      ],
+      "filter_delay_reason": [
+        "discharge documentation readiness wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "vulnerable patient porter wait",
@@ -407,7 +947,22 @@
       "mean_confidence": 0.81,
       "actionability_score": 145.25,
       "signal_family_display": "Vulnerable Patient Flow",
-      "delay_reason_display": "Vulnerable patient porter wait"
+      "delay_reason_display": "Vulnerable patient porter wait",
+      "filter_signal_family": [
+        "vulnerable_patient_flow"
+      ],
+      "filter_delay_reason": [
+        "vulnerable patient porter wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "triage screening backlog",
@@ -418,7 +973,22 @@
       "mean_confidence": 0.76,
       "actionability_score": 80.97,
       "signal_family_display": "Front Door Screening",
-      "delay_reason_display": "Triage screening backlog"
+      "delay_reason_display": "Triage screening backlog",
+      "filter_signal_family": [
+        "front_door_screening"
+      ],
+      "filter_delay_reason": [
+        "triage screening backlog"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "pharmacy discharge delay",
@@ -429,7 +999,22 @@
       "mean_confidence": 0.74,
       "actionability_score": 68.4,
       "signal_family_display": "Pharmacy Discharge Readiness",
-      "delay_reason_display": "Pharmacy discharge delay"
+      "delay_reason_display": "Pharmacy discharge delay",
+      "filter_signal_family": [
+        "pharmacy_discharge_readiness"
+      ],
+      "filter_delay_reason": [
+        "pharmacy discharge delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "interpreter availability wait",
@@ -440,7 +1025,22 @@
       "mean_confidence": 0.74,
       "actionability_score": 25.52,
       "signal_family_display": "Social Support Readiness",
-      "delay_reason_display": "Interpreter availability wait"
+      "delay_reason_display": "Interpreter availability wait",
+      "filter_signal_family": [
+        "social_support_readiness"
+      ],
+      "filter_delay_reason": [
+        "interpreter availability wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     }
   ],
   "weekend_flow_gap": [
@@ -453,7 +1053,22 @@
       "mean_confidence": 0.88,
       "actionability_score": 11908.52,
       "signal_family_display": "Weekend Flow Gap",
-      "delay_reason_display": "Friday/weekend discharge gap"
+      "delay_reason_display": "Friday/weekend discharge gap",
+      "filter_signal_family": [
+        "weekend_flow_gap"
+      ],
+      "filter_delay_reason": [
+        "Friday/weekend discharge gap"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "home care confirmation wait",
@@ -464,7 +1079,22 @@
       "mean_confidence": 0.86,
       "actionability_score": 1053.53,
       "signal_family_display": "Alc Community Capacity",
-      "delay_reason_display": "Home care confirmation wait"
+      "delay_reason_display": "Home care confirmation wait",
+      "filter_signal_family": [
+        "alc_community_capacity"
+      ],
+      "filter_delay_reason": [
+        "home care confirmation wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "unattributed operational delay",
@@ -475,7 +1105,22 @@
       "mean_confidence": 0.45,
       "actionability_score": 915.49,
       "signal_family_display": "Unattributed",
-      "delay_reason_display": "Unattributed operational delay"
+      "delay_reason_display": "Unattributed operational delay",
+      "filter_signal_family": [
+        "unattributed"
+      ],
+      "filter_delay_reason": [
+        "unattributed operational delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "transport delay",
@@ -486,7 +1131,22 @@
       "mean_confidence": 0.78,
       "actionability_score": 590.97,
       "signal_family_display": "Transport Discharge Logistics",
-      "delay_reason_display": "Transport delay"
+      "delay_reason_display": "Transport delay",
+      "filter_signal_family": [
+        "transport_discharge_logistics"
+      ],
+      "filter_delay_reason": [
+        "transport delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "ALC placement wait",
@@ -497,7 +1157,22 @@
       "mean_confidence": 0.94,
       "actionability_score": 298.03,
       "signal_family_display": "Alc Community Capacity",
-      "delay_reason_display": "Alc placement wait"
+      "delay_reason_display": "Alc placement wait",
+      "filter_signal_family": [
+        "alc_community_capacity"
+      ],
+      "filter_delay_reason": [
+        "ALC placement wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "nurse discharge screening wait",
@@ -508,7 +1183,22 @@
       "mean_confidence": 0.8,
       "actionability_score": 310.98,
       "signal_family_display": "Nursing Discharge Readiness",
-      "delay_reason_display": "Nurse discharge screening wait"
+      "delay_reason_display": "Nurse discharge screening wait",
+      "filter_signal_family": [
+        "nursing_discharge_readiness"
+      ],
+      "filter_delay_reason": [
+        "nurse discharge screening wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "therapy assessment stall",
@@ -519,7 +1209,22 @@
       "mean_confidence": 0.82,
       "actionability_score": 294.82,
       "signal_family_display": "Care Team Assessment",
-      "delay_reason_display": "Therapy assessment stall"
+      "delay_reason_display": "Therapy assessment stall",
+      "filter_signal_family": [
+        "care_team_assessment"
+      ],
+      "filter_delay_reason": [
+        "therapy assessment stall"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "radiology MRI access delay",
@@ -530,7 +1235,22 @@
       "mean_confidence": 0.84,
       "actionability_score": 228.0,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Radiology mri access delay"
+      "delay_reason_display": "Radiology mri access delay",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "radiology MRI access delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "social work assessment wait",
@@ -541,7 +1261,22 @@
       "mean_confidence": 0.79,
       "actionability_score": 172.12,
       "signal_family_display": "Social Support Readiness",
-      "delay_reason_display": "Social work assessment wait"
+      "delay_reason_display": "Social work assessment wait",
+      "filter_signal_family": [
+        "social_support_readiness"
+      ],
+      "filter_delay_reason": [
+        "social work assessment wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "high",
+      "priority_display": "High",
+      "filter_priority": [
+        "high"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "vulnerable patient porter wait",
@@ -552,7 +1287,22 @@
       "mean_confidence": 0.81,
       "actionability_score": 238.54,
       "signal_family_display": "Vulnerable Patient Flow",
-      "delay_reason_display": "Vulnerable patient porter wait"
+      "delay_reason_display": "Vulnerable patient porter wait",
+      "filter_signal_family": [
+        "vulnerable_patient_flow"
+      ],
+      "filter_delay_reason": [
+        "vulnerable patient porter wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "blood testing turnaround delay",
@@ -563,7 +1313,22 @@
       "mean_confidence": 0.79,
       "actionability_score": 159.27,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Blood testing turnaround delay"
+      "delay_reason_display": "Blood testing turnaround delay",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "blood testing turnaround delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "diagnostic sign-off stall",
@@ -574,7 +1339,22 @@
       "mean_confidence": 0.72,
       "actionability_score": 145.9,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Diagnostic sign-off stall"
+      "delay_reason_display": "Diagnostic sign-off stall",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "diagnostic sign-off stall"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "triage screening backlog",
@@ -585,7 +1365,22 @@
       "mean_confidence": 0.76,
       "actionability_score": 109.56,
       "signal_family_display": "Front Door Screening",
-      "delay_reason_display": "Triage screening backlog"
+      "delay_reason_display": "Triage screening backlog",
+      "filter_signal_family": [
+        "front_door_screening"
+      ],
+      "filter_delay_reason": [
+        "triage screening backlog"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "radiology CT turnaround delay",
@@ -596,7 +1391,22 @@
       "mean_confidence": 0.82,
       "actionability_score": 118.89,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Radiology ct turnaround delay"
+      "delay_reason_display": "Radiology ct turnaround delay",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "radiology CT turnaround delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "pharmacy discharge delay",
@@ -607,7 +1417,22 @@
       "mean_confidence": 0.74,
       "actionability_score": 108.52,
       "signal_family_display": "Pharmacy Discharge Readiness",
-      "delay_reason_display": "Pharmacy discharge delay"
+      "delay_reason_display": "Pharmacy discharge delay",
+      "filter_signal_family": [
+        "pharmacy_discharge_readiness"
+      ],
+      "filter_delay_reason": [
+        "pharmacy discharge delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "unit-level bed-flow bottleneck",
@@ -618,7 +1443,22 @@
       "mean_confidence": 0.62,
       "actionability_score": 24.98,
       "signal_family_display": "Unit Flow Capacity",
-      "delay_reason_display": "Unit-level bed-flow bottleneck"
+      "delay_reason_display": "Unit-level bed-flow bottleneck",
+      "filter_signal_family": [
+        "unit_flow_capacity"
+      ],
+      "filter_delay_reason": [
+        "unit-level bed-flow bottleneck"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "interpreter availability wait",
@@ -629,7 +1469,22 @@
       "mean_confidence": 0.74,
       "actionability_score": 47.39,
       "signal_family_display": "Social Support Readiness",
-      "delay_reason_display": "Interpreter availability wait"
+      "delay_reason_display": "Interpreter availability wait",
+      "filter_signal_family": [
+        "social_support_readiness"
+      ],
+      "filter_delay_reason": [
+        "interpreter availability wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "ECG availability delay",
@@ -640,7 +1495,22 @@
       "mean_confidence": 0.78,
       "actionability_score": 50.74,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Ecg availability delay"
+      "delay_reason_display": "Ecg availability delay",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "ECG availability delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "radiology ultrasound turnaround delay",
@@ -651,7 +1521,22 @@
       "mean_confidence": 0.8,
       "actionability_score": 72.12,
       "signal_family_display": "Diagnostics Access",
-      "delay_reason_display": "Radiology ultrasound turnaround delay"
+      "delay_reason_display": "Radiology ultrasound turnaround delay",
+      "filter_signal_family": [
+        "diagnostics_access"
+      ],
+      "filter_delay_reason": [
+        "radiology ultrasound turnaround delay"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     },
     {
       "delay_reason": "discharge documentation readiness wait",
@@ -662,7 +1547,22 @@
       "mean_confidence": 0.75,
       "actionability_score": 74.44,
       "signal_family_display": "Documentation Readiness",
-      "delay_reason_display": "Discharge documentation readiness wait"
+      "delay_reason_display": "Discharge documentation readiness wait",
+      "filter_signal_family": [
+        "documentation_readiness"
+      ],
+      "filter_delay_reason": [
+        "discharge documentation readiness wait"
+      ],
+      "filter_unit": [],
+      "filter_service_line": [],
+      "filter_shift": [],
+      "priority": "routine",
+      "priority_display": "Routine",
+      "filter_priority": [
+        "routine"
+      ],
+      "filter_owner": []
     }
   ]
 }

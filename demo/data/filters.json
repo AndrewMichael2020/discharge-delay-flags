@@ -1,6 +1,6 @@
 {
   "balanced": {
-    "signal_family": [
+    "filter_signal_family": [
       {
         "value": "alc_community_capacity",
         "label": "Alc Community Capacity"
@@ -54,85 +54,85 @@
         "label": "Weekend Flow Gap"
       }
     ],
-    "delay_reason": [
+    "filter_delay_reason": [
       {
         "value": "ALC placement wait",
-        "label": "Alc placement wait"
+        "label": "Alc Placement Wait"
       },
       {
         "value": "blood testing turnaround delay",
-        "label": "Blood testing turnaround delay"
+        "label": "Blood Testing Turnaround Delay"
       },
       {
         "value": "diagnostic sign-off stall",
-        "label": "Diagnostic sign-off stall"
+        "label": "Diagnostic Sign-Off Stall"
       },
       {
         "value": "discharge documentation readiness wait",
-        "label": "Discharge documentation readiness wait"
+        "label": "Discharge Documentation Readiness Wait"
       },
       {
         "value": "ECG availability delay",
-        "label": "Ecg availability delay"
+        "label": "Ecg Availability Delay"
       },
       {
         "value": "Friday/weekend discharge gap",
-        "label": "Friday/weekend discharge gap"
+        "label": "Friday / Weekend Discharge Gap"
       },
       {
         "value": "home care confirmation wait",
-        "label": "Home care confirmation wait"
+        "label": "Home Care Confirmation Wait"
       },
       {
         "value": "nurse discharge screening wait",
-        "label": "Nurse discharge screening wait"
+        "label": "Nurse Discharge Screening Wait"
       },
       {
         "value": "pharmacy discharge delay",
-        "label": "Pharmacy discharge delay"
+        "label": "Pharmacy Discharge Delay"
       },
       {
         "value": "radiology CT turnaround delay",
-        "label": "Radiology ct turnaround delay"
+        "label": "Radiology Ct Turnaround Delay"
       },
       {
         "value": "radiology MRI access delay",
-        "label": "Radiology mri access delay"
+        "label": "Radiology Mri Access Delay"
       },
       {
         "value": "radiology ultrasound turnaround delay",
-        "label": "Radiology ultrasound turnaround delay"
+        "label": "Radiology Ultrasound Turnaround Delay"
       },
       {
         "value": "social work assessment wait",
-        "label": "Social work assessment wait"
+        "label": "Social Work Assessment Wait"
       },
       {
         "value": "therapy assessment stall",
-        "label": "Therapy assessment stall"
+        "label": "Therapy Assessment Stall"
       },
       {
         "value": "transport delay",
-        "label": "Transport delay"
+        "label": "Transport Delay"
       },
       {
         "value": "triage screening backlog",
-        "label": "Triage screening backlog"
+        "label": "Triage Screening Backlog"
       },
       {
         "value": "unattributed operational delay",
-        "label": "Unattributed operational delay"
+        "label": "Unattributed Operational Delay"
       },
       {
         "value": "unit-level bed-flow bottleneck",
-        "label": "Unit-level bed-flow bottleneck"
+        "label": "Unit-Level Bed-Flow Bottleneck"
       },
       {
         "value": "vulnerable patient porter wait",
-        "label": "Vulnerable patient porter wait"
+        "label": "Vulnerable Patient Porter Wait"
       }
     ],
-    "unit_id": [
+    "filter_unit": [
       {
         "value": "acute_medicine",
         "label": "Acute Medicine"
@@ -158,7 +158,7 @@
         "label": "Transitional Care"
       }
     ],
-    "service_line": [
+    "filter_service_line": [
       {
         "value": "cardiology",
         "label": "Cardiology"
@@ -184,7 +184,7 @@
         "label": "Surgery"
       }
     ],
-    "shift_name": [
+    "filter_shift": [
       {
         "value": "day",
         "label": "Day"
@@ -198,7 +198,7 @@
         "label": "Night"
       }
     ],
-    "priority": [
+    "filter_priority": [
       {
         "value": "high",
         "label": "High"
@@ -212,7 +212,7 @@
         "label": "Urgent"
       }
     ],
-    "recommended_owner": [
+    "filter_owner": [
       {
         "value": "cardiology_diagnostics_lead",
         "label": "Cardiology Diagnostics Lead"
@@ -654,7 +654,7 @@
     ]
   },
   "diagnostics_heavy": {
-    "signal_family": [
+    "filter_signal_family": [
       {
         "value": "alc_community_capacity",
         "label": "Alc Community Capacity"
@@ -700,77 +700,77 @@
         "label": "Weekend Flow Gap"
       }
     ],
-    "delay_reason": [
+    "filter_delay_reason": [
       {
         "value": "ALC placement wait",
-        "label": "Alc placement wait"
+        "label": "Alc Placement Wait"
       },
       {
         "value": "blood testing turnaround delay",
-        "label": "Blood testing turnaround delay"
+        "label": "Blood Testing Turnaround Delay"
       },
       {
         "value": "diagnostic sign-off stall",
-        "label": "Diagnostic sign-off stall"
+        "label": "Diagnostic Sign-Off Stall"
       },
       {
         "value": "discharge documentation readiness wait",
-        "label": "Discharge documentation readiness wait"
+        "label": "Discharge Documentation Readiness Wait"
       },
       {
         "value": "ECG availability delay",
-        "label": "Ecg availability delay"
+        "label": "Ecg Availability Delay"
       },
       {
         "value": "Friday/weekend discharge gap",
-        "label": "Friday/weekend discharge gap"
+        "label": "Friday / Weekend Discharge Gap"
       },
       {
         "value": "home care confirmation wait",
-        "label": "Home care confirmation wait"
+        "label": "Home Care Confirmation Wait"
       },
       {
         "value": "nurse discharge screening wait",
-        "label": "Nurse discharge screening wait"
+        "label": "Nurse Discharge Screening Wait"
       },
       {
         "value": "radiology CT turnaround delay",
-        "label": "Radiology ct turnaround delay"
+        "label": "Radiology Ct Turnaround Delay"
       },
       {
         "value": "radiology MRI access delay",
-        "label": "Radiology mri access delay"
+        "label": "Radiology Mri Access Delay"
       },
       {
         "value": "radiology ultrasound turnaround delay",
-        "label": "Radiology ultrasound turnaround delay"
+        "label": "Radiology Ultrasound Turnaround Delay"
       },
       {
         "value": "social work assessment wait",
-        "label": "Social work assessment wait"
+        "label": "Social Work Assessment Wait"
       },
       {
         "value": "therapy assessment stall",
-        "label": "Therapy assessment stall"
+        "label": "Therapy Assessment Stall"
       },
       {
         "value": "transport delay",
-        "label": "Transport delay"
+        "label": "Transport Delay"
       },
       {
         "value": "unattributed operational delay",
-        "label": "Unattributed operational delay"
+        "label": "Unattributed Operational Delay"
       },
       {
         "value": "unit-level bed-flow bottleneck",
-        "label": "Unit-level bed-flow bottleneck"
+        "label": "Unit-Level Bed-Flow Bottleneck"
       },
       {
         "value": "vulnerable patient porter wait",
-        "label": "Vulnerable patient porter wait"
+        "label": "Vulnerable Patient Porter Wait"
       }
     ],
-    "unit_id": [
+    "filter_unit": [
       {
         "value": "acute_medicine",
         "label": "Acute Medicine"
@@ -796,7 +796,7 @@
         "label": "Transitional Care"
       }
     ],
-    "service_line": [
+    "filter_service_line": [
       {
         "value": "cardiology",
         "label": "Cardiology"
@@ -822,7 +822,7 @@
         "label": "Surgery"
       }
     ],
-    "shift_name": [
+    "filter_shift": [
       {
         "value": "day",
         "label": "Day"
@@ -836,7 +836,7 @@
         "label": "Night"
       }
     ],
-    "priority": [
+    "filter_priority": [
       {
         "value": "high",
         "label": "High"
@@ -850,7 +850,7 @@
         "label": "Urgent"
       }
     ],
-    "recommended_owner": [
+    "filter_owner": [
       {
         "value": "cardiology_diagnostics_lead",
         "label": "Cardiology Diagnostics Lead"
@@ -1288,7 +1288,7 @@
     ]
   },
   "weekend_flow_gap": {
-    "signal_family": [
+    "filter_signal_family": [
       {
         "value": "alc_community_capacity",
         "label": "Alc Community Capacity"
@@ -1342,89 +1342,89 @@
         "label": "Weekend Flow Gap"
       }
     ],
-    "delay_reason": [
+    "filter_delay_reason": [
       {
         "value": "ALC placement wait",
-        "label": "Alc placement wait"
+        "label": "Alc Placement Wait"
       },
       {
         "value": "blood testing turnaround delay",
-        "label": "Blood testing turnaround delay"
+        "label": "Blood Testing Turnaround Delay"
       },
       {
         "value": "diagnostic sign-off stall",
-        "label": "Diagnostic sign-off stall"
+        "label": "Diagnostic Sign-Off Stall"
       },
       {
         "value": "discharge documentation readiness wait",
-        "label": "Discharge documentation readiness wait"
+        "label": "Discharge Documentation Readiness Wait"
       },
       {
         "value": "ECG availability delay",
-        "label": "Ecg availability delay"
+        "label": "Ecg Availability Delay"
       },
       {
         "value": "Friday/weekend discharge gap",
-        "label": "Friday/weekend discharge gap"
+        "label": "Friday / Weekend Discharge Gap"
       },
       {
         "value": "home care confirmation wait",
-        "label": "Home care confirmation wait"
+        "label": "Home Care Confirmation Wait"
       },
       {
         "value": "interpreter availability wait",
-        "label": "Interpreter availability wait"
+        "label": "Interpreter Availability Wait"
       },
       {
         "value": "nurse discharge screening wait",
-        "label": "Nurse discharge screening wait"
+        "label": "Nurse Discharge Screening Wait"
       },
       {
         "value": "pharmacy discharge delay",
-        "label": "Pharmacy discharge delay"
+        "label": "Pharmacy Discharge Delay"
       },
       {
         "value": "radiology CT turnaround delay",
-        "label": "Radiology ct turnaround delay"
+        "label": "Radiology Ct Turnaround Delay"
       },
       {
         "value": "radiology MRI access delay",
-        "label": "Radiology mri access delay"
+        "label": "Radiology Mri Access Delay"
       },
       {
         "value": "radiology ultrasound turnaround delay",
-        "label": "Radiology ultrasound turnaround delay"
+        "label": "Radiology Ultrasound Turnaround Delay"
       },
       {
         "value": "social work assessment wait",
-        "label": "Social work assessment wait"
+        "label": "Social Work Assessment Wait"
       },
       {
         "value": "therapy assessment stall",
-        "label": "Therapy assessment stall"
+        "label": "Therapy Assessment Stall"
       },
       {
         "value": "transport delay",
-        "label": "Transport delay"
+        "label": "Transport Delay"
       },
       {
         "value": "triage screening backlog",
-        "label": "Triage screening backlog"
+        "label": "Triage Screening Backlog"
       },
       {
         "value": "unattributed operational delay",
-        "label": "Unattributed operational delay"
+        "label": "Unattributed Operational Delay"
       },
       {
         "value": "unit-level bed-flow bottleneck",
-        "label": "Unit-level bed-flow bottleneck"
+        "label": "Unit-Level Bed-Flow Bottleneck"
       },
       {
         "value": "vulnerable patient porter wait",
-        "label": "Vulnerable patient porter wait"
+        "label": "Vulnerable Patient Porter Wait"
       }
     ],
-    "unit_id": [
+    "filter_unit": [
       {
         "value": "acute_medicine",
         "label": "Acute Medicine"
@@ -1450,7 +1450,7 @@
         "label": "Transitional Care"
       }
     ],
-    "service_line": [
+    "filter_service_line": [
       {
         "value": "cardiology",
         "label": "Cardiology"
@@ -1476,7 +1476,7 @@
         "label": "Surgery"
       }
     ],
-    "shift_name": [
+    "filter_shift": [
       {
         "value": "day",
         "label": "Day"
@@ -1490,7 +1490,7 @@
         "label": "Night"
       }
     ],
-    "priority": [
+    "filter_priority": [
       {
         "value": "high",
         "label": "High"
@@ -1504,7 +1504,7 @@
         "label": "Urgent"
       }
     ],
-    "recommended_owner": [
+    "filter_owner": [
       {
         "value": "cardiology_diagnostics_lead",
         "label": "Cardiology Diagnostics Lead"
