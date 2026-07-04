@@ -1,0 +1,30 @@
+{
+  "title": "Discharge Delay Flags Demo",
+  "subtitle": "A GitHub Pages case study for finding the few discharge-delay signals worth acting on today.",
+  "default_scenario": "balanced",
+  "generated_at_utc": "2026-07-04T00:26:56+00:00",
+  "source": "Curated synthetic sample data in sample_data/. No PHI or real patient data.",
+  "method_note": "Raw encounter-level signals are compressed into a small shift-level action agenda so operational teams see a few meaningful signals, not a wall of normal friction.",
+  "metric_glossary": [
+    {
+      "metric": "Out-of-bounds signal rate",
+      "meaning": "Share of encounters that crossed at least one robust delay threshold."
+    },
+    {
+      "metric": "Management signals per shift",
+      "meaning": "Average number of grouped signals a shift team would review."
+    },
+    {
+      "metric": "Recoverable bed-hours",
+      "meaning": "Estimated bed-hours above expected operational thresholds, used to rank impact."
+    },
+    {
+      "metric": "Compression ratio",
+      "meaning": "How many raw patient-level signals are summarized into each management signal."
+    },
+    {
+      "metric": "Control-chart signal",
+      "meaning": "A day where unit-level delay activity is above expected variation."
+    }
+  ]
+}
