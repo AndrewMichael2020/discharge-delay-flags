@@ -2,7 +2,7 @@
   {
     "scenario_mode": "balanced",
     "label": "Balanced operating day",
-    "description": "Mixed operational pressure in one large synthetic hospital over 90 days.",
+    "description": "Mixed operating pressure across discharge logistics, community capacity, diagnostics, and weekend flow.",
     "admissions": 9900,
     "journey_events": 74180,
     "raw_oob_delay_signals": 811,
@@ -24,7 +24,7 @@
   {
     "scenario_mode": "diagnostics_heavy",
     "label": "Diagnostics pressure",
-    "description": "A stress case where imaging, lab, ECG, and sign-off timing drive more recoverable bed-hours.",
+    "description": "A stress view where imaging, lab, ECG, and diagnostic sign-off signals carry more recoverable bed-hours.",
     "admissions": 9900,
     "journey_events": 75070,
     "raw_oob_delay_signals": 1467,
@@ -46,7 +46,7 @@
   {
     "scenario_mode": "weekend_flow_gap",
     "label": "Weekend flow gap",
-    "description": "A stress case where Friday and weekend service gaps dominate the action story.",
+    "description": "A stress view where Friday/weekend service timing dominates recoverable bed-hour impact.",
     "admissions": 9900,
     "journey_events": 73812,
     "raw_oob_delay_signals": 910,

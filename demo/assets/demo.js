@@ -1,167 +1,93 @@
 const data = window.DEMO_DATA;
-let activeScenario = data?.demo_summary?.default_scenario || 'balanced';
-
+let state = { scenario: data?.demo_summary?.default_scenario || 'balanced', filters: {} };
 const $ = (id) => document.getElementById(id);
 const fmtInt = (n) => Number(n || 0).toLocaleString();
 const fmtPct = (n) => `${(Number(n || 0) * 100).toFixed(1)}%`;
-const fmtHours = (n) => `${Number(n || 0).toLocaleString(undefined, { maximumFractionDigits: 0 })}h`;
-const fmtNum = (n, digits = 2) => Number(n || 0).toFixed(digits);
-const titleCase = (s) => String(s || '').replaceAll('_', ' ').replace(/\b\w/g, (m) => m.toUpperCase());
-
-function scenario() {
-  return data.scenarios.find((s) => s.scenario_mode === activeScenario) || data.scenarios[0];
+const fmtHours = (n) => `${Number(n || 0).toLocaleString(undefined,{maximumFractionDigits:0})}h`;
+const fmtNum = (n,d=2) => Number(n || 0).toFixed(d);
+const titleCase = (s) => String(s || '').replaceAll('_',' ').replace(/\b\w/g, m => m.toUpperCase());
+const filterDefs = [
+  ['signal_family','Signal family'], ['delay_reason','Delay reason'], ['unit_id','Unit'], ['service_line','Service line'],
+  ['shift_name','Shift'], ['priority','Priority'], ['recommended_owner','Owner']
+];
+function scenario(){ return data.scenarios.find(s => s.scenario_mode === state.scenario) || data.scenarios[0]; }
+function labelFor(key, value){ const opt=(data.filters[state.scenario]?.[key]||[]).find(o=>o.value===value); return opt?.label || titleCase(value); }
+function setFilter(key, value){ if(value) state.filters[key]=value; else delete state.filters[key]; renderAll(false); }
+function rowMatches(row){
+  for(const [key] of filterDefs){ if(state.filters[key] && String(row[key]) !== String(state.filters[key])) return false; }
+  if(state.filters.startDate && String(row.shift_date || row.date || '') < state.filters.startDate) return false;
+  if(state.filters.endDate && String(row.shift_date || row.date || '') > state.filters.endDate) return false;
+  return true;
 }
-
-function renderTabs() {
-  const tabs = $('scenarioTabs');
-  tabs.innerHTML = '';
-  data.scenarios.forEach((s) => {
-    const button = document.createElement('button');
-    button.className = `scenario-tab${s.scenario_mode === activeScenario ? ' active' : ''}`;
-    button.type = 'button';
-    button.textContent = s.label;
-    button.setAttribute('role', 'tab');
-    button.setAttribute('aria-selected', s.scenario_mode === activeScenario ? 'true' : 'false');
-    button.addEventListener('click', () => {
-      activeScenario = s.scenario_mode;
-      renderAll();
-    });
-    tabs.appendChild(button);
-  });
+function currentRows(){
+  return {
+    worklist: (data.management_worklist[state.scenario]||[]).filter(rowMatches),
+    actions: (data.action_examples[state.scenario]||[]).filter(rowMatches),
+  };
 }
-
-function renderScenarioSummary() {
-  const s = scenario();
-  $('scenarioSummary').innerHTML = `
-    <p class="eyebrow">Selected case</p>
-    <h3>${s.label}</h3>
-    <p>${s.description}</p>
-    <div class="summary-list">
-      <div class="summary-row"><span>Detected pattern</span><strong>${titleCase(s.detected_scenario)}</strong></div>
-      <div class="summary-row"><span>Top family</span><strong>${titleCase(s.top_signal_family)}</strong></div>
-      <div class="summary-row"><span>Family share</span><strong>${fmtPct(s.top_family_share)}</strong></div>
-      <div class="summary-row"><span>Compression</span><strong>${fmtNum(s.compression_ratio, 2)}x</strong></div>
-    </div>
-  `;
-  $('statusPill').innerHTML = `Dashboard status<strong>${s.management_signal_groups} grouped signals</strong>`;
+function renderTabs(){
+  $('scenarioTabs').innerHTML = data.scenarios.map(s => `<button class="scenario-tab ${s.scenario_mode===state.scenario?'active':''}" data-scenario="${s.scenario_mode}" type="button">${s.label}</button>`).join('');
+  document.querySelectorAll('[data-scenario]').forEach(btn => btn.onclick = () => { state.scenario=btn.dataset.scenario; state.filters={}; renderAll(); });
 }
-
-function renderKpis() {
-  const s = scenario();
-  const cards = [
-    ['Encounters', fmtInt(s.admissions), '90-day synthetic case window'],
-    ['OOB rate', fmtPct(s.oob_signal_rate), 'Encounters crossing a delay threshold'],
-    ['Signals / shift', fmtNum(s.avg_signal_groups_per_shift, 2), 'Grouped agenda items per shift'],
-    ['Raw signals', fmtInt(s.raw_oob_delay_signals), 'Patient-level evidence before grouping'],
-    ['Top reason', s.top_management_delay_reason, 'Highest-ranked management signal'],
-    ['ROC-AUC', fmtNum(s.roc_auc, 3), 'Local risk baseline'],
-  ];
-  $('kpiGrid').innerHTML = cards.map(([label, value, note]) => `
-    <article class="kpi-card">
-      <span class="kpi-value" title="${value}">${value}</span>
-      <span class="kpi-label">${label}</span>
-      <p>${note}</p>
-    </article>
-  `).join('');
+function renderFilterControls(){
+  const options = data.filters[state.scenario] || {};
+  const selects = filterDefs.map(([key,label]) => `<div class="filter-field"><label for="f_${key}">${label}</label><select id="f_${key}" data-filter="${key}"><option value="">All</option>${(options[key]||[]).map(o=>`<option value="${o.value}" ${state.filters[key]===o.value?'selected':''}>${o.label}</option>`).join('')}</select></div>`).join('');
+  const dates = options.date || [];
+  const minDate = dates[0]?.value || ''; const maxDate = dates[dates.length-1]?.value || '';
+  $('filterGrid').innerHTML = selects + `<div class="filter-field"><label for="startDate">Start date</label><input id="startDate" data-filter="startDate" type="date" min="${minDate}" max="${maxDate}" value="${state.filters.startDate||''}"></div><div class="filter-field"><label for="endDate">End date</label><input id="endDate" data-filter="endDate" type="date" min="${minDate}" max="${maxDate}" value="${state.filters.endDate||''}"></div><label class="check-row"><input id="signalDaysOnly" type="checkbox" ${state.filters.signalDaysOnly?'checked':''}> Control-chart signal days only</label>`;
+  document.querySelectorAll('[data-filter]').forEach(el => el.onchange = e => setFilter(e.target.dataset.filter, e.target.value));
+  $('signalDaysOnly').onchange = e => { if(e.target.checked) state.filters.signalDaysOnly='true'; else delete state.filters.signalDaysOnly; renderAll(false); };
 }
-
-function renderReasonChart() {
-  const rows = (data.delay_reasons[activeScenario] || []).slice(0, 9);
-  const max = Math.max(...rows.map((r) => Number(r.recoverable_bed_hours || 0)), 1);
-  $('reasonChart').innerHTML = rows.map((r) => {
-    const pct = Math.max(3, Number(r.recoverable_bed_hours || 0) / max * 100);
-    return `
-      <div class="bar-row" title="${r.flagged_cases} cases, ${titleCase(r.signal_family)}">
-        <div class="bar-label">${r.delay_reason}</div>
-        <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
-        <div class="bar-value">${fmtHours(r.recoverable_bed_hours)}</div>
-      </div>
-    `;
-  }).join('');
+function renderChips(){
+  const chips=[];
+  for(const [key,label] of filterDefs){ if(state.filters[key]) chips.push(`<span class="chip">${label}: ${labelFor(key,state.filters[key])}</span>`); }
+  if(state.filters.startDate) chips.push(`<span class="chip">From ${state.filters.startDate}</span>`);
+  if(state.filters.endDate) chips.push(`<span class="chip">To ${state.filters.endDate}</span>`);
+  if(state.filters.signalDaysOnly) chips.push(`<span class="chip">Signal days only</span>`);
+  $('activeChips').innerHTML = chips.length ? chips.join('') : '<span class="chip">All records</span>';
 }
-
-function renderControlChart() {
-  const rows = data.control_chart[activeScenario] || [];
-  const svg = $('controlChart');
-  const width = 520;
-  const height = 292;
-  const pad = { top: 18, right: 18, bottom: 28, left: 38 };
-  const maxY = Math.max(...rows.map((r) => Number(r.oob_rate || 0)), ...rows.map((r) => Number(r.upper_control_limit || 0)), 0.1);
-  const x = (i) => pad.left + (i / Math.max(rows.length - 1, 1)) * (width - pad.left - pad.right);
-  const y = (v) => height - pad.bottom - (Number(v || 0) / maxY) * (height - pad.top - pad.bottom);
-  const path = (field) => rows.map((r, i) => `${i === 0 ? 'M' : 'L'} ${x(i)} ${y(r[field])}`).join(' ');
-  const gridLines = [0, 0.25, 0.5, 0.75, 1].map((g) => {
-    const yy = pad.top + g * (height - pad.top - pad.bottom);
-    return `<line x1="${pad.left}" y1="${yy}" x2="${width - pad.right}" y2="${yy}" stroke="#e8edf3" />`;
-  }).join('');
-  svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-  svg.innerHTML = `
-    <rect x="0" y="0" width="${width}" height="${height}" rx="10" fill="#ffffff"></rect>
-    ${gridLines}
-    <line x1="${pad.left}" y1="${height - pad.bottom}" x2="${width - pad.right}" y2="${height - pad.bottom}" stroke="#cfd8e3"></line>
-    <line x1="${pad.left}" y1="${pad.top}" x2="${pad.left}" y2="${height - pad.bottom}" stroke="#cfd8e3"></line>
-    <path d="${path('upper_control_limit')}" fill="none" stroke="#c84e3a" stroke-width="2" stroke-dasharray="5 5"></path>
-    <path d="${path('centerline_oob_rate')}" fill="none" stroke="#1f7a55" stroke-width="2" stroke-dasharray="3 4"></path>
-    <path d="${path('oob_rate')}" fill="none" stroke="#1769aa" stroke-width="2.5"></path>
-    ${rows.map((r, i) => `<circle cx="${x(i)}" cy="${y(r.oob_rate)}" r="${r.control_chart_signal_flag ? 4 : 2.2}" fill="${r.control_chart_signal_flag ? '#c84e3a' : '#1769aa'}"><title>${r.date}: ${fmtPct(r.oob_rate)}</title></circle>`).join('')}
-    <text x="${pad.left}" y="${height - 8}" fill="#637083" font-size="10">90-day window</text>
-    <text x="${width - pad.right}" y="${pad.top + 2}" text-anchor="end" fill="#637083" font-size="10">OOB rate</text>
-  `;
+function renderSummary(){
+  const s=scenario(); const rows=currentRows();
+  $('scenarioSummary').innerHTML = `<p class="eyebrow">Selected case</p><h3>${s.label}</h3><p>${s.description}</p><div class="summary-list"><div class="summary-row"><span>Pattern</span><strong>${titleCase(s.detected_scenario)}</strong></div><div class="summary-row"><span>Top family</span><strong>${titleCase(s.top_signal_family)}</strong></div><div class="summary-row"><span>Filtered groups</span><strong>${fmtInt(rows.worklist.length)}</strong></div><div class="summary-row"><span>Filtered actions</span><strong>${fmtInt(rows.actions.length)}</strong></div></div>`;
+  $('statusPill').innerHTML = `Filtered dashboard<strong>${fmtInt(rows.worklist.length)} groups / ${fmtInt(rows.actions.length)} actions</strong>`;
 }
-
-function cell(value, className = '') {
-  return `<td class="${className}" title="${String(value ?? '').replaceAll('"', '&quot;')}">${value ?? ''}</td>`;
+function renderKpis(){
+  const s=scenario(); const rows=currentRows();
+  const bedHours = rows.worklist.reduce((a,r)=>a+Number(r.recoverable_bed_hours||0),0);
+  const cases = rows.worklist.reduce((a,r)=>a+Number(r.flagged_cases||0),0);
+  const reasons = new Set(rows.worklist.map(r=>r.delay_reason)).size;
+  const signalDays = filteredControlRows().filter(r=>r.control_chart_signal_flag).length;
+  const cards = [['Encounters',fmtInt(s.admissions),'Scenario denominator'],['OOB rate',fmtPct(s.oob_signal_rate),'Scenario-level rate'],['Groups',fmtInt(rows.worklist.length),'After filters'],['Actions',fmtInt(rows.actions.length),'After filters'],['Cases',fmtInt(cases),'Flagged in groups'],['Bed-hours',fmtHours(bedHours),'Recoverable estimate'],['Reasons',fmtInt(reasons),'Visible reasons'],['Signal days',fmtInt(signalDays),'Control-chart days']];
+  $('kpiGrid').innerHTML = cards.map(c=>`<article class="kpi-card"><span class="kpi-value" title="${c[1]}">${c[1]}</span><span class="kpi-label">${c[0]}</span><p>${c[2]}</p></article>`).join('');
 }
-
-function renderTable(id, rows, columns) {
-  const table = $(id);
-  table.innerHTML = `
-    <thead><tr>${columns.map((c) => `<th>${c.label}</th>`).join('')}</tr></thead>
-    <tbody>${rows.map((r) => `<tr>${columns.map((c) => {
-      const value = c.format ? c.format(r[c.key], r) : (r[c.key] ?? '');
-      return cell(value, c.truncate ? 'truncate' : '');
-    }).join('')}</tr>`).join('')}</tbody>
-  `;
+function renderReasonChart(){
+  const rows=currentRows().worklist;
+  const by={}; rows.forEach(r=>{ const k=r.delay_reason||'Unattributed'; by[k] ||= {delay_reason:k, recoverable_bed_hours:0, flagged_cases:0}; by[k].recoverable_bed_hours += Number(r.recoverable_bed_hours||0); by[k].flagged_cases += Number(r.flagged_cases||0); });
+  const list=Object.values(by).sort((a,b)=>b.recoverable_bed_hours-a.recoverable_bed_hours).slice(0,10);
+  const max=Math.max(...list.map(r=>r.recoverable_bed_hours),1);
+  $('reasonCount').textContent = `${fmtInt(list.length)} visible reasons`;
+  $('reasonChart').innerHTML = list.length ? list.map(r=>{ const pct=Math.max(3,r.recoverable_bed_hours/max*100); return `<div class="bar-row"><div class="bar-label" title="${r.delay_reason}">${r.delay_reason}</div><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><div class="bar-value">${fmtHours(r.recoverable_bed_hours)}</div></div>`; }).join('') : '<p>No records match the current filters.</p>';
 }
-
-function renderTables() {
-  renderTable('worklistTable', (data.management_worklist[activeScenario] || []).slice(0, 8), [
-    { key: 'signal_group_rank', label: 'Rank' },
-    { key: 'shift_date', label: 'Date' },
-    { key: 'shift_name', label: 'Shift', format: titleCase },
-    { key: 'delay_reason', label: 'Delay reason', truncate: true },
-    { key: 'flagged_cases', label: 'Cases' },
-    { key: 'recoverable_bed_hours', label: 'Bed-hours', format: fmtHours },
-    { key: 'recommended_owner', label: 'Owner', format: titleCase, truncate: true },
-  ]);
-  renderTable('actionTable', (data.action_examples[activeScenario] || []).slice(0, 8), [
-    { key: 'executive_rank', label: 'Rank' },
-    { key: 'priority', label: 'Priority', format: (v) => `<span class="priority-pill">${titleCase(v)}</span>` },
-    { key: 'delay_reason', label: 'Delay reason', truncate: true },
-    { key: 'unit_id', label: 'Unit', format: titleCase },
-    { key: 'evidence_summary', label: 'Evidence', truncate: true },
-    { key: 'recommended_action', label: 'Next step', truncate: true },
-  ]);
+function filteredControlRows(){
+  let rows = (data.control_chart[state.scenario]||[]).filter(r => (!state.filters.startDate || r.date >= state.filters.startDate) && (!state.filters.endDate || r.date <= state.filters.endDate));
+  if(state.filters.signalDaysOnly) rows = rows.filter(r => r.control_chart_signal_flag);
+  return rows;
 }
-
-function renderGlossary() {
-  $('glossaryGrid').innerHTML = data.demo_summary.metric_glossary.map((g) => `
-    <article class="glossary-card"><strong>${g.metric}</strong><span>${g.meaning}</span></article>
-  `).join('');
+function renderControlChart(){
+  const rows=filteredControlRows(); const svg=$('controlChart'); const w=560,h=300,p={t:18,r:20,b:30,l:42};
+  const maxY=Math.max(...rows.map(r=>Number(r.oob_rate||0)),...rows.map(r=>Number(r.upper_control_limit||0)),0.1);
+  const x=i=>p.l+(i/Math.max(rows.length-1,1))*(w-p.l-p.r); const y=v=>h-p.b-(Number(v||0)/maxY)*(h-p.t-p.b);
+  const path=f=>rows.map((r,i)=>`${i?'L':'M'} ${x(i)} ${y(r[f])}`).join(' ');
+  const ticks=[0,.25,.5,.75,1];
+  svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
+  svg.innerHTML = `<rect width="${w}" height="${h}" rx="7" fill="#fff"/>${ticks.map(t=>`<line x1="${p.l}" y1="${p.t+t*(h-p.t-p.b)}" x2="${w-p.r}" y2="${p.t+t*(h-p.t-p.b)}" stroke="#e8edf3"/>`).join('')}<line x1="${p.l}" y1="${h-p.b}" x2="${w-p.r}" y2="${h-p.b}" stroke="#cfd8e3"/><line x1="${p.l}" y1="${p.t}" x2="${p.l}" y2="${h-p.b}" stroke="#cfd8e3"/><path d="${path('upper_control_limit')}" fill="none" stroke="#c84e3a" stroke-width="2" stroke-dasharray="5 5"/><path d="${path('centerline_oob_rate')}" fill="none" stroke="#14866d" stroke-width="2" stroke-dasharray="3 4"/><path d="${path('oob_rate')}" fill="none" stroke="#1565a9" stroke-width="2.4"/>${rows.map((r,i)=>`<circle cx="${x(i)}" cy="${y(r.oob_rate)}" r="${r.control_chart_signal_flag?4:2.1}" fill="${r.control_chart_signal_flag?'#c84e3a':'#1565a9'}"><title>${r.date}: ${fmtPct(r.oob_rate)}</title></circle>`).join('')}<text x="${p.l}" y="${h-8}" fill="#657386" font-size="10">${fmtInt(rows.length)} days</text><text x="${w-p.r}" y="${p.t+2}" text-anchor="end" fill="#657386" font-size="10">OOB rate</text>`;
 }
-
-function renderAll() {
-  renderTabs();
-  renderScenarioSummary();
-  renderKpis();
-  renderReasonChart();
-  renderControlChart();
-  renderTables();
-  renderGlossary();
+function cell(value, cls=''){ return `<td class="${cls}" title="${String(value??'').replaceAll('"','&quot;')}">${value??''}</td>`; }
+function renderTable(id, rows, columns){ $(id).innerHTML = `<thead><tr>${columns.map(c=>`<th style="width:${c.w||'auto'}">${c.label}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${columns.map(c=>cell(c.format?c.format(r[c.key],r):(r[c.key]??''),c.truncate?'truncate':'')).join('')}</tr>`).join('')}</tbody>`; }
+function renderTables(){
+  const rows=currentRows(); $('worklistCount').textContent=`${fmtInt(rows.worklist.length)} groups`; $('actionCount').textContent=`${fmtInt(rows.actions.length)} actions`;
+  renderTable('worklistTable', rows.worklist.slice(0,80), [{key:'signal_group_rank',label:'Rank',w:'48px'},{key:'shift_date',label:'Date',w:'78px'},{key:'shift_display',label:'Shift',w:'72px'},{key:'delay_reason',label:'Delay reason',truncate:true},{key:'flagged_cases',label:'Cases',w:'64px'},{key:'recoverable_bed_hours',label:'Bed-hours',format:fmtHours,w:'82px'},{key:'recommended_owner_display',label:'Owner',truncate:true}]);
+  renderTable('actionTable', rows.actions.slice(0,80), [{key:'executive_rank',label:'Rank',w:'48px'},{key:'priority_display',label:'Priority',format:v=>`<span class="priority-pill">${v}</span>`,w:'76px'},{key:'delay_reason',label:'Delay reason',truncate:true},{key:'unit_display',label:'Unit',truncate:true,w:'110px'},{key:'evidence_summary',label:'Evidence',truncate:true},{key:'recommended_action',label:'Next step',truncate:true}]);
 }
-
-if (!data) {
-  document.body.innerHTML = '<main class="panel"><h1>Demo data missing</h1><p>Run <code>python3 scripts/build_demo.py</code> to generate demo/data files.</p></main>';
-} else {
-  renderAll();
-}
+function renderAll(rebuildFilters=true){ renderTabs(); if(rebuildFilters) renderFilterControls(); renderChips(); renderSummary(); renderKpis(); renderReasonChart(); renderControlChart(); renderTables(); }
+if(!data){ document.body.innerHTML='<main class="panel"><h1>Demo data missing</h1></main>'; } else { $('clearFilters').onclick=()=>{state.filters={};renderAll();}; renderAll(); }

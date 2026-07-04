@@ -1,0 +1,180 @@
+{
+  "metrics": [
+    {
+      "metric": "Patient encounters",
+      "formula": "count(encounter_id)",
+      "meaning": "Synthetic admissions in the selected case window."
+    },
+    {
+      "metric": "OOB signal rate",
+      "formula": "raw_oob_delay_signals / patient_encounters",
+      "meaning": "Share of encounters with at least one out-of-bounds operational delay signal."
+    },
+    {
+      "metric": "Management signals per shift",
+      "formula": "management_signal_groups / total_shift_windows",
+      "meaning": "Number of grouped action signals a shift huddle needs to review."
+    },
+    {
+      "metric": "Recoverable bed-hours",
+      "formula": "sum(estimated_recoverable_bed_hours)",
+      "meaning": "Estimated excess bed-hours above expected operating thresholds."
+    },
+    {
+      "metric": "Compression ratio",
+      "formula": "raw_oob_delay_signals / management_signal_groups",
+      "meaning": "How much patient-level evidence is compressed into shift-level signals."
+    },
+    {
+      "metric": "Control-chart signal",
+      "formula": "daily_oob_rate > centerline + 3 * sigma",
+      "meaning": "A unit/day pattern above expected operating variation."
+    },
+    {
+      "metric": "Management score",
+      "formula": "0.40*bed_hours + 10*cases + 0.30*priority + 20*confidence",
+      "meaning": "Sorting score for the shift huddle worklist."
+    },
+    {
+      "metric": "Priority score",
+      "formula": "0.65*hours_above_limit + 0.55*post_ready_excess + flags",
+      "meaning": "Patient-level sorting aid, not a clinical severity score."
+    }
+  ],
+  "signals": [
+    {
+      "reason": "ALC placement wait",
+      "family": "Community capacity",
+      "owner": "Transition services lead",
+      "meaning": "Patient appears medically stable but is waiting for LTC, rehab, or alternate-level placement."
+    },
+    {
+      "reason": "Home care confirmation wait",
+      "family": "Community capacity",
+      "owner": "Home-care liaison",
+      "meaning": "Discharge depends on home-care confirmation or community support setup."
+    },
+    {
+      "reason": "Friday/weekend discharge gap",
+      "family": "Weekend flow",
+      "owner": "Site operations director",
+      "meaning": "Readiness crosses a period with reduced service availability."
+    },
+    {
+      "reason": "Therapy assessment stall",
+      "family": "Care-team assessment",
+      "owner": "Therapy services manager",
+      "meaning": "PT/OT or therapy assessment takes longer than expected for a discharge-dependent case."
+    },
+    {
+      "reason": "Transport delay",
+      "family": "Transport logistics",
+      "owner": "Patient transport coordinator",
+      "meaning": "Discharge or transfer waits on transport coordination."
+    },
+    {
+      "reason": "Vulnerable patient porter wait",
+      "family": "Transport logistics",
+      "owner": "Patient transport coordinator",
+      "meaning": "Mobility-limited or vulnerable patients wait for safe movement support."
+    },
+    {
+      "reason": "Pharmacy discharge delay",
+      "family": "Pharmacy readiness",
+      "owner": "Pharmacy operations lead",
+      "meaning": "Medication reconciliation or discharge medication readiness delays discharge."
+    },
+    {
+      "reason": "Radiology CT turnaround delay",
+      "family": "Diagnostics access",
+      "owner": "Radiology operations lead",
+      "meaning": "CT completion or reporting appears discharge-dependent and delayed."
+    },
+    {
+      "reason": "Radiology MRI access delay",
+      "family": "Diagnostics access",
+      "owner": "Radiology operations lead",
+      "meaning": "MRI access or reporting appears discharge-dependent and delayed."
+    },
+    {
+      "reason": "Blood testing turnaround delay",
+      "family": "Diagnostics access",
+      "owner": "Laboratory operations lead",
+      "meaning": "Blood collection, processing, or result release appears discharge-dependent and delayed."
+    },
+    {
+      "reason": "ECG availability delay",
+      "family": "Diagnostics access",
+      "owner": "Cardiology diagnostics lead",
+      "meaning": "ECG completion or interpretation appears discharge-dependent and delayed."
+    },
+    {
+      "reason": "Diagnostic sign-off stall",
+      "family": "Diagnostics access",
+      "owner": "Diagnostics operations lead",
+      "meaning": "Final diagnostic completion, sign-off, or consultant interpretation appears to hold discharge."
+    },
+    {
+      "reason": "Nurse discharge screening wait",
+      "family": "Nursing readiness",
+      "owner": "Nursing flow lead",
+      "meaning": "Nursing readiness checklist or discharge screening is delayed."
+    },
+    {
+      "reason": "Social work assessment wait",
+      "family": "Social support",
+      "owner": "Social work lead",
+      "meaning": "Social work assessment is delayed for a discharge-dependent case."
+    },
+    {
+      "reason": "Unattributed operational delay",
+      "family": "Unattributed",
+      "owner": "Patient flow coordinator",
+      "meaning": "A delay signal exists but no single dependency explains it."
+    }
+  ],
+  "datasets": [
+    {
+      "name": "patient_admission_events.parquet",
+      "type": "Parquet",
+      "grain": "Encounter",
+      "description": "Synthetic admission-level case facts."
+    },
+    {
+      "name": "patient_journey_events.parquet",
+      "type": "Parquet",
+      "grain": "Event",
+      "description": "Journey timestamps, transitions, and dependency events."
+    },
+    {
+      "name": "management_signal_groups.csv",
+      "type": "CSV",
+      "grain": "Shift signal",
+      "description": "Grouped huddle-ready management signals."
+    },
+    {
+      "name": "delay_resolution_actions.csv",
+      "type": "CSV",
+      "grain": "Action row",
+      "description": "Owner, evidence, priority, and suggested next step."
+    },
+    {
+      "name": "control_chart_points.csv",
+      "type": "CSV",
+      "grain": "Facility/unit/day",
+      "description": "Daily signal-rate points and review thresholds."
+    },
+    {
+      "name": "ranked_actionable_signals.csv",
+      "type": "CSV",
+      "grain": "Delay reason/unit",
+      "description": "Impact-ranked delay reasons by recoverable bed-hours."
+    },
+    {
+      "name": "prediction_metrics.json",
+      "type": "JSON",
+      "grain": "Scenario",
+      "description": "Local statistical model quality summary."
+    }
+  ]
+}

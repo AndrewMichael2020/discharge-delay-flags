@@ -7,7 +7,9 @@
       "recoverable_bed_hours": 2397.62,
       "median_priority_score": 44.585,
       "mean_confidence": 0.88,
-      "actionability_score": 1716.42
+      "actionability_score": 1716.42,
+      "signal_family_display": "Weekend Flow Gap",
+      "delay_reason_display": "Friday/weekend discharge gap"
     },
     {
       "delay_reason": "ALC placement wait",
@@ -16,7 +18,9 @@
       "recoverable_bed_hours": 1060.25,
       "median_priority_score": 48.7325,
       "mean_confidence": 0.94,
-      "actionability_score": 804.29
+      "actionability_score": 804.29,
+      "signal_family_display": "Alc Community Capacity",
+      "delay_reason_display": "Alc placement wait"
     },
     {
       "delay_reason": "home care confirmation wait",
@@ -25,7 +29,9 @@
       "recoverable_bed_hours": 1004.88,
       "median_priority_score": 19.225,
       "mean_confidence": 0.86,
-      "actionability_score": 1324.11
+      "actionability_score": 1324.11,
+      "signal_family_display": "Alc Community Capacity",
+      "delay_reason_display": "Home care confirmation wait"
     },
     {
       "delay_reason": "unattributed operational delay",
@@ -34,7 +40,9 @@
       "recoverable_bed_hours": 859.39,
       "median_priority_score": 6.2625,
       "mean_confidence": 0.45,
-      "actionability_score": 1547.28
+      "actionability_score": 1547.28,
+      "signal_family_display": "Unattributed",
+      "delay_reason_display": "Unattributed operational delay"
     },
     {
       "delay_reason": "transport delay",
@@ -43,7 +51,9 @@
       "recoverable_bed_hours": 495.95,
       "median_priority_score": 19.645,
       "mean_confidence": 0.78,
-      "actionability_score": 849.22
+      "actionability_score": 849.22,
+      "signal_family_display": "Transport Discharge Logistics",
+      "delay_reason_display": "Transport delay"
     },
     {
       "delay_reason": "radiology MRI access delay",
@@ -52,7 +62,9 @@
       "recoverable_bed_hours": 239.89,
       "median_priority_score": 27.5525,
       "mean_confidence": 0.84,
-      "actionability_score": 362.81
+      "actionability_score": 362.81,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Radiology mri access delay"
     },
     {
       "delay_reason": "therapy assessment stall",
@@ -61,7 +73,9 @@
       "recoverable_bed_hours": 183.23,
       "median_priority_score": 23.735,
       "mean_confidence": 0.82,
-      "actionability_score": 332.61
+      "actionability_score": 332.61,
+      "signal_family_display": "Care Team Assessment",
+      "delay_reason_display": "Therapy assessment stall"
     },
     {
       "delay_reason": "nurse discharge screening wait",
@@ -70,7 +84,9 @@
       "recoverable_bed_hours": 160.12,
       "median_priority_score": 30.315,
       "mean_confidence": 0.8,
-      "actionability_score": 304.64
+      "actionability_score": 304.64,
+      "signal_family_display": "Nursing Discharge Readiness",
+      "delay_reason_display": "Nurse discharge screening wait"
     },
     {
       "delay_reason": "diagnostic sign-off stall",
@@ -79,7 +95,9 @@
       "recoverable_bed_hours": 158.1,
       "median_priority_score": 23.5,
       "mean_confidence": 0.72,
-      "actionability_score": 265.99
+      "actionability_score": 265.99,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Diagnostic sign-off stall"
     },
     {
       "delay_reason": "social work assessment wait",
@@ -88,7 +106,9 @@
       "recoverable_bed_hours": 125.48,
       "median_priority_score": 40.495,
       "mean_confidence": 0.79,
-      "actionability_score": 253.9
+      "actionability_score": 253.9,
+      "signal_family_display": "Social Support Readiness",
+      "delay_reason_display": "Social work assessment wait"
     },
     {
       "delay_reason": "radiology CT turnaround delay",
@@ -97,7 +117,9 @@
       "recoverable_bed_hours": 78.84,
       "median_priority_score": 27.1,
       "mean_confidence": 0.82,
-      "actionability_score": 223.98
+      "actionability_score": 223.98,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Radiology ct turnaround delay"
     },
     {
       "delay_reason": "vulnerable patient porter wait",
@@ -106,7 +128,97 @@
       "recoverable_bed_hours": 71.42,
       "median_priority_score": 17.64,
       "mean_confidence": 0.81,
-      "actionability_score": 203.43
+      "actionability_score": 203.43,
+      "signal_family_display": "Vulnerable Patient Flow",
+      "delay_reason_display": "Vulnerable patient porter wait"
+    },
+    {
+      "delay_reason": "blood testing turnaround delay",
+      "signal_family": "diagnostics_access",
+      "flagged_cases": 22,
+      "recoverable_bed_hours": 48.43,
+      "median_priority_score": 4.5525,
+      "mean_confidence": 0.79,
+      "actionability_score": 242.61,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Blood testing turnaround delay"
+    },
+    {
+      "delay_reason": "discharge documentation readiness wait",
+      "signal_family": "documentation_readiness",
+      "flagged_cases": 8,
+      "recoverable_bed_hours": 34.57,
+      "median_priority_score": 14.4175,
+      "mean_confidence": 0.75,
+      "actionability_score": 127.53,
+      "signal_family_display": "Documentation Readiness",
+      "delay_reason_display": "Discharge documentation readiness wait"
+    },
+    {
+      "delay_reason": "unit-level bed-flow bottleneck",
+      "signal_family": "unit_flow_capacity",
+      "flagged_cases": 27,
+      "recoverable_bed_hours": 30.37,
+      "median_priority_score": 8.0,
+      "mean_confidence": 0.62,
+      "actionability_score": 241.01,
+      "signal_family_display": "Unit Flow Capacity",
+      "delay_reason_display": "Unit-level bed-flow bottleneck"
+    },
+    {
+      "delay_reason": "triage screening backlog",
+      "signal_family": "front_door_screening",
+      "flagged_cases": 7,
+      "recoverable_bed_hours": 25.8,
+      "median_priority_score": 7.66,
+      "mean_confidence": 0.76,
+      "actionability_score": 130.93,
+      "signal_family_display": "Front Door Screening",
+      "delay_reason_display": "Triage screening backlog"
+    },
+    {
+      "delay_reason": "pharmacy discharge delay",
+      "signal_family": "pharmacy_discharge_readiness",
+      "flagged_cases": 9,
+      "recoverable_bed_hours": 17.05,
+      "median_priority_score": 12.4875,
+      "mean_confidence": 0.74,
+      "actionability_score": 126.36,
+      "signal_family_display": "Pharmacy Discharge Readiness",
+      "delay_reason_display": "Pharmacy discharge delay"
+    },
+    {
+      "delay_reason": "ECG availability delay",
+      "signal_family": "diagnostics_access",
+      "flagged_cases": 6,
+      "recoverable_bed_hours": 10.21,
+      "median_priority_score": 10.73,
+      "mean_confidence": 0.78,
+      "actionability_score": 108.48,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Ecg availability delay"
+    },
+    {
+      "delay_reason": "radiology ultrasound turnaround delay",
+      "signal_family": "diagnostics_access",
+      "flagged_cases": 3,
+      "recoverable_bed_hours": 9.61,
+      "median_priority_score": 18.04,
+      "mean_confidence": 0.8,
+      "actionability_score": 76.91,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Radiology ultrasound turnaround delay"
+    },
+    {
+      "delay_reason": "interpreter availability wait",
+      "signal_family": "social_support_readiness",
+      "flagged_cases": 1,
+      "recoverable_bed_hours": 2.33,
+      "median_priority_score": 4.34,
+      "mean_confidence": 0.74,
+      "actionability_score": 21.22,
+      "signal_family_display": "Social Support Readiness",
+      "delay_reason_display": "Interpreter availability wait"
     }
   ],
   "diagnostics_heavy": [
@@ -117,7 +229,9 @@
       "recoverable_bed_hours": 4804.45,
       "median_priority_score": 57.0475,
       "mean_confidence": 0.84,
-      "actionability_score": 2749.56
+      "actionability_score": 2749.56,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Radiology mri access delay"
     },
     {
       "delay_reason": "home care confirmation wait",
@@ -126,7 +240,9 @@
       "recoverable_bed_hours": 3998.06,
       "median_priority_score": 34.16,
       "mean_confidence": 0.86,
-      "actionability_score": 2981.27
+      "actionability_score": 2981.27,
+      "signal_family_display": "Alc Community Capacity",
+      "delay_reason_display": "Home care confirmation wait"
     },
     {
       "delay_reason": "unattributed operational delay",
@@ -135,7 +251,9 @@
       "recoverable_bed_hours": 3856.47,
       "median_priority_score": 31.4175,
       "mean_confidence": 0.45,
-      "actionability_score": 2682.09
+      "actionability_score": 2682.09,
+      "signal_family_display": "Unattributed",
+      "delay_reason_display": "Unattributed operational delay"
     },
     {
       "delay_reason": "transport delay",
@@ -144,7 +262,9 @@
       "recoverable_bed_hours": 3442.7,
       "median_priority_score": 32.355,
       "mean_confidence": 0.78,
-      "actionability_score": 2480.22
+      "actionability_score": 2480.22,
+      "signal_family_display": "Transport Discharge Logistics",
+      "delay_reason_display": "Transport delay"
     },
     {
       "delay_reason": "radiology CT turnaround delay",
@@ -153,7 +273,9 @@
       "recoverable_bed_hours": 3437.46,
       "median_priority_score": 42.97,
       "mean_confidence": 0.82,
-      "actionability_score": 2352.56
+      "actionability_score": 2352.56,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Radiology ct turnaround delay"
     },
     {
       "delay_reason": "blood testing turnaround delay",
@@ -162,7 +284,9 @@
       "recoverable_bed_hours": 2618.91,
       "median_priority_score": 35.43,
       "mean_confidence": 0.79,
-      "actionability_score": 1928.68
+      "actionability_score": 1928.68,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Blood testing turnaround delay"
     },
     {
       "delay_reason": "diagnostic sign-off stall",
@@ -171,7 +295,9 @@
       "recoverable_bed_hours": 2230.06,
       "median_priority_score": 46.7,
       "mean_confidence": 0.72,
-      "actionability_score": 1527.6
+      "actionability_score": 1527.6,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Diagnostic sign-off stall"
     },
     {
       "delay_reason": "radiology ultrasound turnaround delay",
@@ -180,7 +306,9 @@
       "recoverable_bed_hours": 1064.12,
       "median_priority_score": 32.3675,
       "mean_confidence": 0.8,
-      "actionability_score": 960.2
+      "actionability_score": 960.2,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Radiology ultrasound turnaround delay"
     },
     {
       "delay_reason": "ECG availability delay",
@@ -189,7 +317,9 @@
       "recoverable_bed_hours": 1015.87,
       "median_priority_score": 31.9575,
       "mean_confidence": 0.78,
-      "actionability_score": 941.11
+      "actionability_score": 941.11,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Ecg availability delay"
     },
     {
       "delay_reason": "Friday/weekend discharge gap",
@@ -198,7 +328,9 @@
       "recoverable_bed_hours": 652.77,
       "median_priority_score": 31.6225,
       "mean_confidence": 0.88,
-      "actionability_score": 702.95
+      "actionability_score": 702.95,
+      "signal_family_display": "Weekend Flow Gap",
+      "delay_reason_display": "Friday/weekend discharge gap"
     },
     {
       "delay_reason": "unit-level bed-flow bottleneck",
@@ -207,7 +339,9 @@
       "recoverable_bed_hours": 199.69,
       "median_priority_score": 63.7725,
       "mean_confidence": 0.62,
-      "actionability_score": 219.41
+      "actionability_score": 219.41,
+      "signal_family_display": "Unit Flow Capacity",
+      "delay_reason_display": "Unit-level bed-flow bottleneck"
     },
     {
       "delay_reason": "nurse discharge screening wait",
@@ -216,7 +350,97 @@
       "recoverable_bed_hours": 152.61,
       "median_priority_score": 25.025,
       "mean_confidence": 0.8,
-      "actionability_score": 255.97
+      "actionability_score": 255.97,
+      "signal_family_display": "Nursing Discharge Readiness",
+      "delay_reason_display": "Nurse discharge screening wait"
+    },
+    {
+      "delay_reason": "ALC placement wait",
+      "signal_family": "alc_community_capacity",
+      "flagged_cases": 7,
+      "recoverable_bed_hours": 68.83,
+      "median_priority_score": 32.67,
+      "mean_confidence": 0.94,
+      "actionability_score": 166.82,
+      "signal_family_display": "Alc Community Capacity",
+      "delay_reason_display": "Alc placement wait"
+    },
+    {
+      "delay_reason": "therapy assessment stall",
+      "signal_family": "care_team_assessment",
+      "flagged_cases": 15,
+      "recoverable_bed_hours": 27.0,
+      "median_priority_score": 21.545,
+      "mean_confidence": 0.82,
+      "actionability_score": 220.78,
+      "signal_family_display": "Care Team Assessment",
+      "delay_reason_display": "Therapy assessment stall"
+    },
+    {
+      "delay_reason": "social work assessment wait",
+      "signal_family": "social_support_readiness",
+      "flagged_cases": 5,
+      "recoverable_bed_hours": 24.5,
+      "median_priority_score": 24.4,
+      "mean_confidence": 0.79,
+      "actionability_score": 124.26,
+      "signal_family_display": "Social Support Readiness",
+      "delay_reason_display": "Social work assessment wait"
+    },
+    {
+      "delay_reason": "discharge documentation readiness wait",
+      "signal_family": "documentation_readiness",
+      "flagged_cases": 3,
+      "recoverable_bed_hours": 11.01,
+      "median_priority_score": 26.31,
+      "mean_confidence": 0.75,
+      "actionability_score": 62.0,
+      "signal_family_display": "Documentation Readiness",
+      "delay_reason_display": "Discharge documentation readiness wait"
+    },
+    {
+      "delay_reason": "vulnerable patient porter wait",
+      "signal_family": "vulnerable_patient_flow",
+      "flagged_cases": 9,
+      "recoverable_bed_hours": 5.36,
+      "median_priority_score": 18.25,
+      "mean_confidence": 0.81,
+      "actionability_score": 145.25,
+      "signal_family_display": "Vulnerable Patient Flow",
+      "delay_reason_display": "Vulnerable patient porter wait"
+    },
+    {
+      "delay_reason": "triage screening backlog",
+      "signal_family": "front_door_screening",
+      "flagged_cases": 4,
+      "recoverable_bed_hours": 0.0,
+      "median_priority_score": 21.065,
+      "mean_confidence": 0.76,
+      "actionability_score": 80.97,
+      "signal_family_display": "Front Door Screening",
+      "delay_reason_display": "Triage screening backlog"
+    },
+    {
+      "delay_reason": "pharmacy discharge delay",
+      "signal_family": "pharmacy_discharge_readiness",
+      "flagged_cases": 5,
+      "recoverable_bed_hours": 0.0,
+      "median_priority_score": 23.5275,
+      "mean_confidence": 0.74,
+      "actionability_score": 68.4,
+      "signal_family_display": "Pharmacy Discharge Readiness",
+      "delay_reason_display": "Pharmacy discharge delay"
+    },
+    {
+      "delay_reason": "interpreter availability wait",
+      "signal_family": "social_support_readiness",
+      "flagged_cases": 1,
+      "recoverable_bed_hours": 0.0,
+      "median_priority_score": 24.8,
+      "mean_confidence": 0.74,
+      "actionability_score": 25.52,
+      "signal_family_display": "Social Support Readiness",
+      "delay_reason_display": "Interpreter availability wait"
     }
   ],
   "weekend_flow_gap": [
@@ -227,7 +451,9 @@
       "recoverable_bed_hours": 25385.53,
       "median_priority_score": 90.945,
       "mean_confidence": 0.88,
-      "actionability_score": 11908.52
+      "actionability_score": 11908.52,
+      "signal_family_display": "Weekend Flow Gap",
+      "delay_reason_display": "Friday/weekend discharge gap"
     },
     {
       "delay_reason": "home care confirmation wait",
@@ -236,7 +462,9 @@
       "recoverable_bed_hours": 704.8,
       "median_priority_score": 20.485,
       "mean_confidence": 0.86,
-      "actionability_score": 1053.53
+      "actionability_score": 1053.53,
+      "signal_family_display": "Alc Community Capacity",
+      "delay_reason_display": "Home care confirmation wait"
     },
     {
       "delay_reason": "unattributed operational delay",
@@ -245,7 +473,9 @@
       "recoverable_bed_hours": 365.7,
       "median_priority_score": 7.985,
       "mean_confidence": 0.45,
-      "actionability_score": 915.49
+      "actionability_score": 915.49,
+      "signal_family_display": "Unattributed",
+      "delay_reason_display": "Unattributed operational delay"
     },
     {
       "delay_reason": "transport delay",
@@ -254,7 +484,9 @@
       "recoverable_bed_hours": 311.56,
       "median_priority_score": 21.3625,
       "mean_confidence": 0.78,
-      "actionability_score": 590.97
+      "actionability_score": 590.97,
+      "signal_family_display": "Transport Discharge Logistics",
+      "delay_reason_display": "Transport delay"
     },
     {
       "delay_reason": "ALC placement wait",
@@ -263,7 +495,9 @@
       "recoverable_bed_hours": 277.9,
       "median_priority_score": 38.3525,
       "mean_confidence": 0.94,
-      "actionability_score": 298.03
+      "actionability_score": 298.03,
+      "signal_family_display": "Alc Community Capacity",
+      "delay_reason_display": "Alc placement wait"
     },
     {
       "delay_reason": "nurse discharge screening wait",
@@ -272,7 +506,9 @@
       "recoverable_bed_hours": 191.72,
       "median_priority_score": 24.305,
       "mean_confidence": 0.8,
-      "actionability_score": 310.98
+      "actionability_score": 310.98,
+      "signal_family_display": "Nursing Discharge Readiness",
+      "delay_reason_display": "Nurse discharge screening wait"
     },
     {
       "delay_reason": "therapy assessment stall",
@@ -281,7 +517,9 @@
       "recoverable_bed_hours": 125.48,
       "median_priority_score": 17.5525,
       "mean_confidence": 0.82,
-      "actionability_score": 294.82
+      "actionability_score": 294.82,
+      "signal_family_display": "Care Team Assessment",
+      "delay_reason_display": "Therapy assessment stall"
     },
     {
       "delay_reason": "radiology MRI access delay",
@@ -290,7 +528,9 @@
       "recoverable_bed_hours": 102.11,
       "median_priority_score": 22.99,
       "mean_confidence": 0.84,
-      "actionability_score": 228.0
+      "actionability_score": 228.0,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Radiology mri access delay"
     },
     {
       "delay_reason": "social work assessment wait",
@@ -299,7 +539,9 @@
       "recoverable_bed_hours": 79.26,
       "median_priority_score": 27.8775,
       "mean_confidence": 0.79,
-      "actionability_score": 172.12
+      "actionability_score": 172.12,
+      "signal_family_display": "Social Support Readiness",
+      "delay_reason_display": "Social work assessment wait"
     },
     {
       "delay_reason": "vulnerable patient porter wait",
@@ -308,7 +550,9 @@
       "recoverable_bed_hours": 70.21,
       "median_priority_score": 22.28,
       "mean_confidence": 0.81,
-      "actionability_score": 238.54
+      "actionability_score": 238.54,
+      "signal_family_display": "Vulnerable Patient Flow",
+      "delay_reason_display": "Vulnerable patient porter wait"
     },
     {
       "delay_reason": "blood testing turnaround delay",
@@ -317,7 +561,9 @@
       "recoverable_bed_hours": 42.12,
       "median_priority_score": 11.545,
       "mean_confidence": 0.79,
-      "actionability_score": 159.27
+      "actionability_score": 159.27,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Blood testing turnaround delay"
     },
     {
       "delay_reason": "diagnostic sign-off stall",
@@ -326,7 +572,97 @@
       "recoverable_bed_hours": 40.94,
       "median_priority_score": 23.395,
       "mean_confidence": 0.72,
-      "actionability_score": 145.9
+      "actionability_score": 145.9,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Diagnostic sign-off stall"
+    },
+    {
+      "delay_reason": "triage screening backlog",
+      "signal_family": "front_door_screening",
+      "flagged_cases": 9,
+      "recoverable_bed_hours": 22.07,
+      "median_priority_score": 6.62,
+      "mean_confidence": 0.76,
+      "actionability_score": 109.56,
+      "signal_family_display": "Front Door Screening",
+      "delay_reason_display": "Triage screening backlog"
+    },
+    {
+      "delay_reason": "radiology CT turnaround delay",
+      "signal_family": "diagnostics_access",
+      "flagged_cases": 6,
+      "recoverable_bed_hours": 21.03,
+      "median_priority_score": 16.7275,
+      "mean_confidence": 0.82,
+      "actionability_score": 118.89,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Radiology ct turnaround delay"
+    },
+    {
+      "delay_reason": "pharmacy discharge delay",
+      "signal_family": "pharmacy_discharge_readiness",
+      "flagged_cases": 7,
+      "recoverable_bed_hours": 15.46,
+      "median_priority_score": 5.245,
+      "mean_confidence": 0.74,
+      "actionability_score": 108.52,
+      "signal_family_display": "Pharmacy Discharge Readiness",
+      "delay_reason_display": "Pharmacy discharge delay"
+    },
+    {
+      "delay_reason": "unit-level bed-flow bottleneck",
+      "signal_family": "unit_flow_capacity",
+      "flagged_cases": 1,
+      "recoverable_bed_hours": 7.15,
+      "median_priority_score": 21.28,
+      "mean_confidence": 0.62,
+      "actionability_score": 24.98,
+      "signal_family_display": "Unit Flow Capacity",
+      "delay_reason_display": "Unit-level bed-flow bottleneck"
+    },
+    {
+      "delay_reason": "interpreter availability wait",
+      "signal_family": "social_support_readiness",
+      "flagged_cases": 2,
+      "recoverable_bed_hours": 3.13,
+      "median_priority_score": 15.31,
+      "mean_confidence": 0.74,
+      "actionability_score": 47.39,
+      "signal_family_display": "Social Support Readiness",
+      "delay_reason_display": "Interpreter availability wait"
+    },
+    {
+      "delay_reason": "ECG availability delay",
+      "signal_family": "diagnostics_access",
+      "flagged_cases": 2,
+      "recoverable_bed_hours": 1.05,
+      "median_priority_score": 20.57,
+      "mean_confidence": 0.78,
+      "actionability_score": 50.74,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Ecg availability delay"
+    },
+    {
+      "delay_reason": "radiology ultrasound turnaround delay",
+      "signal_family": "diagnostics_access",
+      "flagged_cases": 3,
+      "recoverable_bed_hours": 0.89,
+      "median_priority_score": 18.04,
+      "mean_confidence": 0.8,
+      "actionability_score": 72.12,
+      "signal_family_display": "Diagnostics Access",
+      "delay_reason_display": "Radiology ultrasound turnaround delay"
+    },
+    {
+      "delay_reason": "discharge documentation readiness wait",
+      "signal_family": "documentation_readiness",
+      "flagged_cases": 4,
+      "recoverable_bed_hours": 0.18,
+      "median_priority_score": 19.0,
+      "mean_confidence": 0.75,
+      "actionability_score": 74.44,
+      "signal_family_display": "Documentation Readiness",
+      "delay_reason_display": "Discharge documentation readiness wait"
     }
   ]
 }

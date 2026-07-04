@@ -1,6 +1,83 @@
 {
   "balanced": [
     {
+      "date": "2026-01-04",
+      "discharges": 1,
+      "oob_cases": 0,
+      "post_ready_hard_cap_cases": 0,
+      "centerline_oob_rate": 0.0692,
+      "upper_control_limit": 0.359,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0
+    },
+    {
+      "date": "2026-01-05",
+      "discharges": 21,
+      "oob_cases": 0,
+      "post_ready_hard_cap_cases": 0,
+      "centerline_oob_rate": 0.0735,
+      "upper_control_limit": 0.3592,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0
+    },
+    {
+      "date": "2026-01-06",
+      "discharges": 53,
+      "oob_cases": 0,
+      "post_ready_hard_cap_cases": 0,
+      "centerline_oob_rate": 0.0724,
+      "upper_control_limit": 0.3335,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0
+    },
+    {
+      "date": "2026-01-07",
+      "discharges": 84,
+      "oob_cases": 0,
+      "post_ready_hard_cap_cases": 0,
+      "centerline_oob_rate": 0.0761,
+      "upper_control_limit": 0.3771,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0
+    },
+    {
+      "date": "2026-01-08",
+      "discharges": 110,
+      "oob_cases": 7,
+      "post_ready_hard_cap_cases": 6,
+      "centerline_oob_rate": 0.0761,
+      "upper_control_limit": 0.3771,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0636
+    },
+    {
+      "date": "2026-01-09",
+      "discharges": 108,
+      "oob_cases": 6,
+      "post_ready_hard_cap_cases": 6,
+      "centerline_oob_rate": 0.0761,
+      "upper_control_limit": 0.3771,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0556
+    },
+    {
+      "date": "2026-01-10",
+      "discharges": 106,
+      "oob_cases": 3,
+      "post_ready_hard_cap_cases": 4,
+      "centerline_oob_rate": 0.0761,
+      "upper_control_limit": 0.3771,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0283
+    },
+    {
       "date": "2026-01-11",
       "discharges": 98,
       "oob_cases": 7,
@@ -993,6 +1070,94 @@
   ],
   "diagnostics_heavy": [
     {
+      "date": "2026-01-04",
+      "discharges": 1,
+      "oob_cases": 0,
+      "post_ready_hard_cap_cases": 0,
+      "centerline_oob_rate": 0.0898,
+      "upper_control_limit": 0.483,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0
+    },
+    {
+      "date": "2026-01-05",
+      "discharges": 20,
+      "oob_cases": 0,
+      "post_ready_hard_cap_cases": 0,
+      "centerline_oob_rate": 0.1086,
+      "upper_control_limit": 0.5854,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0
+    },
+    {
+      "date": "2026-01-06",
+      "discharges": 46,
+      "oob_cases": 0,
+      "post_ready_hard_cap_cases": 0,
+      "centerline_oob_rate": 0.1087,
+      "upper_control_limit": 0.5798,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0
+    },
+    {
+      "date": "2026-01-07",
+      "discharges": 76,
+      "oob_cases": 0,
+      "post_ready_hard_cap_cases": 0,
+      "centerline_oob_rate": 0.1133,
+      "upper_control_limit": 0.5996,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0
+    },
+    {
+      "date": "2026-01-08",
+      "discharges": 98,
+      "oob_cases": 2,
+      "post_ready_hard_cap_cases": 7,
+      "centerline_oob_rate": 0.1133,
+      "upper_control_limit": 0.5996,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0204
+    },
+    {
+      "date": "2026-01-09",
+      "discharges": 101,
+      "oob_cases": 5,
+      "post_ready_hard_cap_cases": 11,
+      "centerline_oob_rate": 0.1133,
+      "upper_control_limit": 0.5996,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0495
+    },
+    {
+      "date": "2026-01-10",
+      "discharges": 103,
+      "oob_cases": 8,
+      "post_ready_hard_cap_cases": 14,
+      "centerline_oob_rate": 0.1133,
+      "upper_control_limit": 0.5996,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0777
+    },
+    {
+      "date": "2026-01-11",
+      "discharges": 93,
+      "oob_cases": 12,
+      "post_ready_hard_cap_cases": 18,
+      "centerline_oob_rate": 0.1133,
+      "upper_control_limit": 0.5996,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.129
+    },
+    {
       "date": "2026-01-12",
       "discharges": 126,
       "oob_cases": 12,
@@ -1984,6 +2149,94 @@
     }
   ],
   "weekend_flow_gap": [
+    {
+      "date": "2026-01-04",
+      "discharges": 1,
+      "oob_cases": 0,
+      "post_ready_hard_cap_cases": 0,
+      "centerline_oob_rate": 0.1065,
+      "upper_control_limit": 0.6017,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0
+    },
+    {
+      "date": "2026-01-05",
+      "discharges": 20,
+      "oob_cases": 0,
+      "post_ready_hard_cap_cases": 0,
+      "centerline_oob_rate": 0.0997,
+      "upper_control_limit": 0.5952,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0
+    },
+    {
+      "date": "2026-01-06",
+      "discharges": 54,
+      "oob_cases": 0,
+      "post_ready_hard_cap_cases": 0,
+      "centerline_oob_rate": 0.0989,
+      "upper_control_limit": 0.5853,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0
+    },
+    {
+      "date": "2026-01-07",
+      "discharges": 86,
+      "oob_cases": 1,
+      "post_ready_hard_cap_cases": 1,
+      "centerline_oob_rate": 0.0992,
+      "upper_control_limit": 0.59,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0116
+    },
+    {
+      "date": "2026-01-08",
+      "discharges": 112,
+      "oob_cases": 5,
+      "post_ready_hard_cap_cases": 6,
+      "centerline_oob_rate": 0.0992,
+      "upper_control_limit": 0.59,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0446
+    },
+    {
+      "date": "2026-01-09",
+      "discharges": 107,
+      "oob_cases": 4,
+      "post_ready_hard_cap_cases": 5,
+      "centerline_oob_rate": 0.0992,
+      "upper_control_limit": 0.59,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0374
+    },
+    {
+      "date": "2026-01-10",
+      "discharges": 94,
+      "oob_cases": 2,
+      "post_ready_hard_cap_cases": 3,
+      "centerline_oob_rate": 0.0992,
+      "upper_control_limit": 0.59,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0213
+    },
+    {
+      "date": "2026-01-11",
+      "discharges": 85,
+      "oob_cases": 5,
+      "post_ready_hard_cap_cases": 4,
+      "centerline_oob_rate": 0.0992,
+      "upper_control_limit": 0.59,
+      "control_chart_signal_flag": false,
+      "estimated_bed_days_recoverable": 0.0,
+      "oob_rate": 0.0588
+    },
     {
       "date": "2026-01-12",
       "discharges": 114,

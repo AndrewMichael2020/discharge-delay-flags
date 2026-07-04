@@ -1,30 +1,34 @@
 {
   "title": "Discharge Delay Flags Demo",
-  "subtitle": "A GitHub Pages case study for finding the few discharge-delay signals worth acting on today.",
+  "build_id": "20260704-ods-v2",
   "default_scenario": "balanced",
-  "generated_at_utc": "2026-07-04T00:26:56+00:00",
+  "generated_at_utc": "2026-07-04T00:52:48+00:00",
   "source": "Curated synthetic sample data in sample_data/. No PHI or real patient data.",
-  "method_note": "Raw encounter-level signals are compressed into a small shift-level action agenda so operational teams see a few meaningful signals, not a wall of normal friction.",
   "metric_glossary": [
     {
-      "metric": "Out-of-bounds signal rate",
-      "meaning": "Share of encounters that crossed at least one robust delay threshold."
+      "metric": "Patient encounters",
+      "formula": "count(encounter_id)",
+      "meaning": "Synthetic admissions in the selected case window."
+    },
+    {
+      "metric": "OOB signal rate",
+      "formula": "raw_oob_delay_signals / patient_encounters",
+      "meaning": "Share of encounters with at least one out-of-bounds operational delay signal."
     },
     {
       "metric": "Management signals per shift",
-      "meaning": "Average number of grouped signals a shift team would review."
+      "formula": "management_signal_groups / total_shift_windows",
+      "meaning": "Number of grouped action signals a shift huddle needs to review."
     },
     {
       "metric": "Recoverable bed-hours",
-      "meaning": "Estimated bed-hours above expected operational thresholds, used to rank impact."
+      "formula": "sum(estimated_recoverable_bed_hours)",
+      "meaning": "Estimated excess bed-hours above expected operating thresholds."
     },
     {
       "metric": "Compression ratio",
-      "meaning": "How many raw patient-level signals are summarized into each management signal."
-    },
-    {
-      "metric": "Control-chart signal",
-      "meaning": "A day where unit-level delay activity is above expected variation."
+      "formula": "raw_oob_delay_signals / management_signal_groups",
+      "meaning": "How much patient-level evidence is compressed into shift-level signals."
     }
   ]
 }
