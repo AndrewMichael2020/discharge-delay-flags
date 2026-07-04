@@ -21,7 +21,7 @@ SCENARIO_DESCRIPTIONS = {
     "diagnostics_heavy": "A stress view where imaging, lab, ECG, and diagnostic sign-off signals carry more recoverable bed-hours.",
     "weekend_flow_gap": "A stress view where Friday/weekend service timing dominates recoverable bed-hour impact.",
 }
-BUILD_ID = "20260704-ods-v3"
+BUILD_ID = "20260704-ods-v4"
 ROOT_FILES = ["docs/scenario_run_summary.csv", "docs/model_metrics_summary.csv"]
 SCENARIO_FILES = [
     "management_signal_groups.csv",
@@ -148,6 +148,25 @@ def summarize_control(path: Path) -> tuple[list[dict[str, Any]], list[dict[str, 
         .sort_values("date")
     )
     daily["oob_rate"] = daily.apply(lambda r: r.oob_cases / r.discharges if r.discharges else 0, axis=1)
+
+    # The public chart should not be dominated by admission warm-up or discharge
+    # spillover tail days where 1-3 discharges can produce 100% rates. Keep those
+    # rows in the dataset, but mark them out of the default visual.
+    min_discharges_for_trend = 30
+    daily["stable_chart_day"] = daily["discharges"] >= min_discharges_for_trend
+    daily["chart_include"] = daily["stable_chart_day"]
+    daily["chart_exclusion_reason"] = daily["chart_include"].map(
+        {True: None, False: f"Fewer than {min_discharges_for_trend} discharges"}
+    )
+
+    stable = daily[daily["chart_include"]].copy()
+    rolling_num = stable["oob_cases"].rolling(7, min_periods=3).sum()
+    rolling_den = stable["discharges"].rolling(7, min_periods=3).sum()
+    stable["rolling_7d_oob_rate"] = rolling_num / rolling_den
+    daily["rolling_7d_oob_rate"] = None
+    daily.loc[stable.index, "rolling_7d_oob_rate"] = stable["rolling_7d_oob_rate"]
+    daily["stable_day_sequence"] = None
+    daily.loc[stable.index, "stable_day_sequence"] = range(1, len(stable) + 1)
     return records(daily), display_records(raw)
 
 

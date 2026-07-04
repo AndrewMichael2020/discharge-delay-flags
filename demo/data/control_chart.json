@@ -9,7 +9,12 @@
       "upper_control_limit": 0.359,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0
+      "oob_rate": 0.0,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     },
     {
       "date": "2026-01-05",
@@ -20,7 +25,12 @@
       "upper_control_limit": 0.3592,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0
+      "oob_rate": 0.0,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     },
     {
       "date": "2026-01-06",
@@ -31,7 +41,12 @@
       "upper_control_limit": 0.3335,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0
+      "oob_rate": 0.0,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": 1
     },
     {
       "date": "2026-01-07",
@@ -42,7 +57,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0
+      "oob_rate": 0.0,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": 2
     },
     {
       "date": "2026-01-08",
@@ -53,7 +73,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0636
+      "oob_rate": 0.0636,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0283,
+      "stable_day_sequence": 3
     },
     {
       "date": "2026-01-09",
@@ -64,7 +89,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0556
+      "oob_rate": 0.0556,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0366,
+      "stable_day_sequence": 4
     },
     {
       "date": "2026-01-10",
@@ -75,7 +105,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0283
+      "oob_rate": 0.0283,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0347,
+      "stable_day_sequence": 5
     },
     {
       "date": "2026-01-11",
@@ -86,7 +121,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0714
+      "oob_rate": 0.0714,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0411,
+      "stable_day_sequence": 6
     },
     {
       "date": "2026-01-12",
@@ -97,7 +137,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0776
+      "oob_rate": 0.0776,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0474,
+      "stable_day_sequence": 7
     },
     {
       "date": "2026-01-13",
@@ -108,7 +153,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0855
+      "oob_rate": 0.0855,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0568,
+      "stable_day_sequence": 8
     },
     {
       "date": "2026-01-14",
@@ -119,7 +169,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0721
+      "oob_rate": 0.0721,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0653,
+      "stable_day_sequence": 9
     },
     {
       "date": "2026-01-15",
@@ -130,7 +185,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0826
+      "oob_rate": 0.0826,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.068,
+      "stable_day_sequence": 10
     },
     {
       "date": "2026-01-16",
@@ -141,7 +201,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0309
+      "oob_rate": 0.0309,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.065,
+      "stable_day_sequence": 11
     },
     {
       "date": "2026-01-17",
@@ -152,7 +217,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0659
+      "oob_rate": 0.0659,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0704,
+      "stable_day_sequence": 12
     },
     {
       "date": "2026-01-18",
@@ -163,7 +233,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0308
+      "oob_rate": 0.0308,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0636,
+      "stable_day_sequence": 13
     },
     {
       "date": "2026-01-19",
@@ -174,7 +249,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1478
+      "oob_rate": 0.1478,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.074,
+      "stable_day_sequence": 14
     },
     {
       "date": "2026-01-20",
@@ -185,7 +265,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1504
+      "oob_rate": 0.1504,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0836,
+      "stable_day_sequence": 15
     },
     {
       "date": "2026-01-21",
@@ -196,7 +281,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1261
+      "oob_rate": 0.1261,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0917,
+      "stable_day_sequence": 16
     },
     {
       "date": "2026-01-22",
@@ -207,7 +297,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1062
+      "oob_rate": 0.1062,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0951,
+      "stable_day_sequence": 17
     },
     {
       "date": "2026-01-23",
@@ -218,7 +313,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1068
+      "oob_rate": 0.1068,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1046,
+      "stable_day_sequence": 18
     },
     {
       "date": "2026-01-24",
@@ -229,7 +329,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0849
+      "oob_rate": 0.0849,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1064,
+      "stable_day_sequence": 19
     },
     {
       "date": "2026-01-25",
@@ -240,7 +345,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0619
+      "oob_rate": 0.0619,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1125,
+      "stable_day_sequence": 20
     },
     {
       "date": "2026-01-26",
@@ -251,7 +361,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0696
+      "oob_rate": 0.0696,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.101,
+      "stable_day_sequence": 21
     },
     {
       "date": "2026-01-27",
@@ -262,7 +377,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.102
+      "oob_rate": 0.102,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0939,
+      "stable_day_sequence": 22
     },
     {
       "date": "2026-01-28",
@@ -273,7 +393,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0734
+      "oob_rate": 0.0734,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0859,
+      "stable_day_sequence": 23
     },
     {
       "date": "2026-01-29",
@@ -284,7 +409,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0811
+      "oob_rate": 0.0811,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0821,
+      "stable_day_sequence": 24
     },
     {
       "date": "2026-01-30",
@@ -295,7 +425,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0935
+      "oob_rate": 0.0935,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0804,
+      "stable_day_sequence": 25
     },
     {
       "date": "2026-01-31",
@@ -306,7 +441,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0702
+      "oob_rate": 0.0702,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0782,
+      "stable_day_sequence": 26
     },
     {
       "date": "2026-02-01",
@@ -317,7 +457,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0652
+      "oob_rate": 0.0652,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0791,
+      "stable_day_sequence": 27
     },
     {
       "date": "2026-02-02",
@@ -328,7 +473,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0469
+      "oob_rate": 0.0469,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0751,
+      "stable_day_sequence": 28
     },
     {
       "date": "2026-02-03",
@@ -339,7 +489,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1217
+      "oob_rate": 0.1217,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0786,
+      "stable_day_sequence": 29
     },
     {
       "date": "2026-02-04",
@@ -350,7 +505,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.06
+      "oob_rate": 0.06,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0769,
+      "stable_day_sequence": 30
     },
     {
       "date": "2026-02-05",
@@ -361,7 +521,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1351
+      "oob_rate": 0.1351,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0847,
+      "stable_day_sequence": 31
     },
     {
       "date": "2026-02-06",
@@ -372,7 +537,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1429
+      "oob_rate": 0.1429,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.092,
+      "stable_day_sequence": 32
     },
     {
       "date": "2026-02-07",
@@ -383,7 +553,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0531
+      "oob_rate": 0.0531,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0895,
+      "stable_day_sequence": 33
     },
     {
       "date": "2026-02-08",
@@ -394,7 +569,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0784
+      "oob_rate": 0.0784,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0909,
+      "stable_day_sequence": 34
     },
     {
       "date": "2026-02-09",
@@ -405,7 +585,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0957
+      "oob_rate": 0.0957,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.099,
+      "stable_day_sequence": 35
     },
     {
       "date": "2026-02-10",
@@ -416,7 +601,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0727
+      "oob_rate": 0.0727,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0917,
+      "stable_day_sequence": 36
     },
     {
       "date": "2026-02-11",
@@ -427,7 +617,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0672
+      "oob_rate": 0.0672,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0921,
+      "stable_day_sequence": 37
     },
     {
       "date": "2026-02-12",
@@ -438,7 +633,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0917
+      "oob_rate": 0.0917,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0859,
+      "stable_day_sequence": 38
     },
     {
       "date": "2026-02-13",
@@ -449,7 +649,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0636
+      "oob_rate": 0.0636,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0746,
+      "stable_day_sequence": 39
     },
     {
       "date": "2026-02-14",
@@ -460,7 +665,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0784
+      "oob_rate": 0.0784,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0782,
+      "stable_day_sequence": 40
     },
     {
       "date": "2026-02-15",
@@ -471,7 +681,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1176
+      "oob_rate": 0.1176,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0834,
+      "stable_day_sequence": 41
     },
     {
       "date": "2026-02-16",
@@ -482,7 +697,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0574
+      "oob_rate": 0.0574,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0775,
+      "stable_day_sequence": 42
     },
     {
       "date": "2026-02-17",
@@ -493,7 +713,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0541
+      "oob_rate": 0.0541,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0748,
+      "stable_day_sequence": 43
     },
     {
       "date": "2026-02-18",
@@ -504,7 +729,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.027
+      "oob_rate": 0.027,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0691,
+      "stable_day_sequence": 44
     },
     {
       "date": "2026-02-19",
@@ -515,7 +745,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0339
+      "oob_rate": 0.0339,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0606,
+      "stable_day_sequence": 45
     },
     {
       "date": "2026-02-20",
@@ -526,7 +761,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0804
+      "oob_rate": 0.0804,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.063,
+      "stable_day_sequence": 46
     },
     {
       "date": "2026-02-21",
@@ -537,7 +777,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0632
+      "oob_rate": 0.0632,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.061,
+      "stable_day_sequence": 47
     },
     {
       "date": "2026-02-22",
@@ -548,7 +793,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0776
+      "oob_rate": 0.0776,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0561,
+      "stable_day_sequence": 48
     },
     {
       "date": "2026-02-23",
@@ -559,7 +809,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0476
+      "oob_rate": 0.0476,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0547,
+      "stable_day_sequence": 49
     },
     {
       "date": "2026-02-24",
@@ -570,7 +825,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0459
+      "oob_rate": 0.0459,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0535,
+      "stable_day_sequence": 50
     },
     {
       "date": "2026-02-25",
@@ -581,7 +841,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1157
+      "oob_rate": 0.1157,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.067,
+      "stable_day_sequence": 51
     },
     {
       "date": "2026-02-26",
@@ -592,7 +857,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0932
+      "oob_rate": 0.0932,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.076,
+      "stable_day_sequence": 52
     },
     {
       "date": "2026-02-27",
@@ -603,7 +873,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0476
+      "oob_rate": 0.0476,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0715,
+      "stable_day_sequence": 53
     },
     {
       "date": "2026-02-28",
@@ -614,7 +889,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0392
+      "oob_rate": 0.0392,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0683,
+      "stable_day_sequence": 54
     },
     {
       "date": "2026-03-01",
@@ -625,7 +905,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0577
+      "oob_rate": 0.0577,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0654,
+      "stable_day_sequence": 55
     },
     {
       "date": "2026-03-02",
@@ -636,7 +921,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0738
+      "oob_rate": 0.0738,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0691,
+      "stable_day_sequence": 56
     },
     {
       "date": "2026-03-03",
@@ -647,7 +937,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0367
+      "oob_rate": 0.0367,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0679,
+      "stable_day_sequence": 57
     },
     {
       "date": "2026-03-04",
@@ -658,7 +953,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0909
+      "oob_rate": 0.0909,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.064,
+      "stable_day_sequence": 58
     },
     {
       "date": "2026-03-05",
@@ -669,7 +969,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0385
+      "oob_rate": 0.0385,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0561,
+      "stable_day_sequence": 59
     },
     {
       "date": "2026-03-06",
@@ -680,7 +985,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0424
+      "oob_rate": 0.0424,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0551,
+      "stable_day_sequence": 60
     },
     {
       "date": "2026-03-07",
@@ -691,7 +1001,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0609
+      "oob_rate": 0.0609,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.058,
+      "stable_day_sequence": 61
     },
     {
       "date": "2026-03-08",
@@ -702,7 +1017,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.03
+      "oob_rate": 0.03,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0545,
+      "stable_day_sequence": 62
     },
     {
       "date": "2026-03-09",
@@ -713,7 +1033,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0973
+      "oob_rate": 0.0973,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0577,
+      "stable_day_sequence": 63
     },
     {
       "date": "2026-03-10",
@@ -724,7 +1049,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0526
+      "oob_rate": 0.0526,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0601,
+      "stable_day_sequence": 64
     },
     {
       "date": "2026-03-11",
@@ -735,7 +1065,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0325
+      "oob_rate": 0.0325,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0508,
+      "stable_day_sequence": 65
     },
     {
       "date": "2026-03-12",
@@ -746,7 +1081,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0421
+      "oob_rate": 0.0421,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0514,
+      "stable_day_sequence": 66
     },
     {
       "date": "2026-03-13",
@@ -757,7 +1097,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0593
+      "oob_rate": 0.0593,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.054,
+      "stable_day_sequence": 67
     },
     {
       "date": "2026-03-14",
@@ -768,7 +1113,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0392
+      "oob_rate": 0.0392,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0509,
+      "stable_day_sequence": 68
     },
     {
       "date": "2026-03-15",
@@ -779,7 +1129,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.066
+      "oob_rate": 0.066,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0559,
+      "stable_day_sequence": 69
     },
     {
       "date": "2026-03-16",
@@ -790,7 +1145,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.123
+      "oob_rate": 0.123,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0604,
+      "stable_day_sequence": 70
     },
     {
       "date": "2026-03-17",
@@ -801,7 +1161,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0588
+      "oob_rate": 0.0588,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0611,
+      "stable_day_sequence": 71
     },
     {
       "date": "2026-03-18",
@@ -812,7 +1177,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.055
+      "oob_rate": 0.055,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0649,
+      "stable_day_sequence": 72
     },
     {
       "date": "2026-03-19",
@@ -823,7 +1193,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0463
+      "oob_rate": 0.0463,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0651,
+      "stable_day_sequence": 73
     },
     {
       "date": "2026-03-20",
@@ -834,7 +1209,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0196
+      "oob_rate": 0.0196,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0599,
+      "stable_day_sequence": 74
     },
     {
       "date": "2026-03-21",
@@ -845,7 +1225,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0531
+      "oob_rate": 0.0531,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0616,
+      "stable_day_sequence": 75
     },
     {
       "date": "2026-03-22",
@@ -856,7 +1241,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.016
+      "oob_rate": 0.016,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0539,
+      "stable_day_sequence": 76
     },
     {
       "date": "2026-03-23",
@@ -867,7 +1257,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0495
+      "oob_rate": 0.0495,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0425,
+      "stable_day_sequence": 77
     },
     {
       "date": "2026-03-24",
@@ -878,7 +1273,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0505
+      "oob_rate": 0.0505,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.041,
+      "stable_day_sequence": 78
     },
     {
       "date": "2026-03-25",
@@ -889,7 +1289,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0714
+      "oob_rate": 0.0714,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0439,
+      "stable_day_sequence": 79
     },
     {
       "date": "2026-03-26",
@@ -900,7 +1305,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.05
+      "oob_rate": 0.05,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0444,
+      "stable_day_sequence": 80
     },
     {
       "date": "2026-03-27",
@@ -911,7 +1321,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0513
+      "oob_rate": 0.0513,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0487,
+      "stable_day_sequence": 81
     },
     {
       "date": "2026-03-28",
@@ -922,7 +1337,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0294
+      "oob_rate": 0.0294,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0455,
+      "stable_day_sequence": 82
     },
     {
       "date": "2026-03-29",
@@ -933,7 +1353,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0377
+      "oob_rate": 0.0377,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0493,
+      "stable_day_sequence": 83
     },
     {
       "date": "2026-03-30",
@@ -944,7 +1369,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.075
+      "oob_rate": 0.075,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0532,
+      "stable_day_sequence": 84
     },
     {
       "date": "2026-03-31",
@@ -955,7 +1385,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.037
+      "oob_rate": 0.037,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0513,
+      "stable_day_sequence": 85
     },
     {
       "date": "2026-04-01",
@@ -966,7 +1401,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0459
+      "oob_rate": 0.0459,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0472,
+      "stable_day_sequence": 86
     },
     {
       "date": "2026-04-02",
@@ -977,7 +1417,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0577
+      "oob_rate": 0.0577,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0483,
+      "stable_day_sequence": 87
     },
     {
       "date": "2026-04-03",
@@ -988,7 +1433,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0206
+      "oob_rate": 0.0206,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0442,
+      "stable_day_sequence": 88
     },
     {
       "date": "2026-04-04",
@@ -999,7 +1449,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0099
+      "oob_rate": 0.0099,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0416,
+      "stable_day_sequence": 89
     },
     {
       "date": "2026-04-05",
@@ -1010,7 +1465,12 @@
       "upper_control_limit": 0.3771,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0804
+      "oob_rate": 0.0804,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0479,
+      "stable_day_sequence": 90
     },
     {
       "date": "2026-04-06",
@@ -1021,7 +1481,12 @@
       "upper_control_limit": 0.3807,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1579
+      "oob_rate": 0.1579,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0523,
+      "stable_day_sequence": 91
     },
     {
       "date": "2026-04-07",
@@ -1032,7 +1497,12 @@
       "upper_control_limit": 0.4346,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.3684
+      "oob_rate": 0.3684,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     },
     {
       "date": "2026-04-08",
@@ -1043,7 +1513,12 @@
       "upper_control_limit": 0.5949,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.6667
+      "oob_rate": 0.6667,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     },
     {
       "date": "2026-04-09",
@@ -1054,7 +1529,12 @@
       "upper_control_limit": 0.5107,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 1.0
+      "oob_rate": 1.0,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     },
     {
       "date": "2026-04-10",
@@ -1065,7 +1545,12 @@
       "upper_control_limit": 0.5949,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 1.0
+      "oob_rate": 1.0,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     }
   ],
   "diagnostics_heavy": [
@@ -1078,7 +1563,12 @@
       "upper_control_limit": 0.483,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0
+      "oob_rate": 0.0,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     },
     {
       "date": "2026-01-05",
@@ -1089,7 +1579,12 @@
       "upper_control_limit": 0.5854,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0
+      "oob_rate": 0.0,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     },
     {
       "date": "2026-01-06",
@@ -1100,7 +1595,12 @@
       "upper_control_limit": 0.5798,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0
+      "oob_rate": 0.0,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": 1
     },
     {
       "date": "2026-01-07",
@@ -1111,7 +1611,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0
+      "oob_rate": 0.0,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": 2
     },
     {
       "date": "2026-01-08",
@@ -1122,7 +1627,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0204
+      "oob_rate": 0.0204,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0091,
+      "stable_day_sequence": 3
     },
     {
       "date": "2026-01-09",
@@ -1133,7 +1643,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0495
+      "oob_rate": 0.0495,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0218,
+      "stable_day_sequence": 4
     },
     {
       "date": "2026-01-10",
@@ -1144,7 +1659,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0777
+      "oob_rate": 0.0777,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0354,
+      "stable_day_sequence": 5
     },
     {
       "date": "2026-01-11",
@@ -1155,7 +1675,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.129
+      "oob_rate": 0.129,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0522,
+      "stable_day_sequence": 6
     },
     {
       "date": "2026-01-12",
@@ -1166,7 +1691,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0952
+      "oob_rate": 0.0952,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0607,
+      "stable_day_sequence": 7
     },
     {
       "date": "2026-01-13",
@@ -1177,7 +1707,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1207
+      "oob_rate": 0.1207,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0743,
+      "stable_day_sequence": 8
     },
     {
       "date": "2026-01-14",
@@ -1188,7 +1723,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1351
+      "oob_rate": 0.1351,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0909,
+      "stable_day_sequence": 9
     },
     {
       "date": "2026-01-15",
@@ -1199,7 +1739,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1161
+      "oob_rate": 0.1161,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1037,
+      "stable_day_sequence": 10
     },
     {
       "date": "2026-01-16",
@@ -1210,7 +1755,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0808
+      "oob_rate": 0.0808,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1079,
+      "stable_day_sequence": 11
     },
     {
       "date": "2026-01-17",
@@ -1221,7 +1771,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0947
+      "oob_rate": 0.0947,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1104,
+      "stable_day_sequence": 12
     },
     {
       "date": "2026-01-18",
@@ -1232,7 +1787,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.063
+      "oob_rate": 0.063,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1005,
+      "stable_day_sequence": 13
     },
     {
       "date": "2026-01-19",
@@ -1243,7 +1803,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0877
+      "oob_rate": 0.0877,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0995,
+      "stable_day_sequence": 14
     },
     {
       "date": "2026-01-20",
@@ -1254,7 +1819,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1284
+      "oob_rate": 0.1284,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1004,
+      "stable_day_sequence": 15
     },
     {
       "date": "2026-01-21",
@@ -1265,7 +1835,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1311
+      "oob_rate": 0.1311,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1003,
+      "stable_day_sequence": 16
     },
     {
       "date": "2026-01-22",
@@ -1276,7 +1851,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1053
+      "oob_rate": 0.1053,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0987,
+      "stable_day_sequence": 17
     },
     {
       "date": "2026-01-23",
@@ -1287,7 +1867,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0642
+      "oob_rate": 0.0642,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0962,
+      "stable_day_sequence": 18
     },
     {
       "date": "2026-01-24",
@@ -1298,7 +1883,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.125
+      "oob_rate": 0.125,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1001,
+      "stable_day_sequence": 19
     },
     {
       "date": "2026-01-25",
@@ -1309,7 +1899,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0769
+      "oob_rate": 0.0769,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1027,
+      "stable_day_sequence": 20
     },
     {
       "date": "2026-01-26",
@@ -1320,7 +1915,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.07
+      "oob_rate": 0.07,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1006,
+      "stable_day_sequence": 21
     },
     {
       "date": "2026-01-27",
@@ -1331,7 +1931,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1313
+      "oob_rate": 0.1313,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1007,
+      "stable_day_sequence": 22
     },
     {
       "date": "2026-01-28",
@@ -1342,7 +1947,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1121
+      "oob_rate": 0.1121,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0973,
+      "stable_day_sequence": 23
     },
     {
       "date": "2026-01-29",
@@ -1353,7 +1963,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1111
+      "oob_rate": 0.1111,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0981,
+      "stable_day_sequence": 24
     },
     {
       "date": "2026-01-30",
@@ -1364,7 +1979,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1495
+      "oob_rate": 0.1495,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1105,
+      "stable_day_sequence": 25
     },
     {
       "date": "2026-01-31",
@@ -1375,7 +1995,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.122
+      "oob_rate": 0.122,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1104,
+      "stable_day_sequence": 26
     },
     {
       "date": "2026-02-01",
@@ -1386,7 +2011,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0682
+      "oob_rate": 0.0682,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1107,
+      "stable_day_sequence": 27
     },
     {
       "date": "2026-02-02",
@@ -1397,7 +2027,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0756
+      "oob_rate": 0.0756,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1105,
+      "stable_day_sequence": 28
     },
     {
       "date": "2026-02-03",
@@ -1408,7 +2043,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1161
+      "oob_rate": 0.1161,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1086,
+      "stable_day_sequence": 29
     },
     {
       "date": "2026-02-04",
@@ -1419,7 +2059,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1122
+      "oob_rate": 0.1122,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1086,
+      "stable_day_sequence": 30
     },
     {
       "date": "2026-02-05",
@@ -1430,7 +2075,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1504
+      "oob_rate": 0.1504,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1145,
+      "stable_day_sequence": 31
     },
     {
       "date": "2026-02-06",
@@ -1441,7 +2091,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1579
+      "oob_rate": 0.1579,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.116,
+      "stable_day_sequence": 32
     },
     {
       "date": "2026-02-07",
@@ -1452,7 +2107,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.114
+      "oob_rate": 0.114,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1148,
+      "stable_day_sequence": 33
     },
     {
       "date": "2026-02-08",
@@ -1463,7 +2123,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1238
+      "oob_rate": 0.1238,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1213,
+      "stable_day_sequence": 34
     },
     {
       "date": "2026-02-09",
@@ -1474,7 +2139,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1574
+      "oob_rate": 0.1574,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1335,
+      "stable_day_sequence": 35
     },
     {
       "date": "2026-02-10",
@@ -1485,7 +2155,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.123
+      "oob_rate": 0.123,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1344,
+      "stable_day_sequence": 36
     },
     {
       "date": "2026-02-11",
@@ -1496,7 +2171,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1417
+      "oob_rate": 0.1417,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1382,
+      "stable_day_sequence": 37
     },
     {
       "date": "2026-02-12",
@@ -1507,7 +2187,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1287
+      "oob_rate": 0.1287,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1352,
+      "stable_day_sequence": 38
     },
     {
       "date": "2026-02-13",
@@ -1518,7 +2203,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1028
+      "oob_rate": 0.1028,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1274,
+      "stable_day_sequence": 39
     },
     {
       "date": "2026-02-14",
@@ -1529,7 +2219,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1111
+      "oob_rate": 0.1111,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1271,
+      "stable_day_sequence": 40
     },
     {
       "date": "2026-02-15",
@@ -1540,7 +2235,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1101
+      "oob_rate": 0.1101,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1252,
+      "stable_day_sequence": 41
     },
     {
       "date": "2026-02-16",
@@ -1551,7 +2251,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0763
+      "oob_rate": 0.0763,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1134,
+      "stable_day_sequence": 42
     },
     {
       "date": "2026-02-17",
@@ -1562,7 +2267,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0654
+      "oob_rate": 0.0654,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1052,
+      "stable_day_sequence": 43
     },
     {
       "date": "2026-02-18",
@@ -1573,7 +2283,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1171
+      "oob_rate": 0.1171,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1012,
+      "stable_day_sequence": 44
     },
     {
       "date": "2026-02-19",
@@ -1584,7 +2299,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0588
+      "oob_rate": 0.0588,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0911,
+      "stable_day_sequence": 45
     },
     {
       "date": "2026-02-20",
@@ -1595,7 +2315,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.068
+      "oob_rate": 0.068,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0865,
+      "stable_day_sequence": 46
     },
     {
       "date": "2026-02-21",
@@ -1606,7 +2331,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.15
+      "oob_rate": 0.15,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0913,
+      "stable_day_sequence": 47
     },
     {
       "date": "2026-02-22",
@@ -1617,7 +2347,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0917
+      "oob_rate": 0.0917,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0887,
+      "stable_day_sequence": 48
     },
     {
       "date": "2026-02-23",
@@ -1628,7 +2363,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1138
+      "oob_rate": 0.1138,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0945,
+      "stable_day_sequence": 49
     },
     {
       "date": "2026-02-24",
@@ -1639,7 +2379,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.114
+      "oob_rate": 0.114,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1013,
+      "stable_day_sequence": 50
     },
     {
       "date": "2026-02-25",
@@ -1650,7 +2395,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0877
+      "oob_rate": 0.0877,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0971,
+      "stable_day_sequence": 51
     },
     {
       "date": "2026-02-26",
@@ -1661,7 +2411,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.045
+      "oob_rate": 0.045,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0955,
+      "stable_day_sequence": 52
     },
     {
       "date": "2026-02-27",
@@ -1672,7 +2427,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.102
+      "oob_rate": 0.102,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1,
+      "stable_day_sequence": 53
     },
     {
       "date": "2026-02-28",
@@ -1683,7 +2443,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0893
+      "oob_rate": 0.0893,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0922,
+      "stable_day_sequence": 54
     },
     {
       "date": "2026-03-01",
@@ -1694,7 +2459,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1111
+      "oob_rate": 0.1111,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0947,
+      "stable_day_sequence": 55
     },
     {
       "date": "2026-03-02",
@@ -1705,7 +2475,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0661
+      "oob_rate": 0.0661,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0871,
+      "stable_day_sequence": 56
     },
     {
       "date": "2026-03-03",
@@ -1716,7 +2491,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1518
+      "oob_rate": 0.1518,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0926,
+      "stable_day_sequence": 57
     },
     {
       "date": "2026-03-04",
@@ -1727,7 +2507,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0614
+      "oob_rate": 0.0614,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0887,
+      "stable_day_sequence": 58
     },
     {
       "date": "2026-03-05",
@@ -1738,7 +2523,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0741
+      "oob_rate": 0.0741,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0929,
+      "stable_day_sequence": 59
     },
     {
       "date": "2026-03-06",
@@ -1749,7 +2539,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.084
+      "oob_rate": 0.084,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0904,
+      "stable_day_sequence": 60
     },
     {
       "date": "2026-03-07",
@@ -1760,7 +2555,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0789
+      "oob_rate": 0.0789,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0889,
+      "stable_day_sequence": 61
     },
     {
       "date": "2026-03-08",
@@ -1771,7 +2571,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1053
+      "oob_rate": 0.1053,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0881,
+      "stable_day_sequence": 62
     },
     {
       "date": "2026-03-09",
@@ -1782,7 +2587,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0973
+      "oob_rate": 0.0973,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0929,
+      "stable_day_sequence": 63
     },
     {
       "date": "2026-03-10",
@@ -1793,7 +2603,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0865
+      "oob_rate": 0.0865,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0834,
+      "stable_day_sequence": 64
     },
     {
       "date": "2026-03-11",
@@ -1804,7 +2619,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0787
+      "oob_rate": 0.0787,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0859,
+      "stable_day_sequence": 65
     },
     {
       "date": "2026-03-12",
@@ -1815,7 +2635,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0612
+      "oob_rate": 0.0612,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0844,
+      "stable_day_sequence": 66
     },
     {
       "date": "2026-03-13",
@@ -1826,7 +2651,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0517
+      "oob_rate": 0.0517,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0795,
+      "stable_day_sequence": 67
     },
     {
       "date": "2026-03-14",
@@ -1837,7 +2667,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1
+      "oob_rate": 0.1,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0826,
+      "stable_day_sequence": 68
     },
     {
       "date": "2026-03-15",
@@ -1848,7 +2683,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0427
+      "oob_rate": 0.0427,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0739,
+      "stable_day_sequence": 69
     },
     {
       "date": "2026-03-16",
@@ -1859,7 +2699,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0636
+      "oob_rate": 0.0636,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0691,
+      "stable_day_sequence": 70
     },
     {
       "date": "2026-03-17",
@@ -1870,7 +2715,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0636
+      "oob_rate": 0.0636,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.066,
+      "stable_day_sequence": 71
     },
     {
       "date": "2026-03-18",
@@ -1881,7 +2731,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0734
+      "oob_rate": 0.0734,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0649,
+      "stable_day_sequence": 72
     },
     {
       "date": "2026-03-19",
@@ -1892,7 +2747,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0531
+      "oob_rate": 0.0531,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0637,
+      "stable_day_sequence": 73
     },
     {
       "date": "2026-03-20",
@@ -1903,7 +2763,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0962
+      "oob_rate": 0.0962,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0699,
+      "stable_day_sequence": 74
     },
     {
       "date": "2026-03-21",
@@ -1914,7 +2779,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0541
+      "oob_rate": 0.0541,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0633,
+      "stable_day_sequence": 75
     },
     {
       "date": "2026-03-22",
@@ -1925,7 +2795,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0325
+      "oob_rate": 0.0325,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0615,
+      "stable_day_sequence": 76
     },
     {
       "date": "2026-03-23",
@@ -1936,7 +2811,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0625
+      "oob_rate": 0.0625,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0614,
+      "stable_day_sequence": 77
     },
     {
       "date": "2026-03-24",
@@ -1947,7 +2827,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0667
+      "oob_rate": 0.0667,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0617,
+      "stable_day_sequence": 78
     },
     {
       "date": "2026-03-25",
@@ -1958,7 +2843,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0413
+      "oob_rate": 0.0413,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0568,
+      "stable_day_sequence": 79
     },
     {
       "date": "2026-03-26",
@@ -1969,7 +2859,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0673
+      "oob_rate": 0.0673,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0588,
+      "stable_day_sequence": 80
     },
     {
       "date": "2026-03-27",
@@ -1980,7 +2875,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0531
+      "oob_rate": 0.0531,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.053,
+      "stable_day_sequence": 81
     },
     {
       "date": "2026-03-28",
@@ -1991,7 +2891,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0686
+      "oob_rate": 0.0686,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0549,
+      "stable_day_sequence": 82
     },
     {
       "date": "2026-03-29",
@@ -2002,7 +2907,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0935
+      "oob_rate": 0.0935,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0641,
+      "stable_day_sequence": 83
     },
     {
       "date": "2026-03-30",
@@ -2013,7 +2923,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0467
+      "oob_rate": 0.0467,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0618,
+      "stable_day_sequence": 84
     },
     {
       "date": "2026-03-31",
@@ -2024,7 +2939,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0789
+      "oob_rate": 0.0789,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0638,
+      "stable_day_sequence": 85
     },
     {
       "date": "2026-04-01",
@@ -2035,7 +2955,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0965
+      "oob_rate": 0.0965,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0723,
+      "stable_day_sequence": 86
     },
     {
       "date": "2026-04-02",
@@ -2046,7 +2971,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0748
+      "oob_rate": 0.0748,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0733,
+      "stable_day_sequence": 87
     },
     {
       "date": "2026-04-03",
@@ -2057,7 +2987,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0412
+      "oob_rate": 0.0412,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0722,
+      "stable_day_sequence": 88
     },
     {
       "date": "2026-04-04",
@@ -2068,7 +3003,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.08
+      "oob_rate": 0.08,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0737,
+      "stable_day_sequence": 89
     },
     {
       "date": "2026-04-05",
@@ -2079,7 +3019,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.049
+      "oob_rate": 0.049,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0675,
+      "stable_day_sequence": 90
     },
     {
       "date": "2026-04-06",
@@ -2090,7 +3035,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1176
+      "oob_rate": 0.1176,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0755,
+      "stable_day_sequence": 91
     },
     {
       "date": "2026-04-07",
@@ -2101,7 +3051,12 @@
       "upper_control_limit": 0.5996,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.5161
+      "oob_rate": 0.5161,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0969,
+      "stable_day_sequence": 92
     },
     {
       "date": "2026-04-08",
@@ -2112,7 +3067,12 @@
       "upper_control_limit": 0.6229,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.7778
+      "oob_rate": 0.7778,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     },
     {
       "date": "2026-04-09",
@@ -2123,7 +3083,12 @@
       "upper_control_limit": 0.6229,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 1.0
+      "oob_rate": 1.0,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     },
     {
       "date": "2026-04-10",
@@ -2134,7 +3099,12 @@
       "upper_control_limit": 0.6644,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 1.0
+      "oob_rate": 1.0,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     },
     {
       "date": "2026-04-13",
@@ -2145,7 +3115,12 @@
       "upper_control_limit": 0.6985,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 1.0
+      "oob_rate": 1.0,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     }
   ],
   "weekend_flow_gap": [
@@ -2158,7 +3133,12 @@
       "upper_control_limit": 0.6017,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0
+      "oob_rate": 0.0,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     },
     {
       "date": "2026-01-05",
@@ -2169,7 +3149,12 @@
       "upper_control_limit": 0.5952,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0
+      "oob_rate": 0.0,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     },
     {
       "date": "2026-01-06",
@@ -2180,7 +3165,12 @@
       "upper_control_limit": 0.5853,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0
+      "oob_rate": 0.0,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": 1
     },
     {
       "date": "2026-01-07",
@@ -2191,7 +3181,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0116
+      "oob_rate": 0.0116,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": 2
     },
     {
       "date": "2026-01-08",
@@ -2202,7 +3197,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0446
+      "oob_rate": 0.0446,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0238,
+      "stable_day_sequence": 3
     },
     {
       "date": "2026-01-09",
@@ -2213,7 +3213,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0374
+      "oob_rate": 0.0374,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0279,
+      "stable_day_sequence": 4
     },
     {
       "date": "2026-01-10",
@@ -2224,7 +3229,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0213
+      "oob_rate": 0.0213,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0265,
+      "stable_day_sequence": 5
     },
     {
       "date": "2026-01-11",
@@ -2235,7 +3245,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0588
+      "oob_rate": 0.0588,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0316,
+      "stable_day_sequence": 6
     },
     {
       "date": "2026-01-12",
@@ -2246,7 +3261,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0351
+      "oob_rate": 0.0351,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0322,
+      "stable_day_sequence": 7
     },
     {
       "date": "2026-01-13",
@@ -2257,7 +3277,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.036
+      "oob_rate": 0.036,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0353,
+      "stable_day_sequence": 8
     },
     {
       "date": "2026-01-14",
@@ -2268,7 +3293,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1074
+      "oob_rate": 0.1074,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0497,
+      "stable_day_sequence": 9
     },
     {
       "date": "2026-01-15",
@@ -2279,7 +3309,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1261
+      "oob_rate": 0.1261,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0626,
+      "stable_day_sequence": 10
     },
     {
       "date": "2026-01-16",
@@ -2290,7 +3325,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.03
+      "oob_rate": 0.03,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0618,
+      "stable_day_sequence": 11
     },
     {
       "date": "2026-01-17",
@@ -2301,7 +3341,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0723
+      "oob_rate": 0.0723,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0682,
+      "stable_day_sequence": 12
     },
     {
       "date": "2026-01-18",
@@ -2312,7 +3357,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0496
+      "oob_rate": 0.0496,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0663,
+      "stable_day_sequence": 13
     },
     {
       "date": "2026-01-19",
@@ -2323,7 +3373,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0893
+      "oob_rate": 0.0893,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0743,
+      "stable_day_sequence": 14
     },
     {
       "date": "2026-01-20",
@@ -2334,7 +3389,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0648
+      "oob_rate": 0.0648,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0785,
+      "stable_day_sequence": 15
     },
     {
       "date": "2026-01-21",
@@ -2345,7 +3405,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.124
+      "oob_rate": 0.124,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0812,
+      "stable_day_sequence": 16
     },
     {
       "date": "2026-01-22",
@@ -2356,7 +3421,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1694
+      "oob_rate": 0.1694,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0884,
+      "stable_day_sequence": 17
     },
     {
       "date": "2026-01-23",
@@ -2367,7 +3437,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1453
+      "oob_rate": 0.1453,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1043,
+      "stable_day_sequence": 18
     },
     {
       "date": "2026-01-24",
@@ -2378,7 +3453,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1089
+      "oob_rate": 0.1089,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1082,
+      "stable_day_sequence": 19
     },
     {
       "date": "2026-01-25",
@@ -2389,7 +3469,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0818
+      "oob_rate": 0.0818,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1135,
+      "stable_day_sequence": 20
     },
     {
       "date": "2026-01-26",
@@ -2400,7 +3485,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0455
+      "oob_rate": 0.0455,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1075,
+      "stable_day_sequence": 21
     },
     {
       "date": "2026-01-27",
@@ -2411,7 +3501,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0319
+      "oob_rate": 0.0319,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1042,
+      "stable_day_sequence": 22
     },
     {
       "date": "2026-01-28",
@@ -2422,7 +3517,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0885
+      "oob_rate": 0.0885,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0988,
+      "stable_day_sequence": 23
     },
     {
       "date": "2026-01-29",
@@ -2433,7 +3533,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1157
+      "oob_rate": 0.1157,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0901,
+      "stable_day_sequence": 24
     },
     {
       "date": "2026-01-30",
@@ -2444,7 +3549,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1339
+      "oob_rate": 0.1339,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.088,
+      "stable_day_sequence": 25
     },
     {
       "date": "2026-01-31",
@@ -2455,7 +3565,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0505
+      "oob_rate": 0.0505,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0804,
+      "stable_day_sequence": 26
     },
     {
       "date": "2026-02-01",
@@ -2466,7 +3581,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0761
+      "oob_rate": 0.0761,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0796,
+      "stable_day_sequence": 27
     },
     {
       "date": "2026-02-02",
@@ -2477,7 +3597,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.025
+      "oob_rate": 0.025,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0759,
+      "stable_day_sequence": 28
     },
     {
       "date": "2026-02-03",
@@ -2488,7 +3613,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.045
+      "oob_rate": 0.045,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0768,
+      "stable_day_sequence": 29
     },
     {
       "date": "2026-02-04",
@@ -2499,7 +3629,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1
+      "oob_rate": 0.1,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0784,
+      "stable_day_sequence": 30
     },
     {
       "date": "2026-02-05",
@@ -2510,7 +3645,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1885
+      "oob_rate": 0.1885,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0901,
+      "stable_day_sequence": 31
     },
     {
       "date": "2026-02-06",
@@ -2521,7 +3661,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1228
+      "oob_rate": 0.1228,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0885,
+      "stable_day_sequence": 32
     },
     {
       "date": "2026-02-07",
@@ -2532,7 +3677,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0309
+      "oob_rate": 0.0309,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0862,
+      "stable_day_sequence": 33
     },
     {
       "date": "2026-02-08",
@@ -2543,7 +3693,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0306
+      "oob_rate": 0.0306,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0803,
+      "stable_day_sequence": 34
     },
     {
       "date": "2026-02-09",
@@ -2554,7 +3709,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0714
+      "oob_rate": 0.0714,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0877,
+      "stable_day_sequence": 35
     },
     {
       "date": "2026-02-10",
@@ -2565,7 +3725,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0804
+      "oob_rate": 0.0804,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0928,
+      "stable_day_sequence": 36
     },
     {
       "date": "2026-02-11",
@@ -2576,7 +3741,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.112
+      "oob_rate": 0.112,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0949,
+      "stable_day_sequence": 37
     },
     {
       "date": "2026-02-12",
@@ -2587,7 +3757,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1092
+      "oob_rate": 0.1092,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0824,
+      "stable_day_sequence": 38
     },
     {
       "date": "2026-02-13",
@@ -2598,7 +3773,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1228
+      "oob_rate": 0.1228,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0824,
+      "stable_day_sequence": 39
     },
     {
       "date": "2026-02-14",
@@ -2609,7 +3789,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1183
+      "oob_rate": 0.1183,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0931,
+      "stable_day_sequence": 40
     },
     {
       "date": "2026-02-15",
@@ -2620,7 +3805,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1053
+      "oob_rate": 0.1053,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.1026,
+      "stable_day_sequence": 41
     },
     {
       "date": "2026-02-16",
@@ -2631,7 +3821,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0163
+      "oob_rate": 0.0163,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0935,
+      "stable_day_sequence": 42
     },
     {
       "date": "2026-02-17",
@@ -2642,7 +3837,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0924
+      "oob_rate": 0.0924,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0952,
+      "stable_day_sequence": 43
     },
     {
       "date": "2026-02-18",
@@ -2653,7 +3853,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0625
+      "oob_rate": 0.0625,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0877,
+      "stable_day_sequence": 44
     },
     {
       "date": "2026-02-19",
@@ -2664,7 +3869,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.093
+      "oob_rate": 0.093,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0854,
+      "stable_day_sequence": 45
     },
     {
       "date": "2026-02-20",
@@ -2675,7 +3885,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0789
+      "oob_rate": 0.0789,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.079,
+      "stable_day_sequence": 46
     },
     {
       "date": "2026-02-21",
@@ -2686,7 +3901,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0649
+      "oob_rate": 0.0649,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0728,
+      "stable_day_sequence": 47
     },
     {
       "date": "2026-02-22",
@@ -2697,7 +3917,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0642
+      "oob_rate": 0.0642,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0677,
+      "stable_day_sequence": 48
     },
     {
       "date": "2026-02-23",
@@ -2708,7 +3933,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0495
+      "oob_rate": 0.0495,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0736,
+      "stable_day_sequence": 49
     },
     {
       "date": "2026-02-24",
@@ -2719,7 +3949,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0769
+      "oob_rate": 0.0769,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0711,
+      "stable_day_sequence": 50
     },
     {
       "date": "2026-02-25",
@@ -2730,7 +3965,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1328
+      "oob_rate": 0.1328,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0826,
+      "stable_day_sequence": 51
     },
     {
       "date": "2026-02-26",
@@ -2741,7 +3981,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1439
+      "oob_rate": 0.1439,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0913,
+      "stable_day_sequence": 52
     },
     {
       "date": "2026-02-27",
@@ -2752,7 +3997,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0481
+      "oob_rate": 0.0481,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0872,
+      "stable_day_sequence": 53
     },
     {
       "date": "2026-02-28",
@@ -2763,7 +4013,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0568
+      "oob_rate": 0.0568,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.086,
+      "stable_day_sequence": 54
     },
     {
       "date": "2026-03-01",
@@ -2774,7 +4029,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.043
+      "oob_rate": 0.043,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0839,
+      "stable_day_sequence": 55
     },
     {
       "date": "2026-03-02",
@@ -2785,7 +4045,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0261
+      "oob_rate": 0.0261,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0798,
+      "stable_day_sequence": 56
     },
     {
       "date": "2026-03-03",
@@ -2796,7 +4061,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1356
+      "oob_rate": 0.1356,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0887,
+      "stable_day_sequence": 57
     },
     {
       "date": "2026-03-04",
@@ -2807,7 +4077,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1288
+      "oob_rate": 0.1288,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0882,
+      "stable_day_sequence": 58
     },
     {
       "date": "2026-03-05",
@@ -2818,7 +4093,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1034
+      "oob_rate": 0.1034,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0809,
+      "stable_day_sequence": 59
     },
     {
       "date": "2026-03-06",
@@ -2829,7 +4109,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0508
+      "oob_rate": 0.0508,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0808,
+      "stable_day_sequence": 60
     },
     {
       "date": "2026-03-07",
@@ -2840,7 +4125,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0594
+      "oob_rate": 0.0594,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0807,
+      "stable_day_sequence": 61
     },
     {
       "date": "2026-03-08",
@@ -2851,7 +4141,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0319
+      "oob_rate": 0.0319,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0793,
+      "stable_day_sequence": 62
     },
     {
       "date": "2026-03-09",
@@ -2862,7 +4157,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0642
+      "oob_rate": 0.0642,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.085,
+      "stable_day_sequence": 63
     },
     {
       "date": "2026-03-10",
@@ -2873,7 +4173,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1284
+      "oob_rate": 0.1284,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0834,
+      "stable_day_sequence": 64
     },
     {
       "date": "2026-03-11",
@@ -2884,7 +4189,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0547
+      "oob_rate": 0.0547,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.071,
+      "stable_day_sequence": 65
     },
     {
       "date": "2026-03-12",
@@ -2895,7 +4205,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.068
+      "oob_rate": 0.068,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0656,
+      "stable_day_sequence": 66
     },
     {
       "date": "2026-03-13",
@@ -2906,7 +4221,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0598
+      "oob_rate": 0.0598,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.067,
+      "stable_day_sequence": 67
     },
     {
       "date": "2026-03-14",
@@ -2917,7 +4237,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0449
+      "oob_rate": 0.0449,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0654,
+      "stable_day_sequence": 68
     },
     {
       "date": "2026-03-15",
@@ -2928,7 +4253,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0538
+      "oob_rate": 0.0538,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0682,
+      "stable_day_sequence": 69
     },
     {
       "date": "2026-03-16",
@@ -2939,7 +4269,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0439
+      "oob_rate": 0.0439,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0651,
+      "stable_day_sequence": 70
     },
     {
       "date": "2026-03-17",
@@ -2950,7 +4285,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1504
+      "oob_rate": 0.1504,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0708,
+      "stable_day_sequence": 71
     },
     {
       "date": "2026-03-18",
@@ -2961,7 +4301,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.125
+      "oob_rate": 0.125,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0819,
+      "stable_day_sequence": 72
     },
     {
       "date": "2026-03-19",
@@ -2972,7 +4317,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0769
+      "oob_rate": 0.0769,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.083,
+      "stable_day_sequence": 73
     },
     {
       "date": "2026-03-20",
@@ -2983,7 +4333,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0196
+      "oob_rate": 0.0196,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0781,
+      "stable_day_sequence": 74
     },
     {
       "date": "2026-03-21",
@@ -2994,7 +4349,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0189
+      "oob_rate": 0.0189,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0739,
+      "stable_day_sequence": 75
     },
     {
       "date": "2026-03-22",
@@ -3005,7 +4365,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0
+      "oob_rate": 0.0,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0655,
+      "stable_day_sequence": 76
     },
     {
       "date": "2026-03-23",
@@ -3016,7 +4381,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0566
+      "oob_rate": 0.0566,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0674,
+      "stable_day_sequence": 77
     },
     {
       "date": "2026-03-24",
@@ -3027,7 +4397,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0612
+      "oob_rate": 0.0612,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0522,
+      "stable_day_sequence": 78
     },
     {
       "date": "2026-03-25",
@@ -3038,7 +4413,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1128
+      "oob_rate": 0.1128,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0513,
+      "stable_day_sequence": 79
     },
     {
       "date": "2026-03-26",
@@ -3049,7 +4429,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0784
+      "oob_rate": 0.0784,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.051,
+      "stable_day_sequence": 80
     },
     {
       "date": "2026-03-27",
@@ -3060,7 +4445,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0331
+      "oob_rate": 0.0331,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0524,
+      "stable_day_sequence": 81
     },
     {
       "date": "2026-03-28",
@@ -3071,7 +4461,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0215
+      "oob_rate": 0.0215,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0532,
+      "stable_day_sequence": 82
     },
     {
       "date": "2026-03-29",
@@ -3082,7 +4477,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0098
+      "oob_rate": 0.0098,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0556,
+      "stable_day_sequence": 83
     },
     {
       "date": "2026-03-30",
@@ -3093,7 +4493,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0427
+      "oob_rate": 0.0427,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0535,
+      "stable_day_sequence": 84
     },
     {
       "date": "2026-03-31",
@@ -3104,7 +4509,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0901
+      "oob_rate": 0.0901,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0578,
+      "stable_day_sequence": 85
     },
     {
       "date": "2026-04-01",
@@ -3115,7 +4525,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0354
+      "oob_rate": 0.0354,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0448,
+      "stable_day_sequence": 86
     },
     {
       "date": "2026-04-02",
@@ -3126,7 +4541,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0495
+      "oob_rate": 0.0495,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0409,
+      "stable_day_sequence": 87
     },
     {
       "date": "2026-04-03",
@@ -3137,7 +4557,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.1028
+      "oob_rate": 0.1028,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0511,
+      "stable_day_sequence": 88
     },
     {
       "date": "2026-04-04",
@@ -3148,7 +4573,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0114
+      "oob_rate": 0.0114,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0501,
+      "stable_day_sequence": 89
     },
     {
       "date": "2026-04-05",
@@ -3159,7 +4589,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.0882
+      "oob_rate": 0.0882,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0609,
+      "stable_day_sequence": 90
     },
     {
       "date": "2026-04-06",
@@ -3170,7 +4605,12 @@
       "upper_control_limit": 0.59,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.125
+      "oob_rate": 0.125,
+      "stable_chart_day": true,
+      "chart_include": true,
+      "chart_exclusion_reason": null,
+      "rolling_7d_oob_rate": 0.0693,
+      "stable_day_sequence": 91
     },
     {
       "date": "2026-04-07",
@@ -3181,7 +4621,12 @@
       "upper_control_limit": 0.5779,
       "control_chart_signal_flag": false,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.381
+      "oob_rate": 0.381,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     },
     {
       "date": "2026-04-08",
@@ -3192,7 +4637,12 @@
       "upper_control_limit": 0.5943,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 0.9375
+      "oob_rate": 0.9375,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     },
     {
       "date": "2026-04-09",
@@ -3203,7 +4653,12 @@
       "upper_control_limit": 0.5629,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 1.0
+      "oob_rate": 1.0,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     },
     {
       "date": "2026-04-10",
@@ -3214,7 +4669,12 @@
       "upper_control_limit": 0.6249,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 1.0
+      "oob_rate": 1.0,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     },
     {
       "date": "2026-04-11",
@@ -3225,7 +4685,12 @@
       "upper_control_limit": 0.606,
       "control_chart_signal_flag": true,
       "estimated_bed_days_recoverable": 0.0,
-      "oob_rate": 1.0
+      "oob_rate": 1.0,
+      "stable_chart_day": false,
+      "chart_include": false,
+      "chart_exclusion_reason": "Fewer than 30 discharges",
+      "rolling_7d_oob_rate": null,
+      "stable_day_sequence": null
     }
   ]
 }

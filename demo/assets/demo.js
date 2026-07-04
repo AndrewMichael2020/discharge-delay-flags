@@ -79,24 +79,40 @@ function renderReasonChart(){
   $('reasonChart').innerHTML = list.length ? list.map(r=>{ const pct=Math.max(3,r.recoverable_bed_hours/max*100); return `<div class="bar-row"><div class="bar-label" title="${r.delay_reason}">${r.delay_reason}</div><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><div class="bar-value">${fmtHours(r.recoverable_bed_hours)}</div></div>`; }).join('') + `<div class="bar-axis"><span>0h</span><strong>Recoverable bed-hours</strong><span>${fmtHours(max)}</span></div>` : '<p>No records match the current filters.</p>';
 }
 function filteredControlRows(){
-  let rows = (data.control_chart[state.scenario]||[]).filter(r => (!state.filters.startDate || r.date >= state.filters.startDate) && (!state.filters.endDate || r.date <= state.filters.endDate));
+  let rows = (data.control_chart[state.scenario]||[]).filter(r => r.chart_include);
+  rows = rows.filter(r => (!state.filters.startDate || r.date >= state.filters.startDate) && (!state.filters.endDate || r.date <= state.filters.endDate));
   if(state.filters.signalDaysOnly) rows = rows.filter(r => r.control_chart_signal_flag);
   return rows;
 }
+function excludedControlDays(){
+  return (data.control_chart[state.scenario] || []).filter(r => !r.chart_include).length;
+}
 function renderControlChart(){
-  const rows=filteredControlRows(); const svg=$('controlChart'); const w=560,h=300,p={t:18,r:20,b:30,l:42};
-  const maxY=Math.max(...rows.map(r=>Number(r.oob_rate||0)),...rows.map(r=>Number(r.upper_control_limit||0)),0.1);
+  const rows=filteredControlRows(); const svg=$('controlChart'); const w=560,h=300,p={t:50,r:20,b:42,l:46};
+  if(!rows.length){ svg.innerHTML='<text x="20" y="40" fill="#657386" font-size="12">No stable operating days match the current filters.</text>'; return; }
+  const maxY=Math.max(...rows.map(r=>Number(r.oob_rate||0)),...rows.map(r=>Number(r.rolling_7d_oob_rate||0)),...rows.map(r=>Number(r.upper_control_limit||0)),0.1);
   const x=i=>p.l+(i/Math.max(rows.length-1,1))*(w-p.l-p.r); const y=v=>h-p.b-(Number(v||0)/maxY)*(h-p.t-p.b);
   const path=f=>rows.map((r,i)=>`${i?'L':'M'} ${x(i)} ${y(r[f])}`).join(' ');
+  const linePath=f=>{
+    let started=false;
+    return rows.map((r,i)=>{
+      const v=r[f];
+      if(v===null || v===undefined || Number.isNaN(Number(v))) return '';
+      const cmd=started?'L':'M'; started=true;
+      return `${cmd} ${x(i)} ${y(v)}`;
+    }).filter(Boolean).join(' ');
+  };
   const ticks=[0,.25,.5,.75,1];
-  svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
+  const tickIndexes=[0, Math.floor((rows.length-1)/2), rows.length-1].filter((v,i,a)=>a.indexOf(v)===i);
   const yLabels = ticks.map(t => {
     const value = maxY * (1 - t);
     const yy = p.t + t * (h - p.t - p.b);
     return `<text x="${p.l-8}" y="${yy+3}" text-anchor="end" fill="#657386" font-size="9">${fmtPct(value)}</text>`;
   }).join('');
-  svg.innerHTML = `<rect width="${w}" height="${h}" rx="7" fill="#fff"/>${ticks.map(t=>`<line x1="${p.l}" y1="${p.t+t*(h-p.t-p.b)}" x2="${w-p.r}" y2="${p.t+t*(h-p.t-p.b)}" stroke="#e8edf3"/>`).join('')}${yLabels}<line x1="${p.l}" y1="${h-p.b}" x2="${w-p.r}" y2="${h-p.b}" stroke="#cfd8e3"/><line x1="${p.l}" y1="${p.t}" x2="${p.l}" y2="${h-p.b}" stroke="#cfd8e3"/><path d="${path('upper_control_limit')}" fill="none" stroke="#c84e3a" stroke-width="2" stroke-dasharray="5 5"/><path d="${path('centerline_oob_rate')}" fill="none" stroke="#14866d" stroke-width="2" stroke-dasharray="3 4"/><path d="${path('oob_rate')}" fill="none" stroke="#1565a9" stroke-width="2.4"/>${rows.map((r,i)=>`<circle cx="${x(i)}" cy="${y(r.oob_rate)}" r="${r.control_chart_signal_flag?4:2.1}" fill="${r.control_chart_signal_flag?'#c84e3a':'#1565a9'}"><title>${r.date}: ${fmtPct(r.oob_rate)}</title></circle>`).join('')}<text x="${p.l}" y="${h-8}" fill="#657386" font-size="10">Date (${fmtInt(rows.length)} days)</text><text transform="translate(12 ${h/2}) rotate(-90)" text-anchor="middle" fill="#657386" font-size="10">Daily OOB signal rate</text><text x="${w-p.r}" y="${p.t+2}" text-anchor="end" fill="#657386" font-size="10">Observed vs threshold</text><g transform="translate(${p.l} ${p.t-6})"><circle r="3" fill="#1565a9"></circle><text x="8" y="3" font-size="9" fill="#657386">Observed</text><line x1="62" x2="78" y1="0" y2="0" stroke="#c84e3a" stroke-width="2" stroke-dasharray="4 4"></line><text x="84" y="3" font-size="9" fill="#657386">Review threshold</text><line x1="172" x2="188" y1="0" y2="0" stroke="#14866d" stroke-width="2" stroke-dasharray="3 3"></line><text x="194" y="3" font-size="9" fill="#657386">Expected baseline</text></g>`;
+  const xLabels = tickIndexes.map(i => `<line x1="${x(i)}" y1="${h-p.b}" x2="${x(i)}" y2="${h-p.b+4}" stroke="#cfd8e3"/><text x="${x(i)}" y="${h-18}" text-anchor="middle" fill="#657386" font-size="9">${rows[i].date.slice(5)}</text>`).join('');
+  svg.innerHTML = `<rect width="${w}" height="${h}" rx="7" fill="#fff"/>${ticks.map(t=>`<line x1="${p.l}" y1="${p.t+t*(h-p.t-p.b)}" x2="${w-p.r}" y2="${p.t+t*(h-p.t-p.b)}" stroke="#e8edf3"/>`).join('')}${yLabels}<line x1="${p.l}" y1="${h-p.b}" x2="${w-p.r}" y2="${h-p.b}" stroke="#cfd8e3"/><line x1="${p.l}" y1="${p.t}" x2="${p.l}" y2="${h-p.b}" stroke="#cfd8e3"/>${xLabels}<path d="${path('upper_control_limit')}" fill="none" stroke="#c84e3a" stroke-width="2" stroke-dasharray="5 5"/><path d="${path('centerline_oob_rate')}" fill="none" stroke="#14866d" stroke-width="2" stroke-dasharray="3 4"/><path d="${path('oob_rate')}" fill="none" stroke="#1565a9" stroke-width="1.5" opacity=".38"/><path d="${linePath('rolling_7d_oob_rate')}" fill="none" stroke="#0d4778" stroke-width="3"/>${rows.map((r,i)=>`<circle cx="${x(i)}" cy="${y(r.oob_rate)}" r="${r.control_chart_signal_flag?3.6:1.8}" fill="${r.control_chart_signal_flag?'#c84e3a':'#1565a9'}" opacity="${r.control_chart_signal_flag?1:.42}"><title>${r.date}: daily ${fmtPct(r.oob_rate)}, rolling ${fmtPct(r.rolling_7d_oob_rate)}</title></circle>`).join('')}<text x="${p.l}" y="${h-5}" fill="#657386" font-size="10">Stable operating date (${fmtInt(rows.length)} days; ${fmtInt(excludedControlDays())} low-volume days hidden)</text><text transform="translate(12 ${h/2}) rotate(-90)" text-anchor="middle" fill="#657386" font-size="10">OOB signal rate</text><g transform="translate(${p.l} 14)"><line x1="0" x2="16" y1="0" y2="0" stroke="#0d4778" stroke-width="3"></line><text x="22" y="3" font-size="9" fill="#657386">7-day rolling</text><circle cx="104" cy="0" r="3" fill="#1565a9" opacity=".5"></circle><text x="112" y="3" font-size="9" fill="#657386">Daily points</text><line x1="0" x2="16" y1="16" y2="16" stroke="#c84e3a" stroke-width="2" stroke-dasharray="4 4"></line><text x="22" y="19" font-size="9" fill="#657386">Review threshold</text><line x1="144" x2="160" y1="16" y2="16" stroke="#14866d" stroke-width="2" stroke-dasharray="3 3"></line><text x="166" y="19" font-size="9" fill="#657386">Expected baseline</text></g>`;
 }
+
 function cell(value, cls=''){ return `<td class="${cls}" title="${String(value??'').replaceAll('"','&quot;')}">${value??''}</td>`; }
 function renderTable(id, rows, columns){ $(id).innerHTML = `<thead><tr>${columns.map(c=>`<th style="width:${c.w||'auto'}">${c.label}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${columns.map(c=>cell(c.format?c.format(r[c.key],r):(r[c.key]??''),c.truncate?'truncate':'')).join('')}</tr>`).join('')}</tbody>`; }
 function renderTables(){

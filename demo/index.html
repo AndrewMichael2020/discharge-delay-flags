@@ -6,7 +6,7 @@
   <title>Discharge Delay Flags Demo</title>
   <meta name="description" content="A full-browser GitHub Pages dashboard showing how synthetic hospital flow data becomes an actionable discharge-delay worklist.">
   <style>html,body{margin:0;width:100%;min-height:100%;font-family:Aptos,Segoe UI,Arial,sans-serif;background:#eef2f6;color:#182231}h1{font-size:18px;margin:0}.app-shell{width:100vw;min-height:100vh}</style>
-  <link rel="stylesheet" href="assets/demo.css?v=20260704-ods-v3">
+  <link rel="stylesheet" href="assets/demo.css?v=20260704-ods-v4">
 </head>
 <body>
   <div class="app-shell">
@@ -30,12 +30,12 @@
       <section class="content">
         <section class="hero-strip panel"><div><p class="eyebrow">One large synthetic hospital, 90 days</p><h2>Find the few discharge-delay signals that deserve attention today.</h2><p>The view fills the browser and lets leaders filter by scenario, signal family, delay reason, unit, service line, shift, priority, owner, and date.</p></div><div class="status-pill" id="statusPill"></div></section>
         <section class="kpi-grid" id="kpiGrid" aria-label="Executive KPI cards"></section>
-        <section class="visual-grid"><article class="panel chart-tile"><div class="tile-head"><div><p class="eyebrow">Impact ranking</p><h3>Delay reasons by recoverable bed-hours</h3></div><span class="micro-note" id="reasonCount"></span></div><div id="reasonChart" class="bar-chart"></div></article><article class="panel chart-tile"><div class="tile-head"><div><p class="eyebrow">Variation check</p><h3>Control chart</h3></div><span class="micro-note">Daily OOB rate</span></div><svg id="controlChart" class="line-chart" role="img"></svg></article></section>
+        <section class="visual-grid"><article class="panel chart-tile"><div class="tile-head"><div><p class="eyebrow">Impact ranking</p><h3>Delay reasons by recoverable bed-hours</h3></div><span class="micro-note" id="reasonCount"></span></div><div id="reasonChart" class="bar-chart"></div></article><article class="panel chart-tile"><div class="tile-head"><div><p class="eyebrow">Variation check</p><h3>Operating signal trend</h3></div><span class="micro-note">Stable days, 7-day trend</span></div><svg id="controlChart" class="line-chart" role="img"></svg></article></section>
         <section class="table-grid"><article class="panel table-tile"><div class="tile-head"><div><p class="eyebrow">Shift huddle</p><h3>Management signal groups</h3></div><span class="micro-note" id="worklistCount"></span></div><div class="table-wrap"><table id="worklistTable"></table></div></article><article class="panel table-tile"><div class="tile-head"><div><p class="eyebrow">Action examples</p><h3>CSV-ready worklist</h3></div><span class="micro-note" id="actionCount"></span></div><div class="table-wrap"><table id="actionTable"></table></div></article></section>
       </section>
     </main>
   </div>
-  <script src="data/demo_bundle.js?v=20260704-ods-v3"></script>
-  <script src="assets/demo.js?v=20260704-ods-v3"></script>
+  <script src="data/demo_bundle.js?v=20260704-ods-v4"></script>
+  <script src="assets/demo.js?v=20260704-ods-v4"></script>
 </body>
 </html>
