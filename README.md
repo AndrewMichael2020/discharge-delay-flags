@@ -10,7 +10,7 @@
 
 <p align="center"><strong>A synthetic hospital-flow app for finding out-of-bounds discharge delays, grouping them into plain-language delay reasons, and turning them into dashboard-ready action lists.</strong></p>
 
-<p align="center"><a href="https://andrewmichael2020.github.io/discharge-delay-flags/"><strong>Live GitHub Pages demo</strong></a> · <a href="demo/index.html">Demo source</a> · <a href="docs/METRICS_AND_SIGNALS.md">Metric definitions</a></p>
+<p align="center"><a href="https://andrewmichael2020.github.io/discharge-delay-flags/demo/"><strong>Live GitHub Pages demo</strong></a> · <a href="demo/index.html">Demo source</a> · <a href="docs/METRICS_AND_SIGNALS.md">Metric definitions</a></p>
 
 Operational Delay Sentinel is a small, self-contained prototype for hospital operations teams who need to answer a deceptively hard question:
 
