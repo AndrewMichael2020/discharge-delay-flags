@@ -10,6 +10,8 @@
 
 <p align="center"><strong>A synthetic hospital-flow app for finding out-of-bounds discharge delays, grouping them into plain-language delay reasons, and turning them into dashboard-ready action lists.</strong></p>
 
+<p align="center"><a href="https://andrewmichael2020.github.io/discharge-delay-flags/"><strong>Live GitHub Pages demo</strong></a> · <a href="demo/index.html">Demo source</a> · <a href="docs/METRICS_AND_SIGNALS.md">Metric definitions</a></p>
+
 Operational Delay Sentinel is a small, self-contained prototype for hospital operations teams who need to answer a deceptively hard question:
 
 > Which discharge delays are no longer normal clinical variation, and which delay reason should we look at first?
@@ -43,6 +45,18 @@ This app reframes those misses as **reviewable delay signals**:
 ### Weekend-flow run, detected as Friday/weekend gap dominant
 
 ![Weekend dashboard](docs/screenshots/weekend-dashboard.png)
+
+## GitHub Pages demo
+
+A cleaner public demo lives in [`demo/index.html`](demo/index.html). It is designed for GitHub Pages and tells one simple story: how a large synthetic hospital turns noisy discharge-delay evidence into a small, plain-language action agenda.
+
+The demo uses committed JSON extracts generated from `sample_data/`, so it does not need Python, Parquet, a backend service, or real patient data in the browser. To refresh it after updating sample data, run:
+
+```bash
+python3 scripts/build_demo.py
+```
+
+To publish it with GitHub Pages, set Pages to serve from the `main` branch and open `/demo/`. The static page includes scenario tabs, executive KPI cards, delay-reason impact charts, a control-chart view, and example CSV-ready action rows.
 
 ## What it detects
 
